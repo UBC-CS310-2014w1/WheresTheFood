@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+<name>street_food_vendors</name>
+<visibility>1</visibility>
+<Style id="KMLStyler_2">
+<IconStyle>
+<colorMode>normal</colorMode>
+<scale>1</scale>
+<Icon>
+<href>http://maps.gstatic.com/mapfiles/ms2/micons/green.png</href>
+</Icon>
+</IconStyle>
+<LabelStyle>
+<scale>0</scale>
+</LabelStyle>
+<LineStyle>
+<colorMode>normal</colorMode>
+</LineStyle>
+<PolyStyle>
+<colorMode>normal</colorMode>
+</PolyStyle>
+</Style>
+<Folder id="kml_ft_Street_Food_Vendors">
+<name>Street_Food_Vendors</name>
+<Placemark id="C1">
+<name>Via Tevere Pizzeria</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2869026428645,-123.117533501725'&gt;Get Directions&lt;/a&gt;"/>
+<description>400 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2869026428645,-123.117533501725'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.117533501725,49.2869026428645,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C10">
+<name>Mum's Grilled Cheese Truck</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2822094865348,-123.120684903216'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Howe St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2822094865348,-123.120684903216'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120684903216,49.2822094865348,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C11">
+<name>Holy Perogy</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.285658,-123.11975'&gt;Get Directions&lt;/a&gt;"/>
+<description>1000 Dunsmuir St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.285658,-123.11975'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.11975,49.285658,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C12">
+<name>Ze Bite</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.287612530414,-123.115773447168'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 W Cordova St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.287612530414,-123.115773447168'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.115773447168,49.287612530414,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C13">
+<name>Pig on the Street</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823678347768,-123.12044362671'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Howe St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823678347768,-123.12044362671'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.12044362671,49.2823678347768,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C15">
+<name>Kaboom Box</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2851936823208,-123.122093113148'&gt;Get Directions&lt;/a&gt;"/>
+<description>1000 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2851936823208,-123.122093113148'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122093113148,49.2851936823208,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C17">
+<name>Le Tigre</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2865915482477,-123.12561890857'&gt;Get Directions&lt;/a&gt;"/>
+<description>1100 Alberni St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2865915482477,-123.12561890857'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.12561890857,49.2865915482477,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C19">
+<name>The Reef</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2880164317887,-123.119509663148'&gt;Get Directions&lt;/a&gt;"/>
+<description>300 Thurlow St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2880164317887,-123.119509663148'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.119509663148,49.2880164317887,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C20">
+<name>Holy Perogy</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2799409200762,-123.116011175528'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Homer St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2799409200762,-123.116011175528'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.116011175528,49.2799409200762,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C3">
+<name>Mr. Shawarma</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.285361,-123.120163'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.285361,-123.120163'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120163,49.285361,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C4">
+<name>Tacofino</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.286031,-123.119002'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.286031,-123.119002'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.119002,49.286031,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C5">
+<name>Tacofino</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823011792112,-123.120529317155'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Howe St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823011792112,-123.120529317155'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120529317155,49.2823011792112,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C6">
+<name>The Juice Truck</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2837060481031,-123.106578411699'&gt;Get Directions&lt;/a&gt;"/>
+<description>200 Abbott St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2837060481031,-123.106578411699'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.106578411699,49.2837060481031,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C7">
+<name>Roaming Dragon</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2830967068971,-123.122918691376'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2830967068971,-123.122918691376'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122918691376,49.2830967068971,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C8">
+<name>Gourmet Syndicate</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2820545294215,-123.124511374389'&gt;Get Directions&lt;/a&gt;"/>
+<description> Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2820545294215,-123.124511374389'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.124511374389,49.2820545294215,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="C9">
+<name>Feastro - The Rolling Bistro</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.288672,-123.118453'&gt;Get Directions&lt;/a&gt;"/>
+<description>300 Thurlow St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.288672,-123.118453'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118453,49.288672,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT01">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2787463289182,-123.112040050999'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Beatty St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2787463289182,-123.112040050999'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.112040050999,49.2787463289182,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT02">
+<name>Yolk's</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2798897004659,-123.110258929798'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Beatty St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2798897004659,-123.110258929798'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.110258929798,49.2798897004659,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT03">
+<name>YVS Nuts</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2802456371095,-123.099517140802'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Main St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2802456371095,-123.099517140802'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.099517140802,49.2802456371095,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT04">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2807862326024,-123.115194543585'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Homer St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2807862326024,-123.115194543585'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.115194543585,49.2807862326024,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT08">
+<name>Soho Road Naan Kebab</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2810088908457,-123.122684827257'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Smithe St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2810088908457,-123.122684827257'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122684827257,49.2810088908457,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT10">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2787930537543,-123.108008079327'&gt;Get Directions&lt;/a&gt;"/>
+<description> Expo Boulevard Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2787930537543,-123.108008079327'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.108008079327,49.2787930537543,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT13">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2832540208967,-123.122553436859'&gt;Get Directions&lt;/a&gt;"/>
+<description>900 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2832540208967,-123.122553436859'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122553436859,49.2832540208967,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_1">
+<name>Street Meet</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.286508,-123.118219'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.286508,-123.118219'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118219,49.286508,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_2">
+<name>Eat Sexy</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2818452,-123.109719'&gt;Get Directions&lt;/a&gt;"/>
+<description>400 Cambie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2818452,-123.109719'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.109719,49.2818452,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_3">
+<name>JJs Trucketeria</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2785165027286,-123.107503944602'&gt;Get Directions&lt;/a&gt;"/>
+<description>Abbott St Expo Boulevard Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2785165027286,-123.107503944602'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.107503944602,49.2785165027286,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_4">
+<name>Taqueria and Salsa Bar</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2622179236022,-123.068832967717'&gt;Get Directions&lt;/a&gt;"/>
+<description>1700 E Broadway Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2622179236022,-123.068832967717'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.068832967717,49.2622179236022,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_5">
+<name>Bike Caffe</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2662133683556,-123.115842196354'&gt;Get Directions&lt;/a&gt;"/>
+<description>1800 Spyglass Place Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2662133683556,-123.115842196354'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.115842196354,49.2662133683556,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_6">
+<name>Falafel Plus</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2616458525363,-123.125503130909'&gt;Get Directions&lt;/a&gt;"/>
+<description>  Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2616458525363,-123.125503130909'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.125503130909,49.2616458525363,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT15">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2797972582368,-123.114194279397'&gt;Get Directions&lt;/a&gt;"/>
+<description>200 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2797972582368,-123.114194279397'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.114194279397,49.2797972582368,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT16">
+<name>Mogu</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.284218,-123.117633'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Howe St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.284218,-123.117633'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.117633,49.284218,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT17">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.282328603421,-123.118110351956'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.282328603421,-123.118110351956'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118110351956,49.282328603421,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT19">
+<name>Japadog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2859216901433,-123.112448960545'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 W Cordova St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2859216901433,-123.112448960545'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.112448960545,49.2859216901433,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT21">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2747502295582,-123.122779848109'&gt;Get Directions&lt;/a&gt;"/>
+<description>300 Davie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2747502295582,-123.122779848109'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122779848109,49.2747502295582,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT22">
+<name>YVS Nuts</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2821481632417,-123.120922330818'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2821481632417,-123.120922330818'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120922330818,49.2821481632417,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT23">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2839447994963,-123.123609670214'&gt;Get Directions&lt;/a&gt;"/>
+<description>1000 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2839447994963,-123.123609670214'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.123609670214,49.2839447994963,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT26">
+<name>Japadog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.286363,-123.117884'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.286363,-123.117884'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.117884,49.286363,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT28">
+<name>Vij's Railway Express</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2855582335702,-123.122642482853'&gt;Get Directions&lt;/a&gt;"/>
+<description>1000 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2855582335702,-123.122642482853'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122642482853,49.2855582335702,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT31">
+<name>Japadog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2845221170008,-123.115175231669'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2845221170008,-123.115175231669'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.115175231669,49.2845221170008,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT32">
+<name>Tikka Dog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2851739115674,-123.111358832752'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 W Cordova St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2851739115674,-123.111358832752'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.111358832752,49.2851739115674,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT35">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2792959311252,-123.129130084449'&gt;Get Directions&lt;/a&gt;"/>
+<description>1100 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2792959311252,-123.129130084449'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.129130084449,49.2792959311252,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT37">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.283488792081,-123.122731856953'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.283488792081,-123.122731856953'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122731856953,49.283488792081,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT38">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2834680335098,-123.119863220163'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2834680335098,-123.119863220163'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.119863220163,49.2834680335098,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT39">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2822753151292,-123.121307872222'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2822753151292,-123.121307872222'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.121307872222,49.2822753151292,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT40">
+<name>Cazba Express</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2815470137913,-123.119934651565'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2815470137913,-123.119934651565'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.119934651565,49.2815470137913,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT41">
+<name>Van Dog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2830711222286,-123.122643938267'&gt;Get Directions&lt;/a&gt;"/>
+<description>900 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2830711222286,-123.122643938267'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122643938267,49.2830711222286,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT42">
+<name>The Burger Bus</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2827533646573,-123.122135785725'&gt;Get Directions&lt;/a&gt;"/>
+<description>900 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2827533646573,-123.122135785725'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122135785725,49.2827533646573,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT45">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2728501609174,-123.119509851201'&gt;Get Directions&lt;/a&gt;"/>
+<description>100 Davie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2728501609174,-123.119509851201'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.119509851201,49.2728501609174,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT46">
+<name>Super Baguette</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2828210050626,-123.121898160024'&gt;Get Directions&lt;/a&gt;"/>
+<description>900 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2828210050626,-123.121898160024'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.121898160024,49.2828210050626,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT47">
+<name>Street Hots</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2763016616509,-123.124642041361'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Davie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2763016616509,-123.124642041361'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.124642041361,49.2763016616509,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT48">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.277427325294,-123.114069374134'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Beatty St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.277427325294,-123.114069374134'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.114069374134,49.277427325294,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT49">
+<name>Eat Chicken Wraps</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2817781712283,-123.120291770943'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2817781712283,-123.120291770943'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120291770943,49.2817781712283,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT50">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2880573451663,-123.11944477054'&gt;Get Directions&lt;/a&gt;"/>
+<description>300 Thurlow St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2880573451663,-123.11944477054'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.11944477054,49.2880573451663,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT51">
+<name>Roaming Dragon</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.285639502401,-123.122750128944'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Thurlow St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.285639502401,-123.122750128944'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122750128944,49.285639502401,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT52">
+<name>Japadog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2824199268397,-123.124363670916'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2824199268397,-123.124363670916'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.124363670916,49.2824199268397,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT53">
+<name>Aussie Pie Guy</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2802488008349,-123.113639791544'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2802488008349,-123.113639791544'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113639791544,49.2802488008349,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT54">
+<name>Dim Sum Express</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2872354621354,-123.112870852909'&gt;Get Directions&lt;/a&gt;"/>
+<description>200 Howe St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2872354621354,-123.112870852909'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.112870852909,49.2872354621354,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT55">
+<name>Ursu Korean BBQ</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2810211603278,-123.116069961697'&gt;Get Directions&lt;/a&gt;"/>
+<description>400 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2810211603278,-123.116069961697'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.116069961697,49.2810211603278,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT56">
+<name>Sea Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2910821453032,-123.123682322296'&gt;Get Directions&lt;/a&gt;"/>
+<description> Coal Harbour Quay Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2910821453032,-123.123682322296'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.123682322296,49.2910821453032,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT57">
+<name>Arturo's Mexico To Go</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2865282200574,-123.113567537336'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 W Cordova St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2865282200574,-123.113567537336'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113567537336,49.2865282200574,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT59">
+<name>Re-Up BBQ</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2835087650275,-123.120309650843'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Hornby St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2835087650275,-123.120309650843'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120309650843,49.2835087650275,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT60">
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2825430731489,-123.118459425984'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2825430731489,-123.118459425984'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118459425984,49.2825430731489,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT61">
+<name>Fresh Local Wild</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2869160302425,-123.116722505087'&gt;Get Directions&lt;/a&gt;"/>
+<description>900 W Hastings St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2869160302425,-123.116722505087'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.116722505087,49.2869160302425,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT63">
+<name>It's all About Grill</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2793549159399,-123.129001647356'&gt;Get Directions&lt;/a&gt;"/>
+<description>1100 Burrard St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2793549159399,-123.129001647356'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.129001647356,49.2793549159399,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT64">
+<name>Mangali Kiss</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2832896022047,-123.119611425531'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 W Georgia St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2832896022047,-123.119611425531'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.119611425531,49.2832896022047,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT70">
+<name>Soho Road Naan Kebab</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2849051031527,-123.118581094106'&gt;Get Directions&lt;/a&gt;"/>
+<description> Hornby St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2849051031527,-123.118581094106'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118581094106,49.2849051031527,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT71">
+<name>Didi's Greek</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2912416908619,-123.135271203846'&gt;Get Directions&lt;/a&gt;"/>
+<description>1700 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2912416908619,-123.135271203846'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.135271203846,49.2912416908619,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT72">
+<name>The Hut</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2738358886872,-123.121519625651'&gt;Get Directions&lt;/a&gt;"/>
+<description>1200 Pacific Boulevard Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2738358886872,-123.121519625651'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.121519625651,49.2738358886872,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT74">
+<name>Re-Up BBQ</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823147080081,-123.121388457371'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823147080081,-123.121388457371'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.121388457371,49.2823147080081,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="DT75">
+<name>Finest at Sea</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823862859569,-123.121491640206'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823862859569,-123.121491640206'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.121491640206,49.2823862859569,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="EB01">
+<name>Ice Cream</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2875956528883,-123.142528698765'&gt;Get Directions&lt;/a&gt;"/>
+<description>1800 Beach Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2875956528883,-123.142528698765'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.142528698765,49.2875956528883,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="EB02">
+<name>YVS Nuts</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2870673501744,-123.142476295228'&gt;Get Directions&lt;/a&gt;"/>
+<description>1800 Beach Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2870673501744,-123.142476295228'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.142476295228,49.2870673501744,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="EB03">
+<name>Lemon Sea</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2896827395781,-123.144697763958'&gt;Get Directions&lt;/a&gt;"/>
+<description>2000 Beach Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2896827395781,-123.144697763958'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.144697763958,49.2896827395781,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="EB04">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.28449251733,-123.142926123068'&gt;Get Directions&lt;/a&gt;"/>
+<description>1700 Beach Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.28449251733,-123.142926123068'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.142926123068,49.28449251733,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="EB05">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2887284881581,-123.143229444439'&gt;Get Directions&lt;/a&gt;"/>
+<description>1900 Beach Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2887284881581,-123.143229444439'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.143229444439,49.2887284881581,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="EB07">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.28763933977,-123.1425256449'&gt;Get Directions&lt;/a&gt;"/>
+<description>1800 Beach Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.28763933977,-123.1425256449'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.1425256449,49.28763933977,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM02">
+<name>Big Dogs Hot Eats</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2829825638211,-123.117252597883'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2829825638211,-123.117252597883'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.117252597883,49.2829825638211,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM04">
+<name>Meals United Foods and Juices</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2829376280935,-123.117313985794'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2829376280935,-123.117313985794'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.117313985794,49.2829376280935,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM05">
+<name>Van Dog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2805178578306,-123.120951896798'&gt;Get Directions&lt;/a&gt;"/>
+<description>800 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2805178578306,-123.120951896798'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120951896798,49.2805178578306,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM11">
+<name>Van Dog</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2797455146803,-123.122119558315'&gt;Get Directions&lt;/a&gt;"/>
+<description>900 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2797455146803,-123.122119558315'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.122119558315,49.2797455146803,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM13">
+<name>Kaboom Box</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823626147279,-123.118591524118'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2823626147279,-123.118591524118'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118591524118,49.2823626147279,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM17">
+<name>Emelles Westside Wheels</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.283807299327,-123.115997593018'&gt;Get Directions&lt;/a&gt;"/>
+<description>500 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.283807299327,-123.115997593018'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.115997593018,49.283807299327,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM18">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2824701485478,-123.118426844134'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2824701485478,-123.118426844134'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118426844134,49.2824701485478,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM20">
+<name>Nu Greek</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2828190132516,-123.11746613169'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Granville St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2828190132516,-123.11746613169'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.11746613169,49.2828190132516,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GM21">
+<name>Soho Road Naan Kebab</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2825721404215,-123.11850128812'&gt;Get Directions&lt;/a&gt;"/>
+<description>  Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2825721404215,-123.11850128812'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.11850128812,49.2825721404215,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GT07">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2844121956787,-123.109057046006'&gt;Get Directions&lt;/a&gt;"/>
+<description>300 Water St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2844121956787,-123.109057046006'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.109057046006,49.2844121956787,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="GTBIA1">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2839757319915,-123.106545020008'&gt;Get Directions&lt;/a&gt;"/>
+<description>100 Water St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2839757319915,-123.106545020008'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.106545020008,49.2839757319915,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD03">
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2634838294021,-123.138921554365'&gt;Get Directions&lt;/a&gt;"/>
+<description>1500 W Broadway Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2634838294021,-123.138921554365'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.138921554365,49.2634838294021,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD05">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2622160476583,-123.069072741187'&gt;Get Directions&lt;/a&gt;"/>
+<description>1700 E Broadway Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2622160476583,-123.069072741187'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.069072741187,49.2622160476583,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD08">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2729942516369,-123.100340660462'&gt;Get Directions&lt;/a&gt;"/>
+<description>100 Terminal Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2729942516369,-123.100340660462'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.100340660462,49.2729942516369,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD09">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2633845490143,-123.130420145152'&gt;Get Directions&lt;/a&gt;"/>
+<description>2000 Select Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2633845490143,-123.130420145152'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.130420145152,49.2633845490143,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD10">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2635812762601,-123.14405563356'&gt;Get Directions&lt;/a&gt;"/>
+<description>1700 Select Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2635812762601,-123.14405563356'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.14405563356,49.2635812762601,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD12">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2653259461049,-123.114546957935'&gt;Get Directions&lt;/a&gt;"/>
+<description>2200 Cambie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2653259461049,-123.114546957935'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.114546957935,49.2653259461049,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD14">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2633635579704,-123.118715148613'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 W Broadway Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2633635579704,-123.118715148613'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118715148613,49.2633635579704,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD16">
+<name>Fasttrac Fusion</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2263667505506,-123.116220118484'&gt;Get Directions&lt;/a&gt;"/>
+<description>6400 Cambie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2263667505506,-123.116220118484'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.116220118484,49.2263667505506,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD17">
+<name>Num Num</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2625930521799,-123.139020457955'&gt;Get Directions&lt;/a&gt;"/>
+<description>1500 W 10th Av Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2625930521799,-123.139020457955'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.139020457955,49.2625930521799,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD18">
+<name>Hot Dogs</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2584746760419,-123.101569148691'&gt;Get Directions&lt;/a&gt;"/>
+<description>2900 Main St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2584746760419,-123.101569148691'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.101569148691,49.2584746760419,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD19">
+<name>Taser Sandwiches</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2730044236793,-123.099812569902'&gt;Get Directions&lt;/a&gt;"/>
+<description>1300 Main St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2730044236793,-123.099812569902'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.099812569902,49.2730044236793,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="OD20">
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2696356133726,-123.137834395459'&gt;Get Directions&lt;/a&gt;"/>
+<description>1700 Anderson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2696356133726,-123.137834395459'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.137834395459,49.2696356133726,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="RSBIA1">
+<name>YVS Nuts</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2844112615865,-123.124731382324'&gt;Get Directions&lt;/a&gt;"/>
+<description>1000 Robson St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2844112615865,-123.124731382324'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.124731382324,49.2844112615865,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_7">
+<name>San Juan Family Farm</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2876563285535,-123.142245846745'&gt;Get Directions&lt;/a&gt;"/>
+<description>1800 Davie St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2876563285535,-123.142245846745'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.142245846745,49.2876563285535,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_8">
+<name>Super Thai</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.272915,-123.125623'&gt;Get Directions&lt;/a&gt;"/>
+<description>1300 Pacific Boulevard Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.272915,-123.125623'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.125623,49.272915,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_9">
+<name>Feastro The Rolling Bistro</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2824386635302,-123.120345228347'&gt;Get Directions&lt;/a&gt;"/>
+<description>  Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2824386635302,-123.120345228347'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.120345228347,49.2824386635302,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_10">
+<name>Mr. Shawarma</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2825844484842,-123.12148094657'&gt;Get Directions&lt;/a&gt;"/>
+<description>  Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2825844484842,-123.12148094657'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.12148094657,49.2825844484842,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_11">
+<name>Guanaco Truck</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2805630575145,-123.118965597458'&gt;Get Directions&lt;/a&gt;"/>
+<description>  Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2805630575145,-123.118965597458'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.118965597458,49.2805630575145,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_12">
+<name>Reel Mac and Cheese</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2803038572131,-123.113548862347'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2803038572131,-123.113548862347'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113548862347,49.2803038572131,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_13">
+<name>Dougie Luv Diner Truck</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2803927639129,-123.113428724994'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2803927639129,-123.113428724994'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113428724994,49.2803927639129,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_14">
+<name>Patisserie Lebeau</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2798874227109,-123.114506001034'&gt;Get Directions&lt;/a&gt;"/>
+<description>700 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2798874227109,-123.114506001034'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.114506001034,49.2798874227109,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_15">
+<name>Fat Duck Mobile Eatery</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2805440610593,-123.113239551859'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2805440610593,-123.113239551859'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113239551859,49.2805440610593,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_16">
+<name>Culver City Salads</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.280447345516,-123.113330195347'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.280447345516,-123.113330195347'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113330195347,49.280447345516,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_17">
+<name>Chou Chou Crepes</name>
+<atom:link href="&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2800668155967,-123.113913618668'&gt;Get Directions&lt;/a&gt;"/>
+<description>600 Hamilton St Vancouver BC&lt;br&gt;&lt;br&gt;
+Phone: 3-1-1 or 605-873-7000&lt;br&gt;
+ Website: &lt;a href='http://vancouver.ca'&gt;http://vancouver.ca&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a href='http://maps.google.com/maps?&amp;daddr=49.2800668155967,-123.113913618668'&gt;Get Directions&lt;/a&gt;</description>
+<styleUrl>#KMLStyler_2</styleUrl>
+<Point>
+<coordinates>-123.113913618668,49.2800668155967,0 </coordinates>
+</Point>
+</Placemark>
+</Folder>
+</Document></kml>
