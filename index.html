@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
     </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: 49.2, lng: -123.1},
-          zoom: 11,
-          disableDefaultUI: true
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-        var ctaLayer = new google.maps.KmlLayer({
-          url: 'http://napontaratan.com/WheresTheFood/street_food_vendors.kml'});
-        ctaLayer.setMap(map);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+    <script type="text/javascript" src="mapUI.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
   </head>
   <body>
-<div id="map-canvas"></div>
+    <div id="map-canvas"></div>
+    <script> $('#map-canvas').hide();</script>
+    <div id="login">
+      <div id="login-button">
+        <input type="button" onclick="Controller.login();" value="Login using Facebook" />
+      </div>
+    </div>
   </body>
 </html>
