@@ -1,3 +1,3 @@
 WheresTheFood
 =============
-Hosted at: http://napontaratan.com/WheresTheFood
+Hosted at: https://vivid-torch-5902.firebaseapp.com/
