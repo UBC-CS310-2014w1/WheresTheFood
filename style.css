@@ -31,6 +31,7 @@ html, body {
 #login-button {
 	background: url('images/icon_fb_login.png');
 	color: white;
+	cursor: pointer;
 	height: 450px;
 	left: 30%;
 	padding-top: 50px;
