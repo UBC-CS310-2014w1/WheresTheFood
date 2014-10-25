@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
+ rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
     </script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
     <script type="text/javascript" src="mapUI.js"></script>
-    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="Server.js"></script>
     <script type="text/javascript" src="controller.js"></script>
   </head>
   <body>
+    <div id="user-label">Hello!</div>
     <div id="map-canvas"></div>
-    <script> $('#map-canvas').hide();</script>
-    <div id="login">
+    <a href="#">
       <div id="login-button">
-        <input type="button" onclick="Controller.login();" value="Login using Facebook" />
+        <h1>Login</h1>
       </div>
-    </div>
+    </a>  
+    <div id="overlay"></div>
   </body>
 </html>

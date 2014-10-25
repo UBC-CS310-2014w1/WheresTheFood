@@ -3,8 +3,10 @@ var Controller = {
 		 Server.login(function(userObject) {
 			if(userObject) {
 				console.log('hello controller');
-				$('#login').hide();
+				$('#login-button').hide();
+				$('#overlay').hide();
 				$('#map-canvas').show();
+				$('#user-label').text(userObject.facebook.displayName);
 				initialize();
 				
 	    		Server.pushUserData(userObject.uid, userObject.facebook.displayName);
