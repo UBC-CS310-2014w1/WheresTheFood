@@ -4,12 +4,9 @@ var currentUser = {};
 
 var Server = {
   login: function(callback) {
-      databaseRef.unauth();
       databaseRef.authWithOAuthPopup("facebook", function(error, authData) {
           if(error) console.log('error');
-          console.log('checking cred..');
           if(authData) { 
-            console.log('hello: ' + authData.facebook.displayName); 
             if(typeof callback === 'function') {
               currentUser = authData;
               callback(authData);
@@ -28,7 +25,11 @@ var Server = {
 
   getCurrentUser: function() {
       return currentUser;
-  }
+  },
+
+  logout: function() {
+      databaseRef.unauth();
+  },
 }
 
 
