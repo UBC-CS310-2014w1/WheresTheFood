@@ -1,4 +1,4 @@
-// Facebook login
+// Server
 var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
 var currentUser = {};
 
