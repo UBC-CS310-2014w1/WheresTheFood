@@ -1,4 +1,4 @@
-var MapView  = require('./MapView');
+// var MapView  = require('./MapView');
 // when page is loaded
 $(document).ready( function () {
 

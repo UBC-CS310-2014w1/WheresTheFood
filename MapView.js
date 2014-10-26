@@ -1,7 +1,7 @@
-var Server = require('./Server');
-var server = new Server();
-var FoodTruckPopUpView = require('./FoodTruckPopUpView');
-var foodTruckPopUpView = new FoodTruckPopUpView();
+// var Server = require('./Server');
+// var server = new Server();
+// var FoodTruckPopUpView = require('./FoodTruckPopUpView');
+// var foodTruckPopUpView = new FoodTruckPopUpView();
 
 var mapView = (function() {
 
@@ -24,7 +24,8 @@ var mapView = (function() {
     // add custom click handler for marker because we are using google api
     // if it's our own created html element, we will just add it to backbone events
     google.maps.event.addListener(ctaLayer, 'click',  function(kmlEvent) {
-      kmlEvent.featureData.infoWindowHtml = foodTruckPopUpView.template();
+      // kmlEvent.featureData.infoWindowHtml = foodTruckPopUpView.template();
+      kmlEvent.featureData.infoWindowHtml = new FoodTruckPopUpView().template();
     });
   };
 
@@ -45,6 +46,7 @@ var mapView = (function() {
         });
 
       drawMarker();
+      server.fetchDataset();
 
       // push user info to server
       server.pushUserData(userObject.uid, userObject.facebook.displayName);
@@ -69,4 +71,5 @@ var mapView = (function() {
 
 })();
 
-module.exports = Backbone.View.extend(mapView);
+//module.exports = Backbone.View.extend(mapView);
+var MapView = Backbone.View.extend(mapView);

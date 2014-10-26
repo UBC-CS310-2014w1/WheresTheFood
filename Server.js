@@ -31,8 +31,14 @@ var server = (function() {
     logout: function() {
         databaseRef.unauth();
     },
+
+    fetchDataset: function() {
+    console.log("this is the dataset: " ,databaseRef.child('dataset'));
+    }
+
   };
 
 })();
 
-module.exports = Backbone.Model.extend(server);
+// module.exports = Backbone.Model.extend(server);
+var Server = Backbone.Model.extend(server);

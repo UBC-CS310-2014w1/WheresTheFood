@@ -1,4 +1,4 @@
-module.exports = Backbone.model.extend({
+module.exports = Backbone.Model.extend({
   defaults: {
     name: '',
     address: '',

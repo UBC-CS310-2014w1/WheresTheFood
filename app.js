@@ -56,6 +56,7 @@ var mapView = (function() {
         });
 
       drawMarker();
+      server.fetchDataset();
 
       // push user info to server
       server.pushUserData(userObject.uid, userObject.facebook.displayName);
@@ -116,6 +117,11 @@ var server = (function() {
     logout: function() {
         databaseRef.unauth();
     },
+
+    fetchDataset: function() {
+    console.log("this is the dataset: " ,databaseRef.child('dataset'));
+    }
+
   };
 
 })();
