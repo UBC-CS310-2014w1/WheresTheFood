@@ -1,11 +1,7 @@
-var FoodTruck = Backbone.Model.extend({
+module.exports = Backbone.Model.extend({
   defaults: {
     name: '',
     address: '',
-    description: '',
-    lat: '',
-    lon: '',
-    location: '',
-    id: '',
+    description: ''
   }
 });

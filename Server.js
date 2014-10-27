@@ -32,15 +32,8 @@ var server = (function() {
         databaseRef.unauth();
     },
 
-    fetchDataset: function(callback) {
-      // Attach an asynchronous callback to read the data at our posts reference
-      databaseRef.child('dataset').on('value', function (snapshot) {
-        console.log(snapshot.val());
-        if(callback) callback(snapshot.val());
-      }, function (errorObject) {
-        console.log('The read failed: ' + errorObject.code);
-        callback(null);
-      });
+    fetchDataset: function() {
+    console.log("this is the dataset: " ,databaseRef.child('dataset'));
     }
 
   };
