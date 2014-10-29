@@ -1,4 +1,4 @@
-// module.exports = Backbone.View.extend({
+
 var FoodTruckPopUpView = Backbone.View.extend({
   initialize: function() {
 
