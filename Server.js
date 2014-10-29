@@ -54,7 +54,7 @@ var Server = (function() {
 
     // Use this function to fetch data from the dataset in Firebase.
     // It is called in UIController.js with parseData
-    fetchDataset: function() {
+    fetchDataset: function(callback) {
     // Attach an asynchronous callback to read the data at our dataset reference
     databaseRef.child('dataset').on('value', function(snapShot){
         if(callback) callback(snapShot.val());
