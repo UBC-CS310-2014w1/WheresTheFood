@@ -1,4 +1,4 @@
-var server = (function() {
+var Server = (function() {
   // Server: the data for our app will be stored at this firebase reference
   var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
   // current firebase user object
@@ -6,7 +6,7 @@ var server = (function() {
   // reference to the user node on the firebase
   var currentUserRef = {};
 
-  return {
+  return Backbone.Model.extend({
     login: function(callback) {
         databaseRef.authWithOAuthPopup("facebook", function(error, authData) {
             if(error) console.log('error');
@@ -50,10 +50,10 @@ var server = (function() {
       databaseRef.unauth();
     },
 
-    
 
-    // Use this function to fetch data from the dataset in Firebase. 
-    // It is called in UIController.js with parseData 
+
+    // Use this function to fetch data from the dataset in Firebase.
+    // It is called in UIController.js with parseData
     fetchDataset: function() {
     // Attach an asynchronous callback to read the data at our dataset reference
     databaseRef.child('dataset').on('value', function(snapShot){
@@ -64,9 +64,6 @@ var server = (function() {
       });
     },
 
-  };
+  });
 
 })();
-
-// module.exports = Backbone.Model.extend(server);
-var Server = Backbone.Model.extend(server);

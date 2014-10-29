@@ -1,7 +1,14 @@
-var FoodTruck = Backbone.Model.extend({
-  defaults: {
-    name: '',
-    address: '',
-    description: ''
-  }
-});
+var FoodTruck = (function() {
+
+  return Backbone.Model.extend({
+
+    defaults: {
+      name: '',
+      address: '',
+      description: ''
+    }
+
+  });
+
+})();
+

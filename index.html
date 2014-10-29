@@ -18,20 +18,20 @@
     <div id="overlay"></div>
 
     <!-- <script type="text/javascript" src="app.js" defer></script> -->
+    <script type="text/javascript" src="Server.js" defer></script>
     <script type="text/javascript" src="FoodTruck.js" defer></script>
     <script type="text/javascript" src="FoodTruckCollection.js" defer></script>
-    <script type="text/javascript" src="MapView.js" defer></script>
-    <script type="text/javascript" src="Server.js" defer></script>
     <script type="text/javascript" src="FoodTruckPopUpView.js" defer></script>
+    <script type="text/javascript" src="MapView.js" defer></script>
     <script type="text/javascript" src="UIController.js" defer></script>
 
 
       <!-- TEMPLATES  -->
     <script type="text/template" id="foodtruckpopup_template">
       <div id="foodTruckPopupContainer" class="container">
-        <div>Name:</div>
-        <div>Description</div>
-        <div>Address</div>
+        <div>Name:  <%-name%></div>
+        <div>Description:  <%-description%></div>
+        <div>Address: <%-address%></div>
         <a href="FoodTruckPage.html">Click for more details</a>
       </div>
     </script>
