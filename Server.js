@@ -1,5 +1,5 @@
 var server = (function() {
-  // Server
+  // Server: the data for our app will be stored at this firebase reference
   var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
   // current firebase user object
   var currentUser = {};
@@ -30,7 +30,14 @@ var server = (function() {
 
     // pushes memo to the specified restaurant
     pushUserMemo: function(restaurant,memo) {
-      currentUserRef.child('memos').child(restaurant).set(memo);
+      currentUserRef.child('memos').child(restaurant).set(memo, function(error) {
+          if (error) {
+            alert("Memo could not be saved" + error);
+          } else {
+            alert("Memo saved successfully");
+          }
+
+      });
     },
 
     getCurrentUser: function() {
