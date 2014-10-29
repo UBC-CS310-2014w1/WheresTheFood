@@ -1,4 +1,4 @@
-module.exports = Backbone.Model.extend({
+var FoodTruck = Backbone.Model.extend({
   defaults: {
     name: '',
     address: '',
