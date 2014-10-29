@@ -2,7 +2,6 @@
 // var server = new Server();
 // var FoodTruckPopUpView = require('./FoodTruckPopUpView');
 // var foodTruckPopUpView = new FoodTruckPopUpView();
-
 var mapView = (function() {
 
   var mapOptions = {
@@ -49,7 +48,7 @@ var mapView = (function() {
       server.fetchDataset();
 
       // push user info to server
-      server.pushUserData(userObject.uid, userObject.facebook.displayName);
+      server.pushUsername(userObject.facebook.displayName);
     }
   };
 
