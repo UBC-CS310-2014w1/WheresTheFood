@@ -24,6 +24,7 @@ var server = (function() {
 
       },
 
+
     pushUsername: function(val) {
       currentUserRef.child('name').set(val);
     },
@@ -40,6 +41,7 @@ var server = (function() {
       });
     },
 
+
     getCurrentUser: function() {
       return currentUser;
     },
@@ -47,6 +49,8 @@ var server = (function() {
     logout: function() {
       databaseRef.unauth();
     },
+
+    
 
     // Use this function to fetch data from the dataset in Firebase. 
     // It is called in UIController.js with parseData 

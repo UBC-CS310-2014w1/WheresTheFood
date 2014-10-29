@@ -1,9 +1,6 @@
-document.getElementById("saveButton").addEventListener("click", saveTextToDB);
+var typeMemo = document.getElementById("txtMemoBox");
+	btSaveMemo = document.getElementById("saveButton");
 
-function saveTextToDB(){
-var typeMemo = document.getElementById("memoBox");
-// need to add restaurant here
-pushUserMemo(restaurant,pushUserMemo);
+btSaveMemo.addEventListener("click", pushUserMemo("happy food", txtMemoBox));
+typeMemo.value = '';
 
-
-}

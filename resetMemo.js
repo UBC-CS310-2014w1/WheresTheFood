@@ -1,6 +1,6 @@
+var txtBox = document.getElementById("txtMemoBox");
+	dtMemo = document.getElementById("deleteButton");
+dtMemo.addEventListener("click", function() {
+	txtBox.value = '';
 
-document.getElementById("deleteButton").addEventListener("click", resetText);
-
-function resetText(){
-document.getElementById("memoBox").value="";
-}
+});
