@@ -2,7 +2,7 @@ var Server = (function() {
   // Server: the data for our app will be stored at this firebase reference
   var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
   // current firebase user object
-  var currentUser = {};
+  var currentUser = databaseRef.getAuth();
   // reference to the user node on the firebase
   var currentUserRef = {};
 
@@ -41,16 +41,13 @@ var Server = (function() {
       });
     },
 
-
-    getCurrentUser: function() {
-      return currentUser;
-    },
-
     logout: function() {
       databaseRef.unauth();
+      currentUser = null;
+      currentUserRef = null;
     },
 
-
+    getUser: function() { return currentUser; },
 
     // Use this function to fetch data from the dataset in Firebase.
     // It is called in UIController.js with parseData
