@@ -12,26 +12,29 @@
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
   </head>
   <body>
-    <div id="user-label">Hello!</div>
+    <div id="user-label"></div>
     <div id="map-canvas"></div>
     <div id="login-button"><h1>Login</h1></div>
     <div id="overlay"></div>
 
     <!-- <script type="text/javascript" src="app.js" defer></script> -->
+    <script type="text/javascript" src="Constants.js" defer></script>
+    <script type="text/javascript" src="Server.js" defer></script>
     <script type="text/javascript" src="FoodTruck.js" defer></script>
     <script type="text/javascript" src="FoodTruckCollection.js" defer></script>
-    <script type="text/javascript" src="MapView.js" defer></script>
-    <script type="text/javascript" src="Server.js" defer></script>
     <script type="text/javascript" src="FoodTruckPopUpView.js" defer></script>
+    <script type="text/javascript" src="MapView.js" defer></script>
     <script type="text/javascript" src="UIController.js" defer></script>
+
+    
 
 
       <!-- TEMPLATES  -->
-    <script type="text/template" id="foodtruckpopup_template">
+    <script type="text/template" id="foodtruckpopupTemplate">
       <div id="foodTruckPopupContainer" class="container">
-        <div>Name:</div>
-        <div>Description</div>
-        <div>Address</div>
+        <div>Name:  <%-name%></div>
+        <div>Description:  <%-description%></div>
+        <div>Address: <%-address%></div>
         <a href="FoodTruckPage.html">Click for more details</a>
       </div>
     </script>
