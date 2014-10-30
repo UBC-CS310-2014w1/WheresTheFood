@@ -2,19 +2,17 @@ var FoodTruckPopUpView = (function() {
 
   return Backbone.View.extend({
 
-    initialize: function() {
+    initialize: function(id) {
       console.debug("FoodTruckPopUpView initialize");
-      this.render();
+      this.render(id);
     },
 
-    template: _.template($('#foodtruckpopup_template').html()),
+    baseTemplate: _.template($('#foodtruckpopupTemplate').html()),
 
-    render: function() {
-      this.template = this.template({
-        name: 'FoodTruck1',
-        description: 'FoodTruck1 description',
-        address: 'UBC FoodTruck1 address'
-      });
+    render: function(foodtruckId) {
+      var foodtruck = _.where(foodtrucks.models, {id : foodtruckId})[0];
+      sessionStorage.setItem(WTFConstants.FoodTruckKey, JSON.stringify(foodtruck));
+      this.template = this.baseTemplate(foodtruck.toJSON());
       this.$el.html(this.template);
       return this;
     }

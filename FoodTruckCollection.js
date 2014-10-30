@@ -5,6 +5,8 @@ var FoodTrucks = (function() {
     // Reference to this collection's model.
     model: FoodTruck
 
+
+
   });
 
 })();

@@ -12,15 +12,16 @@ $(document).ready( function () {
  parseData = function(items){
 	var trucks = [];
 	$.map(items, function(item){
-		var fT = new FoodTruck();
+    var modelObject = {};
 		$.map(item, function(val, key){
 			if(key == 'description' || key == 'lat' || key == 'lon')
-				fT[key] = val;
+				modelObject[key] = val;
 			if(key == 'key')
-				fT['id'] = val;
+				modelObject['id'] = val;
 			if(key == 'business_name')
-				fT['name'] = val;
-			});
+				modelObject['name'] = val;
+		});
+    var fT = new FoodTruck(modelObject);
 		foodtrucks.add(fT);
 		console.log('FOODTRUCK INFO', fT);
 	});

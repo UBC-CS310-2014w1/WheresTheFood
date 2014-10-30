@@ -4,22 +4,40 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
  rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" defer></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
  </head>
  <body>
-  <div>Food truck 1</div>
-
-  <!--memoArea --> 
+ <div id="foodtruckdetails-div">
+ </div>
+    <!--memoArea -->
   <p> Memo </p>
-  
- 
-  <div id="memoArea"> 
+
+
+  <div id="memoArea">
   <input type="text" id="txtMemoBox" >
   <button id="saveButton" type="button"> Save Memo </button>
   <button id="deleteButton" type="botton" > delete Memo</button>
-  </div> 
+  </div>
 
-  <script src="saveMemo.js"> </script>
-  <script src="resetMemo.js"> </script>
+  <script type="text/javascript" src="Constants.js"></script>
+  <script type="text/javascript" src="FoodTruck.js" defer></script>
+  <script type="text/javascript" src="FoodTruckCollection.js" defer></script>
+  <script type="text/javascript" src="FoodTruckDetailsView.js" defer></script>
+  <script type="text/javascript" src="MemoView.js" defer></script>
+  <script type="text/javascript" src="FoodTruckPageView.js" defer></script>
+
+  <!-- FoodTruck profile template -->
+  <script type="text/template" id="foodtruckpageTemplate">
+    <div>Name: <%-name%></div>
+    <div>Id: <%-id%></div>
+    <div>Description: <%-description%></div>
+    <div>Location: <%-lat%> ,<%-lon%></div>
+  </script>
+
+
 
  </body>
 
