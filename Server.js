@@ -4,7 +4,9 @@ var Server = (function() {
   // current firebase user object
   var currentUser = databaseRef.getAuth();
   // reference to the user node on the firebase
-  var currentUserRef = databaseRef.child('users').child(currentUser.uid);
+  var currentUserRef; 
+  if(currentUser != null)
+    currentUserRef = databaseRef.child('users').child(currentUser.uid);
 
   return Backbone.Model.extend({
 
@@ -29,7 +31,6 @@ var Server = (function() {
 	  getCurrentMemo: function(restaurantID, callback) {
       currentUserRef.child('memos').child(restaurantID).on('value', function(snapshot){
   	     var newpost = snapshot.val();
-  	     console.log('getCurrentMemo' + newpost); 
          callback(newpost);
 		  }, function(errorObject) {
 	       console.log('The read failed: '+ errorObject.code);
@@ -42,7 +43,6 @@ var Server = (function() {
 
     // pushes memo to the specified restaurant
     pushUserMemo: function(restaurantID,memo) {
-      console.log('pushUserMemo');
       currentUserRef.child('memos').child(restaurantID).set(memo);
     },
 
