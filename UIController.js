@@ -60,7 +60,7 @@ Backbone.history.start();
 	$.map(items, function(item){
     var modelObject = {};
 		$.map(item, function(val, key){
-			if(key == 'description' || key == 'lat' || key == 'lon')
+			if(key == 'description' || key == 'lat' || key == 'lon' || key == 'location')
 				modelObject[key] = val;
 			if(key == 'key')
 				modelObject['id'] = val;
