@@ -27,8 +27,8 @@ var MemoView = (function() {
           textBox.value = '';
           server.pushUserMemo(foodtruck.id, textBox.value);
       });
+      
     },
-
   });
 
 })();
