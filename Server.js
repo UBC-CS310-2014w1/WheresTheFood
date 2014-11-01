@@ -23,6 +23,16 @@ var Server = (function() {
         });
 
       },
+	  
+	  // retrieve the latest memo from a specific restaurant
+	  getCurrentMemo: function(restaurantID, memo) {
+		 currentUserRef.child('memos').child(restaurantID).on('value', function(snapshot){
+			var newpost = snapshot.val();
+			console.log(newpost); 
+		 }, function(errorObject) {
+		console.log('The read failed: '+ errorObject.code);
+	});
+	  },
 
     pushUsername: function(val) {
       currentUserRef.child('name').set(val);
