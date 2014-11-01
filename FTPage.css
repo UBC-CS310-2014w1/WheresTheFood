@@ -40,8 +40,8 @@ button {
 
 /* Ratings Section */
 .ratings {
-	list-style: none;
 	font-size: 20pt;
+	list-style: none;
 }
 
 ul.ratings li {
@@ -51,7 +51,7 @@ ul.ratings li {
 
 ul > span {
 	float: right;
-	padding: 5px;
 	font-size: 14pt;
 	margin-right: 50px;
+	padding: 5px;
 }
