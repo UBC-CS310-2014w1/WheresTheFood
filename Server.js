@@ -4,9 +4,10 @@ var Server = (function() {
   // current firebase user object
   var currentUser = databaseRef.getAuth();
   // reference to the user node on the firebase
-  var currentUserRef = {};
+  var currentUserRef = databaseRef.child('users').child(currentUser.uid);
 
   return Backbone.Model.extend({
+
     login: function(callback) {
         databaseRef.authWithOAuthPopup("facebook", function(error, authData) {
             if(error) console.log('error');
@@ -25,13 +26,14 @@ var Server = (function() {
       },
 	  
 	  // retrieve the latest memo from a specific restaurant
-	  getCurrentMemo: function(restaurantID, memo) {
-		 currentUserRef.child('memos').child(restaurantID).on('value', function(snapshot){
-			var newpost = snapshot.val();
-			console.log(newpost); 
-		 }, function(errorObject) {
-		console.log('The read failed: '+ errorObject.code);
-	});
+	  getCurrentMemo: function(restaurantID, callback) {
+      currentUserRef.child('memos').child(restaurantID).on('value', function(snapshot){
+  	     var newpost = snapshot.val();
+  	     console.log('getCurrentMemo' + newpost); 
+         callback(newpost);
+		  }, function(errorObject) {
+	       console.log('The read failed: '+ errorObject.code);
+      });
 	  },
 
     pushUsername: function(val) {
@@ -40,14 +42,8 @@ var Server = (function() {
 
     // pushes memo to the specified restaurant
     pushUserMemo: function(restaurantID,memo) {
-      currentUserRef.child('memos').child(restaurantID).set(memo, function(error) {
-          if (error) {
-             alert("Memo could not be saved" + error);
-        	} else {
-            alert("Memo saved successfully");
-          }
-
-       });
+      console.log('pushUserMemo');
+      currentUserRef.child('memos').child(restaurantID).set(memo);
     },
 
     logout: function() {
@@ -70,7 +66,6 @@ var Server = (function() {
         callback(null);
       });
     },
-
-  });
+});
 
 })();
