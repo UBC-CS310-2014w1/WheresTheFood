@@ -30,10 +30,8 @@ var Server = (function() {
 
     // pushes memo to the specified restaurant
     pushUserMemo: function(restaurantID,memo) {
-      currentUserRef.set({
-        memos: {
-          restaurantID: memo
-        }
+      currentUserRef.child('memo').set({
+        restaurantID: memo
 
       });
 
