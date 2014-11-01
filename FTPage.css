@@ -1,7 +1,6 @@
 html, body {
 	background-image: url('images/bg.png');
 	font-family: 'Open Sans', sans-serif;
-	font-weight: bold;
 	height: 100%;
 	margin: 0;
 	width: 100%;
@@ -17,9 +16,14 @@ html, body {
 	padding: 30px;
 	position: absolute;
 	top: 30%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -30%);
 }
 
+#foodtruckdetails-div {
+	font-weight: bold;
+}
+
+/* Memo Section */
 input[type="text"] {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15pt;
@@ -32,4 +36,22 @@ button {
 	height: 30px;
 	margin-top: 5px;
 	width: 48%;
+}
+
+/* Ratings Section */
+.ratings {
+	list-style: none;
+	font-size: 20pt;
+}
+
+ul.ratings li {
+	cursor: pointer;
+	float: left;
+}
+
+ul > span {
+	float: right;
+	padding: 5px;
+	font-size: 14pt;
+	margin-right: 50px;
 }
