@@ -11,8 +11,8 @@ var MemoView = (function() {
     },
 
     resetMemo: function() {
-      var txtBox = document.getElementById("txtMemoBox");
-      dtMemo = document.getElementById("deleteButton");
+      var txtBox = document.getElementById("txtMemoBox"),
+          dtMemo = document.getElementById("deleteButton");
       dtMemo.addEventListener("click", function() {
         txtBox.value = '';
       });
@@ -20,8 +20,8 @@ var MemoView = (function() {
     },
 
     saveMemo: function() {
-      var typeMemo = document.getElementById("txtMemoBox");
-      btSaveMemo = document.getElementById("saveButton");
+      var typeMemo = document.getElementById("txtMemoBox"),
+          btSaveMemo = document.getElementById("saveButton");
 
       btSaveMemo.addEventListener("click", pushUserMemo(foodtruck.id, txtMemoBox));
       typeMemo.value = '';

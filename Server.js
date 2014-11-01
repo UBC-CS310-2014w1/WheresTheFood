@@ -24,24 +24,29 @@ var Server = (function() {
 
       },
 
-checIfUserExist: function() {
-
-},
-
     pushUsername: function(val) {
       currentUserRef.child('name').set(val);
     },
 
     // pushes memo to the specified restaurant
-    pushUserMemo: function(restaurant,memo) {
-      currentUserRef.child('memos').child(restaurant).set(memo, function(error) {
-          if (error) {
-            alert("Memo could not be saved" + error);
-          } else {
-            alert("Memo saved successfully");
-          }
+    pushUserMemo: function(restaurantID,memo) {
+      currentUserRef.set({
+        memos: {
+          restaurantID: memo
+        }
 
       });
+
+
+
+      // currentUserRef.child('memos').child(restaurantID).set(memo, function(error) {
+      //     if (error) {
+      //       alert("Memo could not be saved" + error);
+      //     } else {
+      //       alert("Memo saved successfully");
+      //     }
+
+      // });
     },
 
     logout: function() {
