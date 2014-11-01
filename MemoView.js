@@ -13,18 +13,19 @@ var MemoView = (function() {
     resetMemo: function() {
       var txtBox = document.getElementById("txtMemoBox"),
           dtMemo = document.getElementById("deleteButton");
-      dtMemo.addEventListener("click", function() {
-        txtBox.value = '';
-      });
-
+    //  dtMemo.addEventListener("click", function() {
+    //    txtBox.value = '';
+    //  });
+		txtBox.value = '';
     },
 
     saveMemo: function() {
       var typeMemo = document.getElementById("txtMemoBox"),
           btSaveMemo = document.getElementById("saveButton");
 
-      btSaveMemo.addEventListener("click", pushUserMemo(foodtruck.id, txtMemoBox));
-      typeMemo.value = '';
+    //  btSaveMemo.addEventListener("click", pushUserMemo(foodtruck.id, txtMemoBox));
+      pushUserMemo(foodtruck.id, txtMemoBox);
+	  typeMemo.value = '';
     }
 
   });
