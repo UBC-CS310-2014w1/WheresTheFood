@@ -1,8 +1,13 @@
 var MemoView = (function() {
-
+  
+  var foodtruck = JSON.parse(sessionStorage.getItem(WTFConstants.FoodTruckKey));
+  
   return Backbone.View.extend({
 
     initialize: function() {
+
+      
+
     },
 
     resetMemo: function() {
@@ -18,7 +23,7 @@ var MemoView = (function() {
       var typeMemo = document.getElementById("txtMemoBox");
       btSaveMemo = document.getElementById("saveButton");
 
-      btSaveMemo.addEventListener("click", pushUserMemo("happy food", txtMemoBox));
+      btSaveMemo.addEventListener("click", pushUserMemo(foodtruck.id, txtMemoBox));
       typeMemo.value = '';
     }
 

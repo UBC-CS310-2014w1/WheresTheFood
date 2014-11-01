@@ -4,6 +4,7 @@ var FoodTruck = (function() {
 
     defaults: {
       name: '',
+      id: '',
       address: '',
       description: ''
     }
