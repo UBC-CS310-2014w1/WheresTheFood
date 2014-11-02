@@ -9,6 +9,7 @@ WTF.FoodTruckPageView = (function() {
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
+      new WTF.CommentsView({ model: this.model });
     },
 
     template: _.template($('#foodtruck-page-template').html()),
@@ -85,13 +86,13 @@ WTF.MemoView = (function() {
 })();
 
 WTF.RatingsView = (function() {
-  
+
   var server = WTF.Server.getInstance();
 
   var foodtruck;
   var $stars;
 
-  
+
 
   var fillStars = function(starNumber) {
     if(!starNumber) return;
@@ -127,5 +128,75 @@ WTF.RatingsView = (function() {
     },
 
   });
+})();
+
+WTF.CommentsView = (function() {
+
+  var server = WTF.Server.getInstance();
+  var foodtruck;
+
+  var getDate = function() {
+    //http://stackoverflow.com/questions/1531093/how-to-get-current-date-in-javascript
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd;
+    }
+
+    if(mm<10) {
+        mm='0'+mm;
+    }
+
+    today = mm+'/'+dd+'/'+yyyy;
+    return today;
+
+  };
+
+  return Backbone.View.extend({
+
+    initialize: function() {
+      foodtruck = this.model;
+      server.getUserComments(foodtruck.id, function(foodtruckComments){
+        _.each(foodtruckComments, function(foodtruckComment) {
+          this.render(foodtruckComment);
+        }, this);
+      }.bind(this));
+    },
+
+    el: '#commentsArea',
+
+    template: _.template($('#foodtruck-comments-template').html()),
+
+    events: {
+      'click #postComments': 'postComments'
+    },
+
+    render: function(comment) {
+      this.$el.find('#commentsList').append(this.template(comment));
+      return this;
+    },
+
+    postComments: function() {
+      console.debug('posting comments');
+      var text = $('#commentsBox').val();
+      if(text) {
+        var commentObject = {
+          name: server.getUser().facebook.displayName,
+          comment: text,
+          date: getDate()
+        };
+        console.debug('comment object ', JSON.stringify(commentObject));
+        server.pushUserComments(foodtruck.id, commentObject);
+      } else {
+        console.debug('no text');
+      }
+
+    },
+
+  });
+
 })();
 

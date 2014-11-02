@@ -23,6 +23,7 @@ WTF.AppRouter = (function() {
         var fT = new WTF.FoodTruck(modelObject);
         WTF.FoodTrucks.add(fT);
       });
+
       sessionStorage.setItem(WTF.Utility.FoodTruckKey, JSON.stringify(WTF.FoodTrucks));
       console.debug('finish parsing');
     };
@@ -32,7 +33,7 @@ WTF.AppRouter = (function() {
       server.fetchDataset(parseData);
     }
 
-  }
+  };
 
   var self_model = Backbone.Router.extend({
     routes: {

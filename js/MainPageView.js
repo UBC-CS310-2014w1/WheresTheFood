@@ -36,9 +36,6 @@ WTF.MapView = (function() {
     initialize: function() {
       console.debug('map view init');
       this.render();
-      // to parse place details - operation hours
-      var placeServices = new google.maps.places.PlacesService(map);
-      server.placeServices = placeServices;
     },
 
     template: _.template($('#map-template').html()),
@@ -104,7 +101,7 @@ WTF.LoginView = (function() {
       server.login(userLoginCallback);
     }
 
-  })
+  });
 
 })();
 
@@ -125,6 +122,6 @@ WTF.FoodTruckPopUpView = (function() {
       return this;
     }
 
-  })
+  });
 })();
 

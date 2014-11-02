@@ -5,10 +5,14 @@ WTF.Server = (function() {
   var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
   // current firebase user object
   var currentUser = databaseRef.getAuth();
-  // reference to the user node on the firebase
+  // reference to the user,comments node on the firebase
   var currentUserRef;
-  if(currentUser !== null)
+  var commentsRef;
+  if(currentUser !== null) {
+    // creates the child node
     currentUserRef = databaseRef.child('users').child(currentUser.uid);
+    commentsRef = databaseRef.child('comments');
+  }
 
   var instance = null;
 
@@ -66,6 +70,17 @@ WTF.Server = (function() {
         });
       },
 
+      getUserComments: function(foodtruckID, callback) {
+        commentsRef.child(foodtruckID).on('value', function(snapshot){
+          var listofComments = snapshot.val();
+          if(typeof callback === 'function') {
+            callback(listofComments);
+          }
+        }, function(errorObject) {
+             console.log('The read failed: '+ errorObject.code);
+        });
+      },
+
 
       // ===== SETTERS =====
       // val: string - Name of user
@@ -85,6 +100,11 @@ WTF.Server = (function() {
       // rating: int[0,5] - star rating of currentUser for the restaurant
       pushUserRating: function(restaurantID,rating) {
         currentUserRef.child('ratings').child(restaurantID).set(rating);
+      },
+
+      // comment: an object containing comment info: id, name comment
+      pushUserComments: function(foodtruckID, comment) {
+        commentsRef.child(foodtruckID).push(comment);
       },
 
       // Use this function to fetch data from the dataset in Firebase.
