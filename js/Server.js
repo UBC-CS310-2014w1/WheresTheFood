@@ -7,7 +7,7 @@ WTF.Server = (function() {
   var currentUser = databaseRef.getAuth();
   // reference to the user node on the firebase
   var currentUserRef;
-  if(currentUser != null)
+  if(currentUser !== null)
     currentUserRef = databaseRef.child('users').child(currentUser.uid);
 
   var instance = null;
@@ -33,7 +33,18 @@ WTF.Server = (function() {
 
       },
 
+      logout: function() {
+        databaseRef.unauth();
+        currentUser = null;
+        currentUserRef = null;
+      },
+
+      // ===== GETTERS =====
+      getUser: function() { return currentUser; },
+
       // retrieve the latest memo from a specific restaurant
+      // restaurantID: string - unique id of restaurant from dataset
+      // callback: function to call when memo is fetched
       getCurrentMemo: function(restaurantID, callback) {
         currentUserRef.child('memos').child(restaurantID).on('value', function(snapshot){
            var newpost = snapshot.val();
@@ -43,23 +54,38 @@ WTF.Server = (function() {
         });
       },
 
+      // retrieve the latest user rating for a specific restaurant
+      // restaurantID: string - unique id of restaurant from dataset
+      // callback: function to call when user rating is fetched
+      getUserRating: function(restaurantID, callback) {
+        currentUserRef.child('ratings').child(restaurantID).on('value', function(snapshot){
+           var newpost = snapshot.val();
+           callback(newpost);
+        }, function(errorObject) {
+           console.log('The read failed: '+ errorObject.code);
+        });
+      },
+
+
+      // ===== SETTERS =====
+      // val: string - Name of user
       pushUsername: function(val) {
         currentUserRef.child('name').set(val);
       },
 
       // pushes memo to the specified restaurant
+      // restaurantID: string - unique id of restaurant from dataset
+      // memo: string - user specified string from textbox
       pushUserMemo: function(restaurantID,memo) {
         currentUserRef.child('memos').child(restaurantID).set(memo);
       },
 
-      logout: function() {
-        databaseRef.unauth();
-        currentUser = null;
-        currentUserRef = null;
+      // pushes rating to specified restaurant of user account
+      // restaurantID: string - unique id of restaurant from dataset
+      // rating: int[0,5] - star rating of currentUser for the restaurant
+      pushUserRating: function(restaurantID,rating) {
+        currentUserRef.child('ratings').child(restaurantID).set(rating);
       },
-
-
-      getUser: function() { return currentUser; },
 
       // Use this function to fetch data from the dataset in Firebase.
       // It is called in UIController.js with parseData
