@@ -12,32 +12,107 @@
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
   </head>
   <body>
-    <div id="user-label"></div>
-    <div id="map-canvas"></div>
-    <div id="login-button"><h1>Login</h1></div>
-    <div id="overlay"></div>
+
+    <div class="app-container"></div>
 
     <!-- <script type="text/javascript" src="app.js" defer></script> -->
-    <script type="text/javascript" src="Constants.js" defer></script>
-    <script type="text/javascript" src="Server.js" defer></script>
-    <script type="text/javascript" src="FoodTruck.js" defer></script>
-    <script type="text/javascript" src="FoodTruckCollection.js" defer></script>
-    <script type="text/javascript" src="FoodTruckPopUpView.js" defer></script>
-    <script type="text/javascript" src="MapView.js" defer></script>
-    <script type="text/javascript" src="UIController.js" defer></script>
+    <script type="text/javascript" src="js/Utility.js" defer></script>
+    <script type="text/javascript" src="js/Server.js" defer></script>
+    <script type="text/javascript" src="js/FoodTruck.js" defer></script>
+    <script type="text/javascript" src="js/FoodTruckPageView.js" defer></script>
+    <script type="text/javascript" src="js/MainPageView.js" defer></script>
+    <script type="text/javascript" src="js/Router.js" defer></script>
 
-    
+    <!-- TEMPLATES  -->
+    <!-- Main Page  -->
+    <script type="text/template" id="login-template">
+        <div id="login-button">
+          <!--h1>Login</h1-->
+        </div>
+        <div id="overlay"></div>
+        <div id="user-label"></div>
+    </script>
 
+    <script type="text/template" id="map-template">
+        <div id="map-canvas"></div>
+        <div id="user-label"></div>
+    </script>
 
-      <!-- TEMPLATES  -->
-    <script type="text/template" id="foodtruckpopupTemplate">
-      <div id="foodTruckPopupContainer" class="container">
+    <script type="text/template" id="foodtruck-popup-template">
+      <div id="foodTruckPopupContainer">
         <div>Name:  <%-name%></div>
         <div>Description:  <%-description%></div>
-        <div>Address: <%-address%></div>
-        <a href="FoodTruckPage.html">Click for more details</a>
+        <div>Address: <%-location%></div>
+        <div class="pop-up-rating">
+          <span>&#9734</span>
+          <span>&#9734</span>
+          <span>&#9734</span>
+          <span>&#9734</span>
+          <span>&#9734</span>
+        </div>
+        <div id="more-details-div">
+          <a href="#foodtruck/<%=id%>">Click for more details</a>
+        </div>
       </div>
     </script>
+
+    <script type="text/template" id="foodtruck-page-template">
+      <!-- FOOD TRUCK PAGE  -->
+      <div id="foodtruckpage-main">
+        <h1> FoodTruck Info </h1>
+        <div id="foodtruckdetails-div"></div>
+
+        <div id="favourites"> 
+          <h3> Favourite </h3>
+          <button id="saveFT" type="button">Like</button>
+          <button id="deleteFT" type="button">Remove 4m like</button>
+        </div>
+
+        <!--memoArea -->
+        <div id="memoArea">
+          <h3> Memo </h3>
+          <textarea rows="4" cols="50" id="txtMemoBox"></textarea>
+          <button id="saveButton" type="button">Save Memo</button>
+          <button id="deleteButton" type="botton">Delete Memo</button>
+        </div>
+
+        <!--ratings area -->
+        <div id="ratingsArea">
+          <h3> Ratings </h3>
+          <ul class="ratings">
+            <li id="one" class="star">&#9734;</li>
+            <li id="two" class="star">&#9734;</li>
+            <li id="three" class="star">&#9734;</li>
+            <li id="four" class="star">&#9734;</li>
+            <li id="five" class="star">&#9734;</li>
+            <span id="rScore"> Submit a rating </span>
+          </ul>
+        </div>
+
+        <!-- comments area -->
+        <div id="commentsArea">
+          <h3> Comments </h3>
+          <div id="commentsList">
+          </div>
+          <textarea rows="4" cols="50" id="commentsBox"></textarea>
+          <button id="postComments">Post a comment</button>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="foodtruck-details-template">
+      <div>Name: <%-name%></div>
+      <div>Id: <%-id%></div>
+      <div>Description: <%-description%></div>
+      <div>Location: <%-location%></div>
+    </script>
+
+    <script type="text/template" id="foodtruck-comments-template">
+      <div>Name: <%-name%></div>
+      <div>Comment: <%-comment%></div>
+      <div>Date: <%-date%></div>
+    </script>
+
   </body>
 
 </html>

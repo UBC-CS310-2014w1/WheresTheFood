@@ -1,4 +1,5 @@
-html, body {
+html, body, .app-container{
+	background: url('images/bg.png');
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 	margin: 0;
@@ -59,11 +60,82 @@ html, body {
 }
 
 
-
  /*  FOOD TRUCK POP UP */
 #foodTruckPopupContainer {
-  height: 300px;
-  width: 600px;
+  height: 200px;
+  width: 400px;
 }
+
+.pop-up-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  float: left;
+}
+.pop-up-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+/*.pop-up-rating > span:hover:before,
+.pop-up-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}*/
+
+#more-details-div {
+  clear: both;
+}
+
+/* Food Truck page */
+#foodtruckpage-main {
+  background: white;
+  left: 50%;
+  padding: 30px;
+  position: absolute;
+  top: 30%;
+  transform: translate(-50%, -30%);
+}
+
+#foodtruckdetails-div {
+  font-weight: bold;
+}
+
+/* Memo Section */
+textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15pt;
+  padding: 5px;
+  width: 96.8%;
+}
+
+button {
+  display: inline;
+  font-size: 10pt;
+  height: 30px;
+  margin-top: 5px;
+  max-width: 49%;
+  width: 100%;
+}
+
+/* Ratings Section */
+.ratings {
+  font-size: 20pt;
+  list-style: none;
+}
+
+ul.ratings li {
+  cursor: pointer;
+  float: left;
+}
+
+ul > span {
+  float: right;
+  font-size: 14pt;
+  margin-right: 50px;
+  padding: 5px;
+}
+
+
+/* Comments section */
 
 
