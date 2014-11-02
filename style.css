@@ -1,12 +1,9 @@
 html, body, .app-container{
+	background: url('images/bg.png');
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 	margin: 0;
 	width: 100%;
-}
-
-.app-container[name="detail"] {
-  background: url('images/bg.png');
 }
 
 #user-label {

@@ -20,7 +20,6 @@ WTF.FoodTruckPageView = (function() {
     }
 
   });
-
 })();
 
 
@@ -49,9 +48,6 @@ WTF.MemoView = (function() {
 
   var server = WTF.Server.getInstance();
 
-  // var saveButton = document.getElementById("saveButton");
-  // var deleteButton = document.getElementById("deleteButton");
-  // var textBox = document.getElementById("txtMemoBox");
   var foodtruck;
   var $textBox;
 
@@ -62,10 +58,9 @@ WTF.MemoView = (function() {
   return Backbone.View.extend({
 
     initialize: function() {
-      $textBox = $('#txtMemoBox'); // only available when view is init
+      $textBox = $('#txtMemoBox');
       foodtruck = this.model;
       server.getCurrentMemo(foodtruck.id, updateText);
-
     },
 
     el: '#memoArea',
@@ -87,20 +82,35 @@ WTF.MemoView = (function() {
     }
 
   });
-
 })();
 
 WTF.RatingsView = (function() {
-  // var stars = document.getElementsByClassName('star');
+  
+  var server = WTF.Server.getInstance();
+
+  var foodtruck;
   var $stars;
+
+  
+
+  var fillStars = function(starNumber) {
+    if(!starNumber) return;
+    for(var j = 0; j < 5; j++)
+      $stars[j].innerHTML = "&#9734;";
+    for(var i = 0; i < starNumber; i++)
+      $stars[i].innerHTML = "&#9733;";
+    $('#rScore').text(starNumber+'/5');
+  };
 
   return Backbone.View.extend({
 
     initialize: function() {
+      foodtruck = this.model;
       $stars = $('.star');
-       for(var i = 0; i < $stars.length ; i++) {
-        $stars[i].itemNumber = i;
+      for(var i = 0; i < $stars.length ; i++) {
+        $stars[i].itemNumber = i + 1;
       }
+      server.getUserRating(foodtruck.id, fillStars);
     },
 
     el: '#ratingsArea',
@@ -110,16 +120,12 @@ WTF.RatingsView = (function() {
     },
 
     submitRating: function(e) {
+      console.log('hey');
       var starNumber = e.target.itemNumber;
-      for(var i = 0; i <= starNumber; i++)
-        $stars[i].innerHTML = "&#9733;";
-      for(var j = starNumber + 1; j < 5; j++)
-        $stars[j].innerHTML = "&#9734;";
+      fillStars(starNumber);
+      server.pushUserRating(foodtruck.id, starNumber);
+    },
 
-      $('#rScore').text(1+starNumber+'/5');
-    }
-
-  })
-
+  });
 })();
 
