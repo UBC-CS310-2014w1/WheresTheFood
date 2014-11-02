@@ -4,7 +4,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
  rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
     </script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" defer></script>
@@ -36,6 +36,24 @@
         <div id="user-label"></div>
     </script>
 
+    <script type="text/template" id="foodtruck-popup-template">
+      <div id="foodTruckPopupContainer">
+        <div>Name:  <%-name%></div>
+        <div>Description:  <%-description%></div>
+        <div>Address: <%-location%></div>
+        <div class="pop-up-rating">
+          <span>&#9734</span>
+          <span>&#9734</span>
+          <span>&#9734</span>
+          <span>&#9734</span>
+          <span>&#9734</span>
+        </div>
+        <div id="more-details-div">
+          <a href="#foodtruck/<%=id%>">Click for more details</a>
+        </div>
+      </div>
+    </script>
+
     <script type="text/template" id="foodtruck-page-template">
       <!-- FOOD TRUCK PAGE  -->
       <div id="foodtruckpage-main">
@@ -65,18 +83,9 @@
       </div>
     </script>
 
-    <script type="text/template" id="foodtruckpopupTemplate">
-      <div id="foodTruckPopupContainer" class="container">
-        <div>Name:  <%-name%></div>
-        <div>Description:  <%-description%></div>
-        <div>Address: <%-location%></div>
-        <a href="#foodtruck/<%=id%>">Click for more details</a>
-      </div>
-    </script>
 
 
-    <!-- FoodTruck profile template -->
-    <script type="text/template" id="foodtruckpageTemplate">
+    <script type="text/template" id="foodtruck-details-template">
       <div>Name: <%-name%></div>
       <div>Id: <%-id%></div>
       <div>Description: <%-description%></div>

@@ -34,7 +34,7 @@ WTF.FoodTruckDetailsView = (function() {
 
     el: '#foodtruckdetails-div',
 
-    template: _.template($('#foodtruckpageTemplate').html()),
+    template: _.template($('#foodtruck-details-template').html()),
 
     render: function() {
       var template = this.template(this.model.toJSON());

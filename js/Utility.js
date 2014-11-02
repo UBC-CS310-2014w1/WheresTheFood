@@ -14,6 +14,10 @@ WTF.Utility = (function() {
       } else {
         return WTF.FoodTrucks.get(id);
       }
+    },
+
+    hasFoodTruckData: function() {
+      return sessionStorage.getItem(this.FoodTruckKey)? true : false;
     }
   }
 

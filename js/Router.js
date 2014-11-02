@@ -5,7 +5,7 @@ WTF.AppRouter = (function() {
   WTF.FoodTrucks = new WTF.FoodTruckCollection();
 
 
-  var persistFoodTrucks = function() {
+  var fetchFoodTruck = function() {
     // Using parseData function - retriving the desired information of each FoodTruck from the json
     // All foodtruck specific information is stored into FoodTruck. The key is stored as a id, and business name as just name.
      parseData = function(items){
@@ -22,14 +22,15 @@ WTF.AppRouter = (function() {
         });
         var fT = new WTF.FoodTruck(modelObject);
         WTF.FoodTrucks.add(fT);
-        sessionStorage.setItem(WTF.Utility.FoodTruckKey, JSON.stringify(WTF.FoodTrucks));
       });
+      sessionStorage.setItem(WTF.Utility.FoodTruckKey, JSON.stringify(WTF.FoodTrucks));
       console.debug('finish parsing');
-
     };
 
-    // parse all foodtruck data at start of app
-    server.fetchDataset(parseData);
+    if(!WTF.Utility.hasFoodTruckData()) {
+      // parse all foodtruck data at start of app
+      server.fetchDataset(parseData);
+    }
 
   }
 
@@ -45,8 +46,6 @@ WTF.AppRouter = (function() {
       // Start Backbone history a necessary step for bookmarkable URL's
       Backbone.history.start();
       console.debug('router init');
-      persistFoodTrucks();
-
     },
 
     login: function() {
@@ -68,6 +67,7 @@ WTF.AppRouter = (function() {
     map: function() {
       console.debug('router map');
       var mapView = new WTF.MapView();
+      fetchFoodTruck();
       var loggedIn = (server.getUser())? true: false;
       if(!loggedIn)
         this.navigate("login", true);
@@ -88,7 +88,6 @@ WTF.AppRouter = (function() {
           mapView.clearMarkers();
           self.navigate("login", true);
         });
-
       }
     },
 

@@ -70,6 +70,25 @@ html, body, .app-container{
   width: 400px;
 }
 
+.pop-up-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  float: left;
+}
+.pop-up-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+/*.pop-up-rating > span:hover:before,
+.pop-up-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}*/
+
+#more-details-div {
+  clear: both;
+}
 
 /* Food Truck page */
 #foodtruckpage-main {
