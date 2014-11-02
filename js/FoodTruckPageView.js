@@ -9,11 +9,8 @@ WTF.FoodTruckPageView = (function() {
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
-<<<<<<< HEAD
-      new WTF.CommentsView({ model: this.model });
-=======
       new WTF.FavouriteView({model: this.model});
->>>>>>> 73a7b7ee392e827375070b36d1704d5ce62512fb
+      new WTF.CommentsView({ model: this.model });
     },
 
     template: _.template($('#foodtruck-page-template').html()),

@@ -102,17 +102,16 @@ WTF.Server = (function() {
         currentUserRef.child('ratings').child(restaurantID).set(rating);
       },
 
-<<<<<<< HEAD
       // comment: an object containing comment info: id, name comment
       pushUserComments: function(foodtruckID, comment) {
         commentsRef.child(foodtruckID).push(comment);
-=======
+      },
+
       // pushes favourites to restaurant of user's account
       // restaurantID: string - unique to restaurant from dataset
       // like: boolean - true/false indictating restairant is favourited by user.
       pushUserFavourite: function(restaurantID, like){
         currentUserRef.child('favourites').child(restaurantID).set(like);
->>>>>>> 73a7b7ee392e827375070b36d1704d5ce62512fb
       },
 
       // Use this function to fetch data from the dataset in Firebase.
