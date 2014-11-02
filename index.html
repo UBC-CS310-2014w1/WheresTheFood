@@ -12,32 +12,77 @@
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
   </head>
   <body>
-    <div id="user-label"></div>
-    <div id="map-canvas"></div>
-    <div id="login-button"><h1>Login</h1></div>
-    <div id="overlay"></div>
+
+    <div class="app-container"></div>
 
     <!-- <script type="text/javascript" src="app.js" defer></script> -->
-    <script type="text/javascript" src="Constants.js" defer></script>
-    <script type="text/javascript" src="Server.js" defer></script>
-    <script type="text/javascript" src="FoodTruck.js" defer></script>
-    <script type="text/javascript" src="FoodTruckCollection.js" defer></script>
-    <script type="text/javascript" src="FoodTruckPopUpView.js" defer></script>
-    <script type="text/javascript" src="MapView.js" defer></script>
-    <script type="text/javascript" src="UIController.js" defer></script>
+    <script type="text/javascript" src="js/Utility.js" defer></script>
+    <script type="text/javascript" src="js/Server.js" defer></script>
+    <script type="text/javascript" src="js/FoodTruck.js" defer></script>
+    <script type="text/javascript" src="js/FoodTruckPageView.js" defer></script>
+    <script type="text/javascript" src="js/MainPageView.js" defer></script>
+    <script type="text/javascript" src="js/Router.js" defer></script>
 
-    
+    <!-- TEMPLATES  -->
+    <!-- Main Page  -->
+    <script type="text/template" id="login-template">
+        <div id="login-button"><h1>Login</h1></div>
+        <div id="overlay"></div>
+        <div id="user-label"></div>
+    </script>
 
+    <script type="text/template" id="map-template">
+        <div id="map-canvas"></div>
+        <div id="user-label"></div>
+    </script>
 
-      <!-- TEMPLATES  -->
+    <script type="text/template" id="foodtruck-page-template">
+      <!-- FOOD TRUCK PAGE  -->
+      <div id="foodtruckpage-main">
+        <h1> FoodTruck Info </h1>
+        <div id="foodtruckdetails-div"></div>
+
+        <!--memoArea -->
+        <div id="memoArea">
+          <h3> Memo </h3>
+          <textarea rows="4" cols="50" id="txtMemoBox"></textarea>
+          <button id="saveButton" type="button">Save Memo</button>
+          <button id="deleteButton" type="botton">Delete Memo</button>
+        </div>
+
+        <!--ratings area -->
+        <div id="ratingsArea">
+          <h3> Ratings </h3>
+          <ul class="ratings">
+            <li id="one" class="star">&#9734;</li>
+            <li id="two" class="star">&#9734;</li>
+            <li id="three" class="star">&#9734;</li>
+            <li id="four" class="star">&#9734;</li>
+            <li id="five" class="star">&#9734;</li>
+            <span id="rScore"> Submit a rating </span>
+          </ul>
+        </div>
+      </div>
+    </script>
+
     <script type="text/template" id="foodtruckpopupTemplate">
       <div id="foodTruckPopupContainer" class="container">
         <div>Name:  <%-name%></div>
         <div>Description:  <%-description%></div>
         <div>Address: <%-location%></div>
-        <a href="FoodTruckPage.html">Click for more details</a>
+        <a href="#foodtruck/<%=id%>">Click for more details</a>
       </div>
     </script>
+
+
+    <!-- FoodTruck profile template -->
+    <script type="text/template" id="foodtruckpageTemplate">
+      <div>Name: <%-name%></div>
+      <div>Id: <%-id%></div>
+      <div>Description: <%-description%></div>
+      <div>Location: <%-location%></div>
+    </script>
+
   </body>
 
 </html>
