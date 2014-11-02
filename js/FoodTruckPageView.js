@@ -9,6 +9,7 @@ WTF.FoodTruckPageView = (function() {
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
+      new WTF.FavouriteView({model: this.model});
     },
 
     template: _.template($('#foodtruck-page-template').html()),
@@ -127,5 +128,33 @@ WTF.RatingsView = (function() {
     },
 
   });
+});
+WTF.FavouriteView = (function() {
+   var server = WTF.Server.getInstance();
+
+return Backbone.View.extend({
+
+   initialize: function(){
+   foodtruck = this.model;
+   },
+
+   el: '#favourites',
+
+   events: {
+    'click #saveFT': 'saveFT',
+    'click #deleteFT': 'removeFT'
+   },
+
+   saveFT: function(){
+    console.log(" it got here");
+    server.pushUserFavourite(foodtruck.id, true);
+   },
+
+   removeFT: function(){
+    console.log('REMOVING FROM FAVOURITES');
+    server.pushUserFavourite(foodtruck.id, false);
+   }
+  });
+
 })();
 

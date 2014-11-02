@@ -87,6 +87,13 @@ WTF.Server = (function() {
         currentUserRef.child('ratings').child(restaurantID).set(rating);
       },
 
+      // pushes favourites to restaurant of user's account
+      // restaurantID: string - unique to restaurant from dataset
+      // like: boolean - true/false indictating restairant is favourited by user.
+      pushUserFavourite: function(restaurantID, like){
+        currentUserRef.child('favourites').child(restaurantID).set(like);
+      },
+
       // Use this function to fetch data from the dataset in Firebase.
       // It is called in UIController.js with parseData
       fetchDataset: function(callback) {
