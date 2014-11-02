@@ -30,21 +30,13 @@ var Server = (function() {
 
     // pushes memo to the specified restaurant
     pushUserMemo: function(restaurantID,memo) {
-      currentUserRef.child('memo').set({
+      currentUserRef.child('memos').set({
         restaurantID: memo
 
       });
 
-
-
       // currentUserRef.child('memos').child(restaurantID).set(memo, function(error) {
-      //     if (error) {
-      //       alert("Memo could not be saved" + error);
-      //     } else {
-      //       alert("Memo saved successfully");
-      //     }
-
-      // });
+  
     },
 
     logout: function() {
