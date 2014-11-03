@@ -57,10 +57,24 @@
     </script>
 
     <script type="text/template" id="foodtruck-page-template">
+     
       <!-- FOOD TRUCK PAGE  -->
       <div id="foodtruckpage-main">
         <h1> FoodTruck Info </h1>
         <div id="foodtruckdetails-div"></div>
+
+        <!--ratings area -->
+        <div id="ratingsArea">
+          <h3> Ratings </h3>
+          <ul class="ratings">
+            <li id="one" class="star">&#9734;</li>
+            <li id="two" class="star">&#9734;</li>
+            <li id="three" class="star">&#9734;</li>
+            <li id="four" class="star">&#9734;</li>
+            <li id="five" class="star">&#9734;</li>
+            <span id="rScore"> Submit a rating </span>
+          </ul>
+        </div>
 
         <div id="favourites"> 
           <h3> Favourite </h3>
@@ -76,19 +90,6 @@
           <button id="deleteButton" type="botton">Delete Memo</button>
         </div>
 
-        <!--ratings area -->
-        <div id="ratingsArea">
-          <h3> Ratings </h3>
-          <ul class="ratings">
-            <li id="one" class="star">&#9734;</li>
-            <li id="two" class="star">&#9734;</li>
-            <li id="three" class="star">&#9734;</li>
-            <li id="four" class="star">&#9734;</li>
-            <li id="five" class="star">&#9734;</li>
-            <span id="rScore"> Submit a rating </span>
-          </ul>
-        </div>
-
         <!-- comments area -->
         <div id="commentsArea">
           <h3> Comments </h3>
@@ -97,6 +98,7 @@
           <textarea rows="4" cols="50" id="commentsBox"></textarea>
           <button id="postComments">Post a comment</button>
         </div>
+       
       </div>
     </script>
 

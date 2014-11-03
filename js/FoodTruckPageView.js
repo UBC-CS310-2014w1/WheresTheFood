@@ -6,6 +6,7 @@ WTF.FoodTruckPageView = (function() {
 
     initialize: function() {
       this.render();
+      
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
@@ -46,6 +47,7 @@ WTF.FoodTruckDetailsView = (function() {
   });
 })();
 
+
 WTF.MemoView = (function() {
 
   var server = WTF.Server.getInstance();
@@ -73,22 +75,21 @@ WTF.MemoView = (function() {
     },
 
     saveMemo: function(){
-      console.log('saving ', $textBox.val());
+      alert('Memo saved');
       server.pushUserMemo(foodtruck.id, $textBox.val());
     },
 
     resetMemo: function(){
-		var confirmDelete = window.confirm("are you sure about this?");
-		
-		if (confirmDelete) {
-      console.log('memo reset');
-      $textBox.val('');
-      server.pushUserMemo(foodtruck.id, $textBox.val());
-		}
+		  var confirmDelete = window.confirm("are you sure about this?");
+    	if (confirmDelete) {
+        $textBox.val('');
+        server.pushUserMemo(foodtruck.id, $textBox.val());
+    	}
     }
 
   });
 })();
+
 
 WTF.RatingsView = (function() {
 
@@ -96,8 +97,6 @@ WTF.RatingsView = (function() {
 
   var foodtruck;
   var $stars;
-
-
 
   var fillStars = function(starNumber) {
     if(!starNumber) return;
@@ -126,21 +125,22 @@ WTF.RatingsView = (function() {
     },
 
     submitRating: function(e) {
-      console.log('hey');
       var starNumber = e.target.itemNumber;
       fillStars(starNumber);
       server.pushUserRating(foodtruck.id, starNumber);
     },
 
   });
-});
+})();
+
+
 WTF.FavouriteView = (function() {
    var server = WTF.Server.getInstance();
 
 return Backbone.View.extend({
 
    initialize: function(){
-   foodtruck = this.model;
+    foodtruck = this.model;
    },
 
    el: '#favourites',
@@ -151,16 +151,14 @@ return Backbone.View.extend({
    },
 
    saveFT: function(){
-    console.log(" it got here");
     server.pushUserFavourite(foodtruck.id, true);
    },
 
    removeFT: function(){
-    console.log('REMOVING FROM FAVOURITES');
     server.pushUserFavourite(foodtruck.id, false);
    }
-  });
 
+  });
 })();
 
 WTF.CommentsView = (function() {
@@ -193,6 +191,7 @@ WTF.CommentsView = (function() {
     initialize: function() {
       foodtruck = this.model;
       server.getUserComments(foodtruck.id, function(foodtruckComments){
+        if(!foodtruckComments) return;
         _.each(foodtruckComments, function(foodtruckComment) {
           this.render(foodtruckComment);
         }, this);
@@ -226,10 +225,8 @@ WTF.CommentsView = (function() {
       } else {
         console.debug('no text');
       }
-
     },
 
   });
-
 })();
 
