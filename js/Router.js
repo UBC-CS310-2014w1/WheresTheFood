@@ -59,12 +59,7 @@ WTF.AppRouter = (function() {
         loggedIn = true;
       } else {
         new WTF.LoginView();
-        $('#login-button').show();
-        $('#overlay').show();
-        $('#user-label').text('Hello!')
-        .unbind('click')
-        .unbind('hover')
-        .css("cursor", "auto");
+        $('#user-label').text('Hello!');
       }
     },
 
@@ -77,8 +72,6 @@ WTF.AppRouter = (function() {
         this.navigate("login", true);
       else {
         var self = this;
-        $('#login-button').hide();
-        $('#overlay').hide();
         $('#user-label').text(server.getUser().facebook.displayName)
         .css("cursor","pointer")
         .hover(function() {
