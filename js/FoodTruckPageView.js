@@ -245,9 +245,12 @@ WTF.CommentsView = (function() {
       console.debug('deleting comment');
       if(currentUsername === commentUsername) {
         console.log('Delete');
-        server.removeUserComments(foodtruck.id, commentId);
+        var confirmDelete = window.confirm("are you sure about this?");
+        if (confirmDelete) {
+          server.removeUserComments(foodtruck.id, commentId);
+        }
       } else {
-        console.log('Not the original poster, can\'t delete');
+        alert('DENIED - Go on, nothing to see here\n You are not the original poster btw');
       }
     }
 

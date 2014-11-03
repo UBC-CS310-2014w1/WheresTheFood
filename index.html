@@ -103,10 +103,12 @@
     </script>
 
     <script type="text/template" id="foodtruck-comments-template">
-      <div>Name: <%-name%></div>
-      <div>Comment: <%-comment%></div>
-      <div>Date: <%-date%></div>
-      <button id="deleteComment" data-name="<%-name%>" data-commentid="<%-key%>">Delete comment</button>
+      <div id="a-comment">
+        <div id="comments-date"><%-date%></div>
+        <div id="comments-name"><%-name%></div>
+        <div id="comments-comment"><%-comment%></div>
+        <button id="deleteComment" data-name="<%-name%>" data-commentid="<%-key%>">Delete comment</button>
+      </div>
     </script>
 
   </body>
