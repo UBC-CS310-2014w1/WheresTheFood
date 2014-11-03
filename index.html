@@ -43,13 +43,6 @@
         <div>Name:  <%-name%></div>
         <div>Description:  <%-description%></div>
         <div>Address: <%-location%></div>
-        <div class="pop-up-rating">
-          <span>&#9734</span>
-          <span>&#9734</span>
-          <span>&#9734</span>
-          <span>&#9734</span>
-          <span>&#9734</span>
-        </div>
         <div id="more-details-div">
           <a href="#foodtruck/<%=id%>">Click for more details</a>
         </div>
@@ -57,7 +50,7 @@
     </script>
 
     <script type="text/template" id="foodtruck-page-template">
-     
+
       <!-- FOOD TRUCK PAGE  -->
       <div id="foodtruckpage-main">
         <div id="favourites"> 
@@ -95,7 +88,7 @@
           <textarea rows="4" cols="50" id="commentsBox"></textarea>
           <button id="postComments">Post a comment</button>
         </div>
-       
+
       </div>
     </script>
 
@@ -111,6 +104,7 @@
         <div id="comments-date"><%-date%></div>
         <div id="comments-name"><%-name%></div>
         <div id="comments-comment"><%-comment%></div>
+        <button id="deleteComment" data-name="<%-name%>" data-commentid="<%-key%>">Delete comment</button>
       </div>
     </script>
 

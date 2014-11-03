@@ -135,6 +135,7 @@ button {
 .ratings {
   font-size: 20pt;
   list-style: none;
+  display: inline-block;
 }
 
 ul.ratings li {
@@ -151,7 +152,7 @@ ul > span {
 
 
 /* Comments section */
-#a-comment {	
+#a-comment {
 	background-color: #eee;
 	margin-bottom: 5px;
 	margin-right: 9px;
@@ -176,4 +177,6 @@ ul > span {
 #comments-comment {
 	margin-top: 5px;
 }
+
+
 

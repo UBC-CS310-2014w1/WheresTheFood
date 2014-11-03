@@ -6,7 +6,7 @@ WTF.FoodTruckPageView = (function() {
 
     initialize: function() {
       this.render();
-      
+
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
@@ -94,7 +94,6 @@ WTF.MemoView = (function() {
 WTF.RatingsView = (function() {
 
   var server = WTF.Server.getInstance();
-
   var foodtruck;
   var $stars;
 
@@ -131,6 +130,7 @@ WTF.RatingsView = (function() {
     },
 
   });
+
 })();
 
 
@@ -199,14 +199,23 @@ WTF.CommentsView = (function() {
 
   };
 
+
   return Backbone.View.extend({
 
     initialize: function() {
       foodtruck = this.model;
+      var commentCollection = new WTF.CommentCollection();
+      commentCollection.on('add', this.render, this);
+
       server.getUserComments(foodtruck.id, function(foodtruckComments){
+        this.$el.find('#commentsList').empty();
+        commentCollection.reset();
         if(!foodtruckComments) return;
-        _.each(foodtruckComments, function(foodtruckComment) {
-          this.render(foodtruckComment);
+        _.each(foodtruckComments, function(foodtruckComment, key) {
+          foodtruckComment.key = key;
+          var comment = new WTF.Comment(foodtruckComment);
+          commentCollection.add(comment);
+          console.debug('rendering');
         }, this);
       }.bind(this));
     },
@@ -216,17 +225,19 @@ WTF.CommentsView = (function() {
     template: _.template($('#foodtruck-comments-template').html()),
 
     events: {
-      'click #postComments': 'postComments'
+      'click #postComments': 'postComments',
+      'click #deleteComment': 'deleteComment'
     },
 
     render: function(comment) {
-      this.$el.find('#commentsList').append(this.template(comment));
+      this.$el.find('#commentsList').append(this.template(comment.toJSON()));
       return this;
     },
 
     postComments: function() {
       console.debug('posting comments');
       var text = $('#commentsBox').val();
+      $('#commentsBox').val('');
       if(text) {
         var commentObject = {
           name: server.getUser().facebook.displayName,
@@ -239,6 +250,22 @@ WTF.CommentsView = (function() {
         console.debug('no text');
       }
     },
+
+    deleteComment: function(e) {
+      var commentUsername = $(e.currentTarget).data('name');
+      var currentUsername = server.getUser().facebook.displayName;
+      var commentId = $(e.currentTarget).data('commentid');
+      console.debug('deleting comment');
+      if(currentUsername === commentUsername) {
+        console.log('Delete');
+        var confirmDelete = window.confirm("are you sure about this?");
+        if (confirmDelete) {
+          server.removeUserComments(foodtruck.id, commentId);
+        }
+      } else {
+        alert('DENIED - Go on, nothing to see here\n You are not the original poster btw');
+      }
+    }
 
   });
 })();
