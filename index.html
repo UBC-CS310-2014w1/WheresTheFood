@@ -43,13 +43,6 @@
         <div>Name:  <%-name%></div>
         <div>Description:  <%-description%></div>
         <div>Address: <%-location%></div>
-        <div class="pop-up-rating">
-          <span>&#9734</span>
-          <span>&#9734</span>
-          <span>&#9734</span>
-          <span>&#9734</span>
-          <span>&#9734</span>
-        </div>
         <div id="more-details-div">
           <a href="#foodtruck/<%=id%>">Click for more details</a>
         </div>
@@ -62,7 +55,7 @@
         <h1> FoodTruck Info </h1>
         <div id="foodtruckdetails-div"></div>
 
-        <div id="favourites"> 
+        <div id="favourites">
           <h3> Favourite </h3>
           <button id="saveFT" type="button">Like</button>
           <button id="deleteFT" type="button">Remove 4m like</button>
@@ -111,6 +104,7 @@
       <div>Name: <%-name%></div>
       <div>Comment: <%-comment%></div>
       <div>Date: <%-date%></div>
+      <button id="deleteComment" data-name="<%-name%>">Delete comment</button>
     </script>
 
   </body>

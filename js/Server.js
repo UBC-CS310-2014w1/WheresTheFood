@@ -114,6 +114,10 @@ WTF.Server = (function() {
         currentUserRef.child('favourites').child(restaurantID).set(like);
       },
 
+      removeUserComments: function(foodtruckID, comment) {
+
+      },
+
       // Use this function to fetch data from the dataset in Firebase.
       // It is called in UIController.js with parseData
       fetchDataset: function(callback) {

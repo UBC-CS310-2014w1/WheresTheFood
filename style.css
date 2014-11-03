@@ -121,6 +121,7 @@ button {
 .ratings {
   font-size: 20pt;
   list-style: none;
+  display: inline-block;
 }
 
 ul.ratings li {

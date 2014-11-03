@@ -79,7 +79,7 @@ WTF.MemoView = (function() {
 
     resetMemo: function(){
 		var confirmDelete = window.confirm("are you sure about this?");
-		
+
 		if (confirmDelete) {
       console.log('memo reset');
       $textBox.val('');
@@ -93,11 +93,8 @@ WTF.MemoView = (function() {
 WTF.RatingsView = (function() {
 
   var server = WTF.Server.getInstance();
-
   var foodtruck;
   var $stars;
-
-
 
   var fillStars = function(starNumber) {
     if(!starNumber) return;
@@ -134,6 +131,7 @@ WTF.RatingsView = (function() {
 
   });
 });
+
 WTF.FavouriteView = (function() {
    var server = WTF.Server.getInstance();
 
@@ -188,15 +186,22 @@ WTF.CommentsView = (function() {
 
   };
 
+  // var commentCollection = new WTF.CommentCollection();
+
   return Backbone.View.extend({
 
     initialize: function() {
       foodtruck = this.model;
       server.getUserComments(foodtruck.id, function(foodtruckComments){
+        this.$el.find('#commentsList').empty();
         _.each(foodtruckComments, function(foodtruckComment) {
+          // var comment = new WTF.Comment(foodtruckComment);
+          // commentCollection.add(comment);
           this.render(foodtruckComment);
+          console.debug('rendering');
         }, this);
       }.bind(this));
+      // commentCollection.on('change', this.render, this);
     },
 
     el: '#commentsArea',
@@ -204,7 +209,8 @@ WTF.CommentsView = (function() {
     template: _.template($('#foodtruck-comments-template').html()),
 
     events: {
-      'click #postComments': 'postComments'
+      'click #postComments': 'postComments',
+      'click #deleteComment': 'deleteComment'
     },
 
     render: function(comment) {
@@ -215,6 +221,7 @@ WTF.CommentsView = (function() {
     postComments: function() {
       console.debug('posting comments');
       var text = $('#commentsBox').val();
+      $('#commentsBox').val('');
       if(text) {
         var commentObject = {
           name: server.getUser().facebook.displayName,
@@ -228,6 +235,17 @@ WTF.CommentsView = (function() {
       }
 
     },
+
+    deleteComment: function(e) {
+      var commentUsername = $(e.currentTarget).data('name');
+      var currentUsername = server.getUser().facebook.displayName;
+      console.debug('deleting comment');
+      if(currentUsername === commentUsername) {
+        console.log('Delete');
+      } else {
+        console.log('Not the original poster, can\'t delete');
+      }
+    }
 
   });
 
