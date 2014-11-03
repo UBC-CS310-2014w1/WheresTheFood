@@ -225,6 +225,7 @@ WTF.CommentsView = (function() {
     template: _.template($('#foodtruck-comments-template').html()),
 
     events: {
+      'hover #a-comment': 'showButton',
       'click #postComments': 'postComments',
       'click #deleteComment': 'deleteComment'
     },
@@ -265,7 +266,15 @@ WTF.CommentsView = (function() {
       } else {
         alert('DENIED - Go on, nothing to see here\n You are not the original poster btw');
       }
-    }
+    },
+
+    showButton: function(e) {
+      if(e.type == 'mouseenter'){
+        $(e.currentTarget).find('#deleteComment').css('display', 'inline');
+      } else {
+        $(e.currentTarget).find('#deleteComment').css('display', 'none');
+      }
+    },
 
   });
 })();

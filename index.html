@@ -76,8 +76,8 @@
         <div id="memoArea">
           <h3> Memo </h3>
           <textarea rows="4" cols="50" id="txtMemoBox"></textarea>
-          <button id="saveButton" type="button">Save Memo</button>
-          <button id="deleteButton" type="botton">Delete Memo</button>
+          <button id="saveButton" type="button" class="button">Save Memo</button>
+          <button id="deleteButton" type="botton" class="button">Delete Memo</button>
         </div>
 
         <!-- comments area -->
@@ -86,7 +86,7 @@
           <div id="commentsList">
           </div>
           <textarea rows="4" cols="50" id="commentsBox"></textarea>
-          <button id="postComments">Post a comment</button>
+          <button id="postComments" class="button">Post a comment</button>
         </div>
 
       </div>
@@ -99,11 +99,11 @@
     </script>
 
     <script type="text/template" id="foodtruck-comments-template">
-      <div id="a-comment">
+      <div id="a-comment" data-commentid="<%-key%>">
         <div id="comments-date"><%-date%></div>
         <div id="comments-name"><%-name%></div>
         <div id="comments-comment"><%-comment%></div>
-        <button id="deleteComment" data-name="<%-name%>" data-commentid="<%-key%>">Delete comment</button>
+        <button id="deleteComment" data-name="<%-name%>" data-commentid="<%-key%>">Delete</button>
       </div>
     </script>
 
