@@ -78,6 +78,7 @@ WTF.MemoView = (function() {
     },
 
     resetMemo: function(){
+      window.alert("deleted");
       console.log('memo reset');
       $textBox.val('');
       server.pushUserMemo(foodtruck.id, $textBox.val());
