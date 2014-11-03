@@ -81,12 +81,10 @@ html, body, .app-container{
 	background-image: url('images/bg-overlay.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
-	filter: blur(10px);
 	height: 100%;
 	position: fixed;
 	top: 0;
 	width: 100%;
-  	-webkit-filter: blur(10px);
 }
 
 /*  FOOD TRUCK POP UP */
