@@ -1,3 +1,8 @@
+a, a:visited{
+	color: black;
+	text-decoration: none;
+}
+
 html, body, .app-container{
 	background: url('images/bg.png');
 	font-family: 'Open Sans', sans-serif;
@@ -62,8 +67,24 @@ html, body, .app-container{
 
  /*  FOOD TRUCK POP UP */
 #foodTruckPopupContainer {
+  font-size: 15px;
+  font-weight: bold;
   height: 200px;
-  width: 400px;
+  padding-left: 5px;
+  position: relative;
+  width: 300px;
+}
+
+#more-details-div {
+  background-color: #ddd;
+  bottom: 10px;
+  clear: both;
+  color: red;
+  font-size: 16px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .pop-up-rating {
@@ -81,10 +102,6 @@ html, body, .app-container{
    content: "\2605";
    position: absolute;
 }*/
-
-#more-details-div {
-  clear: both;
-}
 
 /* Food Truck page */
 #foodtruckpage-main {
@@ -116,7 +133,6 @@ html, body, .app-container{
 
 /* Memo Section */
 textarea {
-  font-family: 'Open Sans', sans-serif;
   font-size: 15pt;
   padding: 5px;
   width: 96.8%;
@@ -159,6 +175,7 @@ ul > span {
 	margin-right: 9px;
 	margin-top: 5px;
 	padding: 10px;
+	position: relative;
 }
 
 #comments-name {
@@ -188,6 +205,6 @@ ul > span {
 	font-size: 12px;
 	margin-top: -15px;
 	position: absolute;
-	right: 45px;
+	right: 5px;
 }
 
