@@ -13,6 +13,8 @@ WTF.AppRouter = (function() {
       $.map(items, function(item){
         var modelObject = {};
         $.map(item, function(val, key){
+          if(!val)
+            return;
           if(key == 'description' || key == 'lat' || key == 'lon' || key == 'location')
             modelObject[key] = val;
           if(key == 'key')
@@ -21,6 +23,7 @@ WTF.AppRouter = (function() {
             modelObject['name'] = val;
         });
         var fT = new WTF.FoodTruck(modelObject);
+        fT.set('invalid', false);
         WTF.FoodTrucks.add(fT);
       });
 
@@ -94,7 +97,6 @@ WTF.AppRouter = (function() {
 
     foodtruckDetails: function(id) {
       console.debug('router foodtruckDetails');
-
       var foodtruck = WTF.Utility.getFoodTruck(id);
       var foodtruckpageView = new WTF.FoodTruckPageView({ model : foodtruck });
     }

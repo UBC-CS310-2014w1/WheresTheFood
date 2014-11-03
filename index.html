@@ -43,6 +43,7 @@
         <div>Name:  <%-name%></div>
         <div>Description:  <%-description%></div>
         <div>Address: <%-location%></div>
+        <div class="invalid" data-invalid="<%-invalid%>">THIS FOOD TRUCK IS NO LONGER AVAILABLE</div>
         <div id="more-details-div">
           <a href="#foodtruck/<%=id%>">Click for more details</a>
         </div>
@@ -53,7 +54,7 @@
 
       <!-- FOOD TRUCK PAGE  -->
       <div id="foodtruckpage-main">
-        <div id="favourites"> 
+        <div id="favourites">
           <div id="favourited-icon">&hearts;</div>
         </div>
         <h1> FoodTruck Info </h1>

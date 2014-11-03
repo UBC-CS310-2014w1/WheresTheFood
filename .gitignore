@@ -54,3 +54,4 @@ cmake_install.cmake
 
 #editorconfig- because daniel is OCD
 .editorconfig
+.daniel

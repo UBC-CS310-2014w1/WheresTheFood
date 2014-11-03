@@ -5,10 +5,12 @@ WTF.FoodTruck = (function() {
   return Backbone.Model.extend({
 
     defaults: {
-      name: '',
-      id: '',
-      address: '',
-      description: ''
+      name: 'N/A',
+      id: 'N/A',
+      address: 'N/A',
+      description: 'N/A',
+      location: 'N/A',
+      invalid: true // keep track of invalid foodtrucks and state this on pop up view
     }
 
   });
