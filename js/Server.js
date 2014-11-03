@@ -70,6 +70,15 @@ WTF.Server = (function() {
         });
       },
 
+      getUserFav: function(restaurantID, callback) {
+        currentUserRef.child('favourites').child(restaurantID).on('value', function(snapshot){
+           var newpost = snapshot.val();
+           callback(newpost);
+        }, function(errorObject) {
+           console.log('The read failed: '+ errorObject.code);
+        });
+      },
+
       getUserComments: function(foodtruckID, callback) {
         commentsRef.child(foodtruckID).on('value', function(snapshot){
           var listofComments = snapshot.val();
