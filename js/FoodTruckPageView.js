@@ -78,9 +78,13 @@ WTF.MemoView = (function() {
     },
 
     resetMemo: function(){
+		var confirmDelete = window.confirm("are you sure about this?");
+		
+		if (confirmDelete) {
       console.log('memo reset');
       $textBox.val('');
       server.pushUserMemo(foodtruck.id, $textBox.val());
+		}
     }
 
   });
