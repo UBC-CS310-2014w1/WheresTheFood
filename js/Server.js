@@ -7,11 +7,10 @@ WTF.Server = (function() {
   var currentUser = databaseRef.getAuth();
   // reference to the user,comments node on the firebase
   var currentUserRef;
-  var commentsRef;
+  var commentsRef = databaseRef.child('comments');
   if(currentUser !== null) {
     // creates the child node
     currentUserRef = databaseRef.child('users').child(currentUser.uid);
-    commentsRef = databaseRef.child('comments');
   }
 
   var instance = null;
