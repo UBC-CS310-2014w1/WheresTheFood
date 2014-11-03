@@ -3,12 +3,18 @@ a, a:visited{
 	text-decoration: none;
 }
 
+h1 {
+	font-variant: normal;
+	text-transform: uppercase;
+	font-weight: bold;
+}
 html, body, .app-container{
-	background: url('images/bg.png');
+	/*background: url('images/bg.png');*/
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 	margin: 0;
 	width: 100%;
+	position: absolute;
 }
 
 #user-label {
@@ -17,7 +23,7 @@ html, body, .app-container{
 	color: white;
 	height: 20px;
 	margin-right: 50px;
-	margin-top: 10px;
+	margin-top: 30px;
 	padding: 10px;
 	position: fixed;
 	right: 0;
@@ -34,38 +40,54 @@ html, body, .app-container{
 	z-index: 1;
 }
 
-#login-button {
-	background: url('images/icon_fb_login.png');
+#login-title {
 	color: white;
-	cursor: pointer;
-	height: 450px;
-	left: 50%;
-	padding-top: 50px;
-	position: absolute;
+	position: relative;
 	text-align: center;
-	top: 50%;
-	transform: translate(-50%,-50%);
-	width: 500px;
 	z-index: 3;
 }
 
-#login-button:hover {
-	background: url('images/icon_fb_login_hover.png');
-	color: #3b5998;
+#login-button {
+	background: #3B5998;
+	color: white;
+	cursor: pointer;
+	font-size: 20px;
+	height: 55px;
+	left: 50%;
+	padding-top: 25px;
+	position: relative;
+	text-align: center;
+	transform: translate(-50%,0);
+	width: 220px;
+	z-index: 3;
 }
 
-#overlay {
-	background: black;
-	height: 100%;
-	opacity: 0.5;
+#login {
+	left: 50%;
+	margin-top: 20%;
 	position: fixed;
-	top: 0;
+	text-align: center;
+	transform: translate(-50%,0);
 	width: 100%;
 	z-index: 2;
 }
 
+#login-button:hover {
+	background-color: white;
+	color: #3B5998;
+}
 
- /*  FOOD TRUCK POP UP */
+.overlay {
+	background-image: url('images/bg-overlay.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+/*  FOOD TRUCK POP UP */
 #foodTruckPopupContainer {
   font-size: 15px;
   font-weight: bold;
