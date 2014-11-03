@@ -6,6 +6,7 @@ WTF.FoodTruckPageView = (function() {
 
     initialize: function() {
       this.render();
+
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
@@ -46,6 +47,7 @@ WTF.FoodTruckDetailsView = (function() {
   });
 })();
 
+
 WTF.MemoView = (function() {
 
   var server = WTF.Server.getInstance();
@@ -73,22 +75,21 @@ WTF.MemoView = (function() {
     },
 
     saveMemo: function(){
-      console.log('saving ', $textBox.val());
+      alert('Memo saved');
       server.pushUserMemo(foodtruck.id, $textBox.val());
     },
 
     resetMemo: function(){
-		var confirmDelete = window.confirm("are you sure about this?");
-
-		if (confirmDelete) {
-      console.log('memo reset');
-      $textBox.val('');
-      server.pushUserMemo(foodtruck.id, $textBox.val());
-		}
+		  var confirmDelete = window.confirm("are you sure about this?");
+    	if (confirmDelete) {
+        $textBox.val('');
+        server.pushUserMemo(foodtruck.id, $textBox.val());
+    	}
     }
 
   });
 })();
+
 
 WTF.RatingsView = (function() {
 
@@ -123,14 +124,15 @@ WTF.RatingsView = (function() {
     },
 
     submitRating: function(e) {
-      console.log('hey');
       var starNumber = e.target.itemNumber;
       fillStars(starNumber);
       server.pushUserRating(foodtruck.id, starNumber);
     },
 
   });
-});
+
+})();
+
 
 WTF.FavouriteView = (function() {
    var server = WTF.Server.getInstance();
@@ -138,7 +140,7 @@ WTF.FavouriteView = (function() {
 return Backbone.View.extend({
 
    initialize: function(){
-   foodtruck = this.model;
+    foodtruck = this.model;
    },
 
    el: '#favourites',
@@ -149,16 +151,14 @@ return Backbone.View.extend({
    },
 
    saveFT: function(){
-    console.log(" it got here");
     server.pushUserFavourite(foodtruck.id, true);
    },
 
    removeFT: function(){
-    console.log('REMOVING FROM FAVOURITES');
     server.pushUserFavourite(foodtruck.id, false);
    }
-  });
 
+  });
 })();
 
 WTF.CommentsView = (function() {
@@ -186,22 +186,25 @@ WTF.CommentsView = (function() {
 
   };
 
-  // var commentCollection = new WTF.CommentCollection();
 
   return Backbone.View.extend({
 
     initialize: function() {
       foodtruck = this.model;
+      var commentCollection = new WTF.CommentCollection();
+      commentCollection.on('add', this.render, this);
+
       server.getUserComments(foodtruck.id, function(foodtruckComments){
         this.$el.find('#commentsList').empty();
-        _.each(foodtruckComments, function(foodtruckComment) {
-          // var comment = new WTF.Comment(foodtruckComment);
-          // commentCollection.add(comment);
-          this.render(foodtruckComment);
+        commentCollection.reset();
+        if(!foodtruckComments) return;
+        _.each(foodtruckComments, function(foodtruckComment, key) {
+          foodtruckComment.key = key;
+          var comment = new WTF.Comment(foodtruckComment);
+          commentCollection.add(comment);
           console.debug('rendering');
         }, this);
       }.bind(this));
-      // commentCollection.on('change', this.render, this);
     },
 
     el: '#commentsArea',
@@ -214,7 +217,7 @@ WTF.CommentsView = (function() {
     },
 
     render: function(comment) {
-      this.$el.find('#commentsList').append(this.template(comment));
+      this.$el.find('#commentsList').append(this.template(comment.toJSON()));
       return this;
     },
 
@@ -233,21 +236,21 @@ WTF.CommentsView = (function() {
       } else {
         console.debug('no text');
       }
-
     },
 
     deleteComment: function(e) {
       var commentUsername = $(e.currentTarget).data('name');
       var currentUsername = server.getUser().facebook.displayName;
+      var commentId = $(e.currentTarget).data('commentid');
       console.debug('deleting comment');
       if(currentUsername === commentUsername) {
         console.log('Delete');
+        server.removeUserComments(foodtruck.id, commentId);
       } else {
         console.log('Not the original poster, can\'t delete');
       }
     }
 
   });
-
 })();
 

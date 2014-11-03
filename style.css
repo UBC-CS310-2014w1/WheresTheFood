@@ -126,7 +126,7 @@ button {
 
 ul.ratings li {
   cursor: pointer;
-  float: left;
+  display: inline;
 }
 
 ul > span {

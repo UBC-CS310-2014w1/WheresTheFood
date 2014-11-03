@@ -114,8 +114,8 @@ WTF.Server = (function() {
         currentUserRef.child('favourites').child(restaurantID).set(like);
       },
 
-      removeUserComments: function(foodtruckID, comment) {
-
+      removeUserComments: function(foodtruckID, commentId) {
+        commentsRef.child(foodtruckID).child(commentId).remove();
       },
 
       // Use this function to fetch data from the dataset in Firebase.
