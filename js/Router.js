@@ -22,8 +22,8 @@ WTF.AppRouter = (function() {
           if(key == 'business_name')
             modelObject['name'] = val;
         });
+        modelObject['invalid'] = false;
         var fT = new WTF.FoodTruck(modelObject);
-        fT.set('invalid', false);
         WTF.FoodTrucks.add(fT);
       });
 

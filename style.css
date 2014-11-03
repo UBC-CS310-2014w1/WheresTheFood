@@ -70,7 +70,6 @@ html, body, .app-container{
   font-size: 15px;
   font-weight: bold;
   height: 200px;
-  padding-left: 5px;
   position: relative;
   width: 300px;
 }
@@ -78,20 +77,21 @@ html, body, .app-container{
 #more-details-div {
   background-color: #ddd;
   bottom: 10px;
-  clear: both;
   color: red;
   font-size: 16px;
-  padding: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   position: absolute;
   text-align: center;
   width: 100%;
+  margin: 0;
 }
 
-.invalid[data-invalid="false"]{
+.invalid[data-invalid=false]{
   display: none;
 }
 
-.invalid[data-invalid="true"] {
+.invalid[data-invalid=true] {
   color: red;
   display: block;
 }
