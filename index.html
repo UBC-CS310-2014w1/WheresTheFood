@@ -53,6 +53,9 @@
 
       <!-- FOOD TRUCK PAGE  -->
       <div id="foodtruckpage-main">
+        <div id="favourites"> 
+          <div id="favourited-icon">&hearts;</div>
+        </div>
         <h1> FoodTruck Info </h1>
         <div id="foodtruckdetails-div"></div>
 
@@ -67,12 +70,6 @@
             <li id="five" class="star">&#9734;</li>
             <span id="rScore"> Submit a rating </span>
           </ul>
-        </div>
-
-        <div id="favourites">
-          <h3> Favourite </h3>
-          <button id="saveFT" type="button">Like</button>
-          <button id="deleteFT" type="button">Remove 4m like</button>
         </div>
 
         <!--memoArea -->
@@ -97,7 +94,6 @@
 
     <script type="text/template" id="foodtruck-details-template">
       <div>Name: <%-name%></div>
-      <div>Id: <%-id%></div>
       <div>Description: <%-description%></div>
       <div>Location: <%-location%></div>
     </script>

@@ -135,28 +135,41 @@ WTF.RatingsView = (function() {
 
 
 WTF.FavouriteView = (function() {
+
    var server = WTF.Server.getInstance();
+   var foodtruck;
+
+   var initFT = function(status) {
+    if(!status) foodtruck.fav = false;
+    else  {
+      foodtruck.fav = true;
+      $("#favourited-icon").css('opacity', 1); 
+    } 
+   };
 
 return Backbone.View.extend({
 
    initialize: function(){
     foodtruck = this.model;
+    server.getUserFav(foodtruck.id, initFT);
    },
 
    el: '#favourites',
 
    events: {
-    'click #saveFT': 'saveFT',
-    'click #deleteFT': 'removeFT'
+    'click #favourited-icon': 'toggleFT'
    },
-
-   saveFT: function(){
-    server.pushUserFavourite(foodtruck.id, true);
+   
+   toggleFT: function(){
+    if(foodtruck.fav) {
+      foodtruck.fav = false;
+      $("#favourited-icon").css('opacity', 0.1);
+    } else {
+      foodtruck.fav = true;
+      $("#favourited-icon").css('opacity', 1); 
+    }  
+    server.pushUserFavourite(foodtruck.id, foodtruck.fav);
    },
-
-   removeFT: function(){
-    server.pushUserFavourite(foodtruck.id, false);
-   }
 
   });
 })();
