@@ -93,7 +93,9 @@ html, body, .app-container{
   padding: 30px;
   position: absolute;
   top: 30%;
-  transform: translate(-50%, -30%);
+  transform: translate(-50%, -120px);
+
+  margin-bottom: 100px;
 }
 
 #foodtruckdetails-div {
@@ -137,5 +139,29 @@ ul > span {
 
 
 /* Comments section */
+#a-comment {	
+	background-color: #eee;
+	margin-bottom: 5px;
+	margin-right: 9px;
+	margin-top: 5px;
+	padding: 10px;
+}
 
+#comments-name {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#comments-date {
+	float: right;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: lighter;
+	position: relative;
+}
+
+#comments-comment {
+	margin-top: 5px;
+}
 
