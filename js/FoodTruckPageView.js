@@ -170,18 +170,21 @@ WTF.CommentsView = (function() {
     //http://stackoverflow.com/questions/1531093/how-to-get-current-date-in-javascript
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var MM = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var mm = today.getMinutes();
+    var ss = today.getSeconds();
 
     if(dd<10) {
         dd='0'+dd;
     }
 
-    if(mm<10) {
-        mm='0'+mm;
+    if(MM<10) {
+        MM='0'+MM;
     }
 
-    today = mm+'/'+dd+'/'+yyyy;
+    today = MM+'/'+dd+'/'+yyyy + ' ' +   hh + ':' + mm + ':' + ss;
     return today;
 
   };
