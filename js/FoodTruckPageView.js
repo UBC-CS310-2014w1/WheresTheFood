@@ -6,6 +6,7 @@ WTF.FoodTruckPageView = (function() {
 
     initialize: function() {
       this.render();
+
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
@@ -46,6 +47,7 @@ WTF.FoodTruckDetailsView = (function() {
   });
 })();
 
+
 WTF.MemoView = (function() {
 
   var server = WTF.Server.getInstance();
@@ -73,28 +75,28 @@ WTF.MemoView = (function() {
     },
 
     saveMemo: function(){
-      console.log('saving ', $textBox.val());
+      alert('Memo saved');
       server.pushUserMemo(foodtruck.id, $textBox.val());
     },
 
     resetMemo: function(){
-      window.alert("deleted");
-      console.log('memo reset');
-      $textBox.val('');
-      server.pushUserMemo(foodtruck.id, $textBox.val());
+
+		  var confirmDelete = window.confirm("are you sure about this?");
+    	if (confirmDelete) {
+        $textBox.val('');
+        server.pushUserMemo(foodtruck.id, $textBox.val());
+    	}
     }
 
   });
 })();
 
+
 WTF.RatingsView = (function() {
 
   var server = WTF.Server.getInstance();
-
   var foodtruck;
   var $stars;
-
-
 
   var fillStars = function(starNumber) {
     if(!starNumber) return;
@@ -123,41 +125,54 @@ WTF.RatingsView = (function() {
     },
 
     submitRating: function(e) {
-      console.log('hey');
       var starNumber = e.target.itemNumber;
       fillStars(starNumber);
       server.pushUserRating(foodtruck.id, starNumber);
     },
 
   });
-});
+
+})();
+
+
 WTF.FavouriteView = (function() {
+
    var server = WTF.Server.getInstance();
+   var foodtruck;
+
+   var initFT = function(status) {
+    if(!status) foodtruck.fav = false;
+    else  {
+      foodtruck.fav = true;
+      $("#favourited-icon").css('opacity', 1); 
+    } 
+   };
 
 return Backbone.View.extend({
 
    initialize: function(){
-   foodtruck = this.model;
+    foodtruck = this.model;
+    server.getUserFav(foodtruck.id, initFT);
    },
 
    el: '#favourites',
 
    events: {
-    'click #saveFT': 'saveFT',
-    'click #deleteFT': 'removeFT'
+    'click #favourited-icon': 'toggleFT'
+   },
+   
+   toggleFT: function(){
+    if(foodtruck.fav) {
+      foodtruck.fav = false;
+      $("#favourited-icon").css('opacity', 0.1);
+    } else {
+      foodtruck.fav = true;
+      $("#favourited-icon").css('opacity', 1); 
+    }  
+    server.pushUserFavourite(foodtruck.id, foodtruck.fav);
    },
 
-   saveFT: function(){
-    console.log(" it got here");
-    server.pushUserFavourite(foodtruck.id, true);
-   },
-
-   removeFT: function(){
-    console.log('REMOVING FROM FAVOURITES');
-    server.pushUserFavourite(foodtruck.id, false);
-   }
   });
-
 })();
 
 WTF.CommentsView = (function() {
@@ -169,29 +184,42 @@ WTF.CommentsView = (function() {
     //http://stackoverflow.com/questions/1531093/how-to-get-current-date-in-javascript
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var MM = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
+    var hh = today.getHours();
+    var mm = today.getMinutes();
+    var ss = today.getSeconds();
 
     if(dd<10) {
         dd='0'+dd;
     }
 
-    if(mm<10) {
-        mm='0'+mm;
+    if(MM<10) {
+        MM='0'+MM;
     }
 
-    today = mm+'/'+dd+'/'+yyyy;
+    today = MM+'/'+dd+'/'+yyyy + ' ' +   hh + ':' + mm + ':' + ss;
     return today;
 
   };
+
 
   return Backbone.View.extend({
 
     initialize: function() {
       foodtruck = this.model;
+      var commentCollection = new WTF.CommentCollection();
+      commentCollection.on('add', this.render, this);
+
       server.getUserComments(foodtruck.id, function(foodtruckComments){
-        _.each(foodtruckComments, function(foodtruckComment) {
-          this.render(foodtruckComment);
+        this.$el.find('#commentsList').empty();
+        commentCollection.reset();
+        if(!foodtruckComments) return;
+        _.each(foodtruckComments, function(foodtruckComment, key) {
+          foodtruckComment.key = key;
+          var comment = new WTF.Comment(foodtruckComment);
+          commentCollection.add(comment);
+          console.debug('rendering');
         }, this);
       }.bind(this));
     },
@@ -201,17 +229,20 @@ WTF.CommentsView = (function() {
     template: _.template($('#foodtruck-comments-template').html()),
 
     events: {
-      'click #postComments': 'postComments'
+      'hover #a-comment': 'showButton',
+      'click #postComments': 'postComments',
+      'click #deleteComment': 'deleteComment'
     },
 
     render: function(comment) {
-      this.$el.find('#commentsList').append(this.template(comment));
+      this.$el.find('#commentsList').append(this.template(comment.toJSON()));
       return this;
     },
 
     postComments: function() {
       console.debug('posting comments');
       var text = $('#commentsBox').val();
+      $('#commentsBox').val('');
       if(text) {
         var commentObject = {
           name: server.getUser().facebook.displayName,
@@ -223,10 +254,32 @@ WTF.CommentsView = (function() {
       } else {
         console.debug('no text');
       }
+    },
 
+    deleteComment: function(e) {
+      var commentUsername = $(e.currentTarget).data('name');
+      var currentUsername = server.getUser().facebook.displayName;
+      var commentId = $(e.currentTarget).data('commentid');
+      console.debug('deleting comment');
+      if(currentUsername === commentUsername) {
+        console.log('Delete');
+        var confirmDelete = window.confirm("are you sure about this?");
+        if (confirmDelete) {
+          server.removeUserComments(foodtruck.id, commentId);
+        }
+      } else {
+        alert('DENIED - Go on, nothing to see here\n You are not the original poster btw');
+      }
+    },
+
+    showButton: function(e) {
+      if(e.type == 'mouseenter'){
+        $(e.currentTarget).find('#deleteComment').css('display', 'inline');
+      } else {
+        $(e.currentTarget).find('#deleteComment').css('display', 'none');
+      }
     },
 
   });
-
 })();
 

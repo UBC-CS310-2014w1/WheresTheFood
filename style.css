@@ -1,3 +1,8 @@
+a, a:visited{
+	color: black;
+	text-decoration: none;
+}
+
 html, body, .app-container{
 	background: url('images/bg.png');
 	font-family: 'Open Sans', sans-serif;
@@ -62,8 +67,33 @@ html, body, .app-container{
 
  /*  FOOD TRUCK POP UP */
 #foodTruckPopupContainer {
+  font-size: 15px;
+  font-weight: bold;
   height: 200px;
-  width: 400px;
+  padding-left: 5px;
+  position: relative;
+  width: 300px;
+}
+
+#more-details-div {
+  background-color: #ddd;
+  bottom: 10px;
+  clear: both;
+  color: red;
+  font-size: 16px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.invalid[data-invalid="false"]{
+  display: none;
+}
+
+.invalid[data-invalid="true"] {
+  color: red;
+  display: block;
 }
 
 .pop-up-rating {
@@ -82,10 +112,6 @@ html, body, .app-container{
    position: absolute;
 }*/
 
-#more-details-div {
-  clear: both;
-}
-
 /* Food Truck page */
 #foodtruckpage-main {
   background: white;
@@ -93,22 +119,35 @@ html, body, .app-container{
   padding: 30px;
   position: absolute;
   top: 30%;
-  transform: translate(-50%, -30%);
+  transform: translate(-50%, -120px);
+
+  margin-bottom: 100px;
 }
 
 #foodtruckdetails-div {
   font-weight: bold;
 }
 
+#favourited-icon {
+	font-size: 50px;
+	display: block;
+	/*position: absolute;*/
+	float: right;
+	margin-right: 15px;
+	margin-top: 10px;
+	color: red;
+	cursor: pointer;
+	opacity: 0.1;
+}
+
 /* Memo Section */
 textarea {
-  font-family: 'Open Sans', sans-serif;
   font-size: 15pt;
   padding: 5px;
   width: 96.8%;
 }
 
-button {
+.button {
   display: inline;
   font-size: 10pt;
   height: 30px;
@@ -121,11 +160,13 @@ button {
 .ratings {
   font-size: 20pt;
   list-style: none;
+  display: inline-block;
+  width: 100%;
 }
 
 ul.ratings li {
   cursor: pointer;
-  float: left;
+  display: inline;
 }
 
 ul > span {
@@ -137,5 +178,42 @@ ul > span {
 
 
 /* Comments section */
+#a-comment {
+	background-color: #eee;
+	margin-bottom: 5px;
+	margin-right: 9px;
+	margin-top: 5px;
+	padding: 10px;
+	position: relative;
+}
 
+#comments-name {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#comments-date {
+	float: right;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: lighter;
+	position: relative;
+}
+
+#comments-comment {
+	margin-top: 5px;
+}
+
+#deleteComment {
+	background: #eee;
+	border: none;
+	color: red;
+	cursor: pointer;
+	display: none;
+	font-size: 12px;
+	margin-top: -15px;
+	position: absolute;
+	right: 5px;
+}
 

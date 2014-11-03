@@ -7,11 +7,10 @@ WTF.Server = (function() {
   var currentUser = databaseRef.getAuth();
   // reference to the user,comments node on the firebase
   var currentUserRef;
-  var commentsRef;
+  var commentsRef = databaseRef.child('comments');
   if(currentUser !== null) {
     // creates the child node
     currentUserRef = databaseRef.child('users').child(currentUser.uid);
-    commentsRef = databaseRef.child('comments');
   }
 
   var instance = null;
@@ -70,6 +69,15 @@ WTF.Server = (function() {
         });
       },
 
+      getUserFav: function(restaurantID, callback) {
+        currentUserRef.child('favourites').child(restaurantID).on('value', function(snapshot){
+           var newpost = snapshot.val();
+           callback(newpost);
+        }, function(errorObject) {
+           console.log('The read failed: '+ errorObject.code);
+        });
+      },
+
       getUserComments: function(foodtruckID, callback) {
         commentsRef.child(foodtruckID).on('value', function(snapshot){
           var listofComments = snapshot.val();
@@ -112,6 +120,10 @@ WTF.Server = (function() {
       // like: boolean - true/false indictating restairant is favourited by user.
       pushUserFavourite: function(restaurantID, like){
         currentUserRef.child('favourites').child(restaurantID).set(like);
+      },
+
+      removeUserComments: function(foodtruckID, commentId) {
+        commentsRef.child(foodtruckID).child(commentId).remove();
       },
 
       // Use this function to fetch data from the dataset in Firebase.
