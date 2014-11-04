@@ -57,7 +57,11 @@ html, body, .app-container{
 	padding-top: 25px;
 	position: relative;
 	text-align: center;
-	transform: translate(-50%,0);
+  -moz-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  -ms-transform: translate(-50%,0);
+  -o-transform: translate(-50%,0);
+  transform: translate(-50%,0);
 	width: 220px;
 	z-index: 3;
 }
@@ -67,7 +71,11 @@ html, body, .app-container{
 	margin-top: 20%;
 	position: fixed;
 	text-align: center;
-	transform: translate(-50%,0);
+  -moz-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  -ms-transform: translate(-50%,0);
+  -o-transform: translate(-50%,0);
+  transform: translate(-50%,0);
 	width: 100%;
 	z-index: 2;
 }
@@ -141,6 +149,10 @@ html, body, .app-container{
   padding: 30px;
   position: absolute;
   top: 30%;
+  -moz-transform: translate(-50%, -120px);
+  -webkit-transform: translate(-50%, -120px);
+  -ms-transform: translate(-50%, -120px);
+  -o-transform: translate(-50%, -120px);
   transform: translate(-50%, -120px);
 
   margin-bottom: 100px;
