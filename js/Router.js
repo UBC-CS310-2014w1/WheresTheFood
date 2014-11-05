@@ -6,21 +6,29 @@ WTF.AppRouter = (function() {
 
   var populateListView = function(callback) {
     
-    $('#data-table').append('<thead><tr><th></th></tr></thead>');
+    $('#data-table').append('<thead><tr><th></th><th></th><th></th></tr></thead>');
     
     for(var i = 0; i < WTF.FoodTrucks.length ; i++) {
       $('#data-table').append(function() {
         if(WTF.FoodTrucks[i].name != 'N/A')
-          return '<tr><td>' + WTF.FoodTrucks[i].name + '</td></tr>'; 
+          return '<tr><td>' + WTF.FoodTrucks[i].name + '</td>'+ 
+                 '<td>' + WTF.FoodTrucks[i].description + '</td>' + 
+                 '<td>' + WTF.FoodTrucks[i].location + '</td>' + '</tr>'; 
       });
     }
 
     // window.setTimeout(function() {
       $('#data-table').DataTable({
-          "paging"  : false,
+          "paging"    : false,
           "columnDefs": [{ "orderable": false, "targets": 0 }],
-          "order"   : [[0, "asc"]],
-          "info"    : false,
+
+          "columns"   : [null,
+                         {'visible' : false},
+                         {'visible' : false}],
+          "order"     : [[0, "asc"]],
+          "scrollY"   : 500,
+          "scrollCollapse": true,
+          "info"      : false,
       });
     // }, 100);
   };
