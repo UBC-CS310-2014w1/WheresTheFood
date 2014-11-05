@@ -18,8 +18,8 @@ WTF.AppRouter = (function() {
     // window.setTimeout(function() {
       $('#data-table').DataTable({
           "paging"  : false,
-          
-          "order"   : [[0, "desc"]],
+          "columnDefs": [{ "orderable": false, "targets": 0 }],
+          "order"   : [[0, "asc"]],
           "info"    : false,
       });
     // }, 100);
