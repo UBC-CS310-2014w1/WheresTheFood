@@ -64,7 +64,7 @@ WTF.MemoView = (function() {
     initialize: function() {
       $textBox = $('#txtMemoBox');
       foodtruck = this.model;
-      server.getCurrentMemo(foodtruck.id, updateText);
+      server.getCurrentMemo(foodtruck.get('id'), updateText);
     },
 
     el: '#memoArea',
@@ -76,14 +76,14 @@ WTF.MemoView = (function() {
 
     saveMemo: function(){
       alert('Memo saved');
-      server.pushUserMemo(foodtruck.id, $textBox.val());
+      server.pushUserMemo(foodtruck.get('id'), $textBox.val());
     },
 
     resetMemo: function(){
 		  var confirmDelete = window.confirm("are you sure about this?");
     	if (confirmDelete) {
         $textBox.val('');
-        server.pushUserMemo(foodtruck.id, $textBox.val());
+        server.pushUserMemo(foodtruck.get('id'), $textBox.val());
     	}
     }
 
@@ -114,7 +114,7 @@ WTF.RatingsView = (function() {
       for(var i = 0; i < $stars.length ; i++) {
         $stars[i].itemNumber = i + 1;
       }
-      server.getUserRating(foodtruck.id, fillStars);
+      server.getUserRating(foodtruck.get('id'), fillStars);
     },
 
     el: '#ratingsArea',
@@ -126,7 +126,7 @@ WTF.RatingsView = (function() {
     submitRating: function(e) {
       var starNumber = e.target.itemNumber;
       fillStars(starNumber);
-      server.pushUserRating(foodtruck.id, starNumber);
+      server.pushUserRating(foodtruck.get('id'), starNumber);
     },
 
   });
@@ -143,15 +143,15 @@ WTF.FavouriteView = (function() {
     if(!status) foodtruck.fav = false;
     else  {
       foodtruck.fav = true;
-      $("#favourited-icon").css('opacity', 1); 
-    } 
+      $("#favourited-icon").css('opacity', 1);
+    }
    };
 
 return Backbone.View.extend({
 
    initialize: function(){
     foodtruck = this.model;
-    server.getUserFav(foodtruck.id, initFT);
+    server.getUserFav(foodtruck.get('id'), initFT);
    },
 
    el: '#favourites',
@@ -159,16 +159,16 @@ return Backbone.View.extend({
    events: {
     'click #favourited-icon': 'toggleFT'
    },
-   
+
    toggleFT: function(){
     if(foodtruck.fav) {
       foodtruck.fav = false;
       $("#favourited-icon").css('opacity', 0.1);
     } else {
       foodtruck.fav = true;
-      $("#favourited-icon").css('opacity', 1); 
-    }  
-    server.pushUserFavourite(foodtruck.id, foodtruck.fav);
+      $("#favourited-icon").css('opacity', 1);
+    }
+    server.pushUserFavourite(foodtruck.get('id'), foodtruck.fav);
    },
 
   });
@@ -210,7 +210,7 @@ WTF.CommentsView = (function() {
       var commentCollection = new WTF.CommentCollection();
       commentCollection.on('add', this.render, this);
 
-      server.getUserComments(foodtruck.id, function(foodtruckComments){
+      server.getUserComments(foodtruck.get('id'), function(foodtruckComments){
         this.$el.find('#commentsList').empty();
         commentCollection.reset();
         if(!foodtruckComments) return;
@@ -249,7 +249,7 @@ WTF.CommentsView = (function() {
           date: getDate()
         };
         console.debug('comment object ', JSON.stringify(commentObject));
-        server.pushUserComments(foodtruck.id, commentObject);
+        server.pushUserComments(foodtruck.get('id'), commentObject);
       } else {
         console.debug('no text');
       }
@@ -264,7 +264,7 @@ WTF.CommentsView = (function() {
         console.log('Delete');
         var confirmDelete = window.confirm("are you sure about this?");
         if (confirmDelete) {
-          server.removeUserComments(foodtruck.id, commentId);
+          server.removeUserComments(foodtruck.get('id'), commentId);
         }
       } else {
         alert('DENIED - Go on, nothing to see here\n You are not the original poster btw');
@@ -272,6 +272,7 @@ WTF.CommentsView = (function() {
     },
 
     showButton: function(e) {
+      console.debug('hovering over the button');
       if(e.type == 'mouseenter'){
         $(e.currentTarget).find('#deleteComment').css('display', 'inline');
       } else {

@@ -25,7 +25,8 @@ WTF.MapView = (function() {
     // if it's our own created html element, we will just add it to backbone events
     google.maps.event.addListener(ctaLayer, 'click',  function(kmlEvent) {
       var data = kmlEvent.featureData;
-      var foodtruck = WTF.Utility.getFoodTruck(data.id) || new WTF.FoodTruck();
+      // var foodtruck = WTF.Utility.getFoodTruck(data.id) || new WTF.FoodTruck();
+      var foodtruck = WTF.FoodTrucks.get(data.id) || new WTF.FoodTruck();
       var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
       data.infoWindowHtml = foodTruckPopUpView.template;
     });

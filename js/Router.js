@@ -5,15 +5,16 @@ WTF.AppRouter = (function() {
   WTF.FoodTrucks = new WTF.FoodTruckCollection();
 
   var populateListView = function(callback) {
-    
+
     $('#data-table').append('<thead><tr><th></th><th></th><th></th></tr></thead>');
-    
+
     for(var i = 0; i < WTF.FoodTrucks.length ; i++) {
       $('#data-table').append(function() {
-        if(WTF.FoodTrucks[i].name != 'N/A')
-          return '<tr><td>' + WTF.FoodTrucks[i].name + '</td>'+ 
-                 '<td>' + WTF.FoodTrucks[i].description + '</td>' + 
-                 '<td>' + WTF.FoodTrucks[i].location + '</td>' + '</tr>'; 
+        var foodtruck = WTF.FoodTrucks.at(i);
+        if(foodtruck.get('name') != 'N/A')
+          return '<tr><td>' + foodtruck.get('name') + '</td>'+
+                 '<td>' + foodtruck.get('description') + '</td>' +
+                 '<td>' + foodtruck.get('location') + '</td>' + '</tr>';
       });
     }
 
@@ -56,14 +57,22 @@ WTF.AppRouter = (function() {
         WTF.FoodTrucks.add(fT);
       });
 
+      // cache data in sessionStorage after fetching for server
       sessionStorage.setItem(WTF.Utility.FoodTruckKey, JSON.stringify(WTF.FoodTrucks));
-      WTF.Utility.fetchFoodtruckFromStorage();
       console.debug('finish parsing');
+      if(typeof callback === 'function'){
+       callback();
+      }
     };
 
-    if(!WTF.Utility.hasFoodTruckData()) 
+    if(!WTF.Utility.hasFoodTruckData())
       server.fetchDataset(parseData);
-    else WTF.Utility.fetchFoodtruckFromStorage();
+    else {
+      WTF.Utility.fetchFoodtruckFromStorage();
+      if(typeof callback === 'function'){
+       callback();
+      }
+    }
   };
 
   var self_model = Backbone.Router.extend({
@@ -81,6 +90,9 @@ WTF.AppRouter = (function() {
     },
 
     login: function() {
+      fetchFoodTruck(function(){
+        populateListView();
+      });
       console.debug('router login');
       if(server.getUser() != null) {
         this.navigate("map", true);
@@ -94,9 +106,11 @@ WTF.AppRouter = (function() {
     map: function() {
       console.debug('router map');
       var mapView = new WTF.MapView();
-      
-      fetchFoodTruck();
-      window.setTimeout(populateListView, 300);
+
+      fetchFoodTruck(function(){
+        populateListView();
+      });
+//      window.setTimeout(populateListView, 300);
 
       var loggedIn = (server.getUser())? true: false;
       if(!loggedIn)
@@ -124,7 +138,11 @@ WTF.AppRouter = (function() {
       var mapView = new WTF.MapView();
       mapView.resetNavMenu();
       console.debug('router foodtruckDetails');
-      var foodtruck = WTF.Utility.getFoodTruck(id);
+      fetchFoodTruck(function(){
+        populateListView();
+      });
+      // var foodtruck = WTF.Utility.getFoodTruck(id);
+      var foodtruck = WTF.FoodTrucks.get(id) || new WTF.FoodTruck();
       var foodtruckpageView = new WTF.FoodTruckPageView({ model : foodtruck });
     }
 
