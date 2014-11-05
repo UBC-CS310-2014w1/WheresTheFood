@@ -6,11 +6,14 @@ WTF.Utility = (function() {
 
     FoodTruckKey: 'FoodTrucks',
 
+    fetchFoodtruckFromStorage: function() {
+       // get from sessionStorage if collection is lost
+       WTF.FoodTrucks = JSON.parse(sessionStorage.getItem(this.FoodTruckKey));
+    },
+
     getFoodTruck: function(id) {
-      if(!WTF.FoodTrucks.length) {
-        // get from sessionStorage if collection is lost
-        var collection = JSON.parse(sessionStorage.getItem(this.FoodTruckKey));
-        return new WTF.FoodTruck(_.where(collection, {id: id})[0]);
+      if(WTF.FoodTrucks.length !== 0) {
+        return new WTF.FoodTruck(_.where(WTF.FoodTrucks, {id: id})[0]);
       } else {
         return WTF.FoodTrucks.get(id);
       }
@@ -19,6 +22,6 @@ WTF.Utility = (function() {
     hasFoodTruckData: function() {
       return sessionStorage.getItem(this.FoodTruckKey)? true : false;
     }
-  }
+  };
 
 })();

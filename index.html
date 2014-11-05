@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- DataTables Plugin-->
+    <link rel="stylesheet" type="text/css" href="jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.js"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
  rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
     </script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" defer></script>
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
@@ -35,6 +39,9 @@
     </script>
 
     <script type="text/template" id="map-template">
+        <div id="side-panel">
+          <table id="data-table"></table>
+        </div>
         <div id="map-canvas"></div>
         <div id="user-label"></div>
     </script>
