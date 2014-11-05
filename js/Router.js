@@ -114,12 +114,15 @@ WTF.AppRouter = (function() {
           console.log('logout');
           server.logout();
           mapView.clearMarkers();
+          mapView.resetNavMenu();
           self.navigate("login", true);
         });
       }
     },
 
     foodtruckDetails: function(id) {
+      var mapView = new WTF.MapView();
+      mapView.resetNavMenu();
       console.debug('router foodtruckDetails');
       var foodtruck = WTF.Utility.getFoodTruck(id);
       var foodtruckpageView = new WTF.FoodTruckPageView({ model : foodtruck });

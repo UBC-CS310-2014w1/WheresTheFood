@@ -31,17 +31,17 @@ WTF.MapView = (function() {
     });
   };
 
-  // event handler for toggling side bar
-  $('#hamburger').on('click', function() {
-    $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
-    $('body').toggleClass('wtf-left');
-  });
-
   return Backbone.View.extend({
 
     initialize: function() {
       console.debug('map view init');
       this.render();
+
+      // event handler for toggling side bar
+      $('#hamburger').on('click', function() {
+        $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
+        $('body').toggleClass('wtf-left');
+      });
     },
 
     template: _.template($('#map-template').html()),
@@ -66,7 +66,12 @@ WTF.MapView = (function() {
       if(ctaLayer) {
         ctaLayer.setMap(null);
       }
-    }
+    },
+
+    resetNavMenu: function() {
+      $('body').removeClass('wtf-left');
+      $('.wtf-side-panel-left').removeClass('wtf-side-panel-open');
+    },
 
   });
 
