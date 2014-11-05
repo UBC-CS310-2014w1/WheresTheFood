@@ -4,8 +4,36 @@ WTF.AppRouter = (function() {
 
   WTF.FoodTrucks = new WTF.FoodTruckCollection();
 
+  var populateListView = function(callback) {
+    
+    $('#data-table').append('<thead><tr><th></th><th></th><th></th></tr></thead>');
+    
+    for(var i = 0; i < WTF.FoodTrucks.length ; i++) {
+      $('#data-table').append(function() {
+        if(WTF.FoodTrucks[i].name != 'N/A')
+          return '<tr><td>' + WTF.FoodTrucks[i].name + '</td>'+ 
+                 '<td>' + WTF.FoodTrucks[i].description + '</td>' + 
+                 '<td>' + WTF.FoodTrucks[i].location + '</td>' + '</tr>'; 
+      });
+    }
 
-  var fetchFoodTruck = function() {
+    // window.setTimeout(function() {
+      $('#data-table').DataTable({
+          "paging"    : false,
+          "columnDefs": [{ "orderable": false, "targets": 0 }],
+
+          "columns"   : [null,
+                         {'visible' : false},
+                         {'visible' : false}],
+          "order"     : [[0, "asc"]],
+          "scrollY"   : 500,
+          "scrollCollapse": true,
+          "info"      : false,
+      });
+    // }, 100);
+  };
+
+  var fetchFoodTruck = function(callback) {
     // Using parseData function - retriving the desired information of each FoodTruck from the json
     // All foodtruck specific information is stored into FoodTruck. The key is stored as a id, and business name as just name.
      parseData = function(items){
@@ -19,8 +47,9 @@ WTF.AppRouter = (function() {
             modelObject[key] = val;
           if(key == 'key')
             modelObject['id'] = val;
-          if(key == 'business_name')
+          if(key == 'business_name') {
             modelObject['name'] = val;
+          }
         });
         modelObject['invalid'] = false;
         var fT = new WTF.FoodTruck(modelObject);
@@ -28,14 +57,13 @@ WTF.AppRouter = (function() {
       });
 
       sessionStorage.setItem(WTF.Utility.FoodTruckKey, JSON.stringify(WTF.FoodTrucks));
+      WTF.Utility.fetchFoodtruckFromStorage();
       console.debug('finish parsing');
     };
 
-    if(!WTF.Utility.hasFoodTruckData()) {
-      // parse all foodtruck data at start of app
+    if(!WTF.Utility.hasFoodTruckData()) 
       server.fetchDataset(parseData);
-    }
-
+    else WTF.Utility.fetchFoodtruckFromStorage();
   };
 
   var self_model = Backbone.Router.extend({
@@ -66,7 +94,10 @@ WTF.AppRouter = (function() {
     map: function() {
       console.debug('router map');
       var mapView = new WTF.MapView();
+      
       fetchFoodTruck();
+      window.setTimeout(populateListView, 300);
+
       var loggedIn = (server.getUser())? true: false;
       if(!loggedIn)
         this.navigate("login", true);

@@ -31,6 +31,12 @@ WTF.MapView = (function() {
     });
   };
 
+  // event handler for toggling side bar
+  $('#hamburger').on('click', function() {
+    $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
+    $('body').toggleClass('wtf-left');
+  });
+
   return Backbone.View.extend({
 
     initialize: function() {
