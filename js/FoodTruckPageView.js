@@ -81,11 +81,11 @@ WTF.MemoView = (function() {
 
     resetMemo: function(){
 
-		  var confirmDelete = window.confirm("are you sure about this?");
-    	if (confirmDelete) {
+		var confirmDelete = window.confirm("are you sure about this?");
+    if (confirmDelete) {
         $textBox.val('');
         server.pushUserMemo(foodtruck.id, $textBox.val());
-    	}
+    }
     }
 
   });
@@ -144,8 +144,8 @@ WTF.FavouriteView = (function() {
     if(!status) foodtruck.fav = false;
     else  {
       foodtruck.fav = true;
-      $("#favourited-icon").css('opacity', 1); 
-    } 
+      $("#favourited-icon").css('opacity', 1);
+    }
    };
 
 return Backbone.View.extend({
@@ -160,15 +160,15 @@ return Backbone.View.extend({
    events: {
     'click #favourited-icon': 'toggleFT'
    },
-   
+
    toggleFT: function(){
     if(foodtruck.fav) {
       foodtruck.fav = false;
       $("#favourited-icon").css('opacity', 0.1);
     } else {
       foodtruck.fav = true;
-      $("#favourited-icon").css('opacity', 1); 
-    }  
+      $("#favourited-icon").css('opacity', 1);
+    }
     server.pushUserFavourite(foodtruck.id, foodtruck.fav);
    },
 
