@@ -104,13 +104,12 @@ WTF.AppRouter = (function() {
 
     map: function() {
       console.debug('router map');
-      var mapView = new WTF.MapView();
-
+      var mapView;
       fetchFoodTruck(function(){
+        mapView = new WTF.MapView();
         populateListView();
       });
-//      window.setTimeout(populateListView, 300);
-
+       
       var loggedIn = (server.getUser())? true: false;
       if(!loggedIn)
         this.navigate("login", true);
@@ -126,7 +125,6 @@ WTF.AppRouter = (function() {
         .click(function () {
           console.log('logout');
           server.logout();
-          mapView.clearMarkers();
           mapView.resetNavMenu();
           self.navigate("login", true);
         });

@@ -10,6 +10,12 @@ WTF.FoodTruck = (function() {
       address: 'N/A',
       description: 'N/A',
       location: 'N/A',
+      lat: 'N/A',
+      lon: 'N/A',
+      marker: 'N/A',
+      rating: 0,
+      isFavourited: false,
+      memo: "",
       invalid: true // keep track of invalid foodtrucks and state this on pop up view
     }
 
