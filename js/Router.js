@@ -12,7 +12,9 @@ WTF.AppRouter = (function() {
       $('#data-table').append(function() {
         var foodtruck = WTF.FoodTrucks.at(i);
         if(foodtruck.get('name') != 'N/A')
-          return '<tr><td>' + foodtruck.get('name') + '</td>'+
+          return '<tr><td><a href="#foodtruck/' + 
+                          foodtruck.get('id') + '">' + 
+                          foodtruck.get('name') + '</a></td>'+
                  '<td>' + foodtruck.get('description') + '</td>' +
                  '<td>' + foodtruck.get('location') + '</td>' + '</tr>';
       });
@@ -90,9 +92,6 @@ WTF.AppRouter = (function() {
     },
 
     login: function() {
-      fetchFoodTruck(function(){
-        populateListView();
-      });
       console.debug('router login');
       if(server.getUser() != null) {
         this.navigate("map", true);

@@ -3,6 +3,12 @@ a, a:visited{
 	text-decoration: none;
 }
 
+ul {
+	list-style-type: none;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 h1 {
 	font-variant: normal;
 	text-transform: uppercase;
@@ -45,7 +51,6 @@ button {
 	opacity: 0.8;
 	overflow-y: scroll;
 	position: fixed;
-	text-align: center;
 	top: 0;
 	width: 300px;
 	z-index: 1;
@@ -62,7 +67,41 @@ button {
   	left: 0;
   	position: absolute;
   	top: 0;
-  	z-index: 99;
+  	z-index: 4;
+}
+
+#filter-options{
+	float: left;
+}
+#order-options{
+	float: left;
+}
+
+/* FILTERING AREA */
+/* CREDITS: http://code.stephenmorley.org/html-and-css/styling-checkboxes-and-radio-buttons */
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+  width   : 28px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+}
+
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -28px;
+  padding-left : 28px;
+  background   : url('images/checks.png') no-repeat 0 0;
+  line-height  : 24px;
+}
+
+input[type=checkbox]:not(old):checked + label{
+  background-position : 0 -24px;
+}
+
+input[type=radio]:not(old):checked + label{
+  background-position : 0 -48px;
 }
 
 .wtf-side-panel-left {
