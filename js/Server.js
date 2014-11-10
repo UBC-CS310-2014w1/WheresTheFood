@@ -136,6 +136,16 @@ WTF.Server = (function() {
             console.log('The read failed: ' + errorObject.code);
             callback(null);
           });
+      },
+
+      fetchUserData: function(callback) {
+        currentUserRef.on('value', function(snapShot){
+            console.log(snapShot.val());
+            if(callback) callback(snapShot.val());
+          },function(errorObject){
+            console.log('The read failed: ' + errorObject.code);
+            callback(null);
+          });
       }
 
     });

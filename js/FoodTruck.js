@@ -23,6 +23,17 @@ WTF.FoodTruck = (function() {
 
 })();
 
+WTF.UserData = (function() {
+  return Backbone.Model.extend({
+    defaults: {
+      //fields
+      memos: 'N/A',
+      ratings: 'N/A',
+      favourites: 'N/A',
+    }
+  });
+})();
+
 WTF.FoodTruckCollection = (function() {
 
   return Backbone.Collection.extend( {

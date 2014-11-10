@@ -48,19 +48,22 @@
             <ul>
             Filter by:
               <li>
-                <input id="no-filter" type="radio" name="filters" checked/>
+                <input id="no-filter" type="radio" name="filters" checked
+                onclick="WTF.DataTable.search('').columns().search('').draw();"/>
                 <label>None</label>
               </li>
               <li>
-                <input id="favourited" type="radio" name="filters"/>
+                <input id="favourited" type="radio" name="filters" 
+                onclick="WTF.DataTable.column(3).search(true).draw();"/>
                 <label>Favourited</label>
               </li>
               <li>
-                <input id="hasMemo" type="radio" name="filters"/>
+                <input id="hasMemo" type="radio" name="filters" onclick=""/>
                 <label>Has Memo</label>
               </li>
               <li>
-                <input id="hasRating" type="radio" name="filters"/>
+                <input id="hasRating" type="radio" name="filters"
+                onclick=""/>
                 <label>Has Rating</label>
               </li>
             <ul>

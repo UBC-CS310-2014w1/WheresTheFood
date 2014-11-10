@@ -3,29 +3,69 @@ WTF.AppRouter = (function() {
   var server = WTF.Server.getInstance();
 
   WTF.FoodTrucks = new WTF.FoodTruckCollection();
+ // WTF.UserData = new WTF.UserData();
+
+  var appendUserInfo = function(id) {
+    var fav;
+    var rat;
+    var mem;
+    var data = WTF.UserData;
+    $.map(data, function(val,key) {
+      if(key == 'favourites'){
+        fav = "<td>";
+        $.map(val, function(val2,key2) {
+          if(key2 == id)
+            fav += val2;
+        });
+        fav += '</td>';
+      }
+      if(key == 'memos') {
+        mem = "<td>";
+        $.map(val, function(val2,key2) {
+          if(key2 == id)
+            mem += val2;
+        });
+        mem += '</td>';
+      }
+      if(key == 'ratings') {
+        rat = "<td>";
+        $.map(val, function(val2,key2) {
+          if(key2 == id)
+            rat += val2;
+        });
+        rat += '</td>';
+      }
+    });
+    return fav + rat + mem;
+  };
 
   var populateListView = function(callback) {
 
-    $('#data-table').append('<thead><tr><th></th><th></th><th></th></tr></thead>');
+    $('#data-table').append('<thead><tr><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>');
 
     for(var i = 0; i < WTF.FoodTrucks.length ; i++) {
       $('#data-table').append(function() {
         var foodtruck = WTF.FoodTrucks.at(i);
+        var info = appendUserInfo(foodtruck.get('id'));
+        console.log(info);
         if(foodtruck.get('name') != 'N/A')
-          return '<tr><td><a href="#foodtruck/' + 
-                          foodtruck.get('id') + '">' + 
+          return '<tr><td><a href="#foodtruck/' + foodtruck.get('id') + '">' + 
                           foodtruck.get('name') + '</a></td>'+
                  '<td>' + foodtruck.get('description') + '</td>' +
-                 '<td>' + foodtruck.get('location') + '</td>' + '</tr>';
+                 '<td>' + foodtruck.get('location') + '</td>' + 
+                          info + '</tr>';
       });
     }
 
     // window.setTimeout(function() {
-      $('#data-table').DataTable({
+      WTF.DataTable = $('#data-table').DataTable({
           "paging"    : false,
           "columnDefs": [{ "orderable": false, "targets": 0 }],
 
           "columns"   : [null,
+                         {'visible' : false},
+                         {'visible' : false}, 
+                         {'visible' : false}, 
                          {'visible' : false},
                          {'visible' : false}],
           "order"     : [[0, "asc"]],
@@ -57,6 +97,7 @@ WTF.AppRouter = (function() {
         modelObject['invalid'] = false;
         var fT = new WTF.FoodTruck(modelObject);
         WTF.FoodTrucks.add(fT);
+
       });
 
       // cache data in sessionStorage after fetching for server
@@ -71,6 +112,64 @@ WTF.AppRouter = (function() {
       server.fetchDataset(parseData);
     else {
       WTF.Utility.fetchFoodtruckFromStorage();
+      if(typeof callback === 'function'){
+       callback();
+      }
+    }
+  };
+
+    var fetchUserData = function(callback) {
+
+     parseUserInfo = function(items){
+      /*
+      items  = 
+      {
+        "ratings": {"C098":4,"D04":3},
+        "favourited": {"C34": true, ...},
+        "memos": {"A32": "best sushi in the world", ...}, 
+      }
+      */
+      var modelObject = {};
+      $.map(items, function(val, key) {
+        console.log('key is '+ key);
+          if(key!== 'name')
+            modelObject[key] = val;
+      });
+
+      WTF.UserData  = new WTF.UserData(modelObject);
+
+      // $.map(items, function(item){
+      //   var modelObject = {};
+      //   $.map(item, function(val, key){
+      //     if(!val)
+      //       return;
+      //     if(key == 'description' || key == 'lat' || key == 'lon' || key == 'location')
+      //       modelObject[key] = val;
+      //     if(key == 'key')
+      //       modelObject['.id'] = val;
+      //     if(key == 'business_name') {
+      //       modelObject['.name'] = val;
+      //     }
+      //   });
+      //   modelObject['.invalid'] = false;
+      //   var fT = new WTF.UserData(modelObject);
+      //   WTF.UserDatas.add(fT);
+
+      // });
+
+      // cache data in sessionStorage after fetching for server
+      console.log('1 ' + WTF.UserData);
+      sessionStorage.setItem(WTF.Utility.UserKey, JSON.stringify(WTF.UserData));
+      console.debug('finish parsing2');
+      if(typeof callback === 'function'){
+       callback();
+      }
+    };
+
+    if(!WTF.Utility.hasUserData())
+      server.fetchUserData(parseUserInfo);
+    else {
+      WTF.Utility.fetchUserDataFromStorage();
       if(typeof callback === 'function'){
        callback();
       }
@@ -93,7 +192,7 @@ WTF.AppRouter = (function() {
 
     login: function() {
       console.debug('router login');
-      if(server.getUser() != null) {
+      if(server.getUser() !== null) {
         this.navigate("map", true);
         loggedIn = true;
       } else {
@@ -106,8 +205,10 @@ WTF.AppRouter = (function() {
       console.debug('router map');
       var mapView;
       fetchFoodTruck(function(){
-        mapView = new WTF.MapView();
-        populateListView();
+        fetchUserData(function() {
+          mapView = new WTF.MapView();
+          populateListView();  
+        });
       });
        
       var loggedIn = (server.getUser())? true: false;
@@ -136,9 +237,9 @@ WTF.AppRouter = (function() {
       mapView.resetNavMenu();
       console.debug('router foodtruckDetails');
       fetchFoodTruck(function(){
-        populateListView();
-      });
-      // var foodtruck = WTF.Utility.getFoodTruck(id);
+       populateListView();
+     });
+      var foodtruck = WTF.Utility.getFoodTruck(id);
       var foodtruck = WTF.FoodTrucks.get(id) || new WTF.FoodTruck();
       var foodtruckpageView = new WTF.FoodTruckPageView({ model : foodtruck });
     }
