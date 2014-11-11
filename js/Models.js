@@ -23,14 +23,17 @@ WTF.FoodTruck = (function() {
 
 })();
 
-WTF.FoodTruckCollection = (function() {
+(function() {
 
-  return Backbone.Collection.extend( {
+  var FoodTruck = Backbone.Collection.extend( {
 
     // Reference to this collection's model.
     model: WTF.FoodTruck
 
   });
+
+  // single FoodTruckCollection instance
+  WTF.FoodTrucks = new FoodTruck();
 
 })();
 
@@ -52,13 +55,16 @@ WTF.Comment = (function() {
 })();
 
 
-WTF.CommentCollection = (function() {
+(function() {
 
-  return Backbone.Collection.extend( {
+  var Comments = Backbone.Collection.extend( {
 
     // Reference to this collection's model.
     model: WTF.Comment
 
   });
+
+  // single FoodTruckCollection instance
+  WTF.Comments = new Comments();
 
 })();

@@ -1,8 +1,6 @@
 WTF.AppRouter = (function() {
 
-  var server = WTF.Server.getInstance();
-
-  WTF.FoodTrucks = new WTF.FoodTruckCollection();
+  var server = WTF.Server;
 
   var populateListView = function(callback) {
 
@@ -12,8 +10,8 @@ WTF.AppRouter = (function() {
       $('#data-table').append(function() {
         var foodtruck = WTF.FoodTrucks.at(i);
         if(foodtruck.get('name') != 'N/A')
-          return '<tr><td><a href="#foodtruck/' + 
-                          foodtruck.get('id') + '">' + 
+          return '<tr><td><a href="#foodtruck/' +
+                          foodtruck.get('id') + '">' +
                           foodtruck.get('name') + '</a></td>'+
                  '<td>' + foodtruck.get('description') + '</td>' +
                  '<td>' + foodtruck.get('location') + '</td>' + '</tr>';
@@ -109,7 +107,7 @@ WTF.AppRouter = (function() {
         mapView = new WTF.MapView();
         populateListView();
       });
-       
+
       var loggedIn = (server.getUser())? true: false;
       if(!loggedIn)
         this.navigate("login", true);
@@ -148,5 +146,3 @@ WTF.AppRouter = (function() {
   return new self_model();
 
 })();
-
-

@@ -50,7 +50,7 @@ WTF.FoodTruckDetailsView = (function() {
 
 WTF.MemoView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
 
   var foodtruck;
   var $textBox;
@@ -93,7 +93,7 @@ WTF.MemoView = (function() {
 
 WTF.RatingsView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
   var foodtruck;
   var $stars;
 
@@ -136,7 +136,7 @@ WTF.RatingsView = (function() {
 
 WTF.FavouriteView = (function() {
 
-   var server = WTF.Server.getInstance();
+   var server = WTF.Server;
    var foodtruck;
 
    var initFT = function(status) {
@@ -176,7 +176,7 @@ return Backbone.View.extend({
 
 WTF.CommentsView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
   var foodtruck;
 
   var getDate = function() {
@@ -207,7 +207,7 @@ WTF.CommentsView = (function() {
 
     initialize: function() {
       foodtruck = this.model;
-      var commentCollection = new WTF.CommentCollection();
+      var commentCollection = WTF.Comments;
       commentCollection.on('add', this.render, this);
 
       server.getUserComments(foodtruck.get('id'), function(foodtruckComments){
@@ -282,4 +282,3 @@ WTF.CommentsView = (function() {
 
   });
 })();
-

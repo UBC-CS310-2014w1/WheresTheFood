@@ -1,6 +1,6 @@
 var WTF = WTF || {};
 
-WTF.Server = (function() {
+(function() {
   // Server: the data for our app will be stored at this firebase reference
   var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
   // current firebase user object
@@ -144,7 +144,7 @@ WTF.Server = (function() {
   }
 
 
-  return {
+   var Server =  {
     // Get the Singleton instance if one exists
     // or create one if it doesn't
     getInstance: function () {
@@ -157,5 +157,7 @@ WTF.Server = (function() {
     }
 
   };
+
+  WTF.Server = Server.getInstance();
 
 })();

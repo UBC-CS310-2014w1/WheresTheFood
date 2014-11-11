@@ -2,7 +2,7 @@ var WTF = WTF || {};
 
 WTF.MapView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
 
   var mapOptions = {
     center: { lat: 49.256, lng: -123.1},
@@ -101,7 +101,7 @@ WTF.MapView = (function() {
 
 WTF.LoginView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
 
   var userLoginCallback = function(userObject) {
     if(userObject) { // if login is successful (userObject is not null)
@@ -157,4 +157,3 @@ WTF.FoodTruckPopUpView = (function() {
 
   });
 })();
-
