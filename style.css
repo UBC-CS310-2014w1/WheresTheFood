@@ -345,3 +345,11 @@ ul > span {
 	right: 5px;
 }
 
+/* back Button */
+#backButton{
+  	font-size: 10pt;
+  	height: 30px;
+  	margin-top: 5px;
+  	max-width: 21%;
+  	width: 100%;
+}
