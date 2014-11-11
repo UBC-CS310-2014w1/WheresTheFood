@@ -10,6 +10,12 @@ WTF.FoodTruck = (function() {
       address: 'N/A',
       description: 'N/A',
       location: 'N/A',
+      lat: 'N/A',
+      lon: 'N/A',
+      marker: 'N/A',
+      rating: 0,
+      isFavourited: false,
+      memo: "",
       invalid: true // keep track of invalid foodtrucks and state this on pop up view
     }
 
@@ -17,14 +23,17 @@ WTF.FoodTruck = (function() {
 
 })();
 
-WTF.FoodTruckCollection = (function() {
+(function() {
 
-  return Backbone.Collection.extend( {
+  var FoodTruck = Backbone.Collection.extend( {
 
     // Reference to this collection's model.
     model: WTF.FoodTruck
 
   });
+
+  // single FoodTruckCollection instance
+  WTF.FoodTrucks = new FoodTruck();
 
 })();
 
@@ -46,13 +55,16 @@ WTF.Comment = (function() {
 })();
 
 
-WTF.CommentCollection = (function() {
+(function() {
 
-  return Backbone.Collection.extend( {
+  var Comments = Backbone.Collection.extend( {
 
     // Reference to this collection's model.
     model: WTF.Comment
 
   });
+
+  // single FoodTruckCollection instance
+  WTF.Comments = new Comments();
 
 })();

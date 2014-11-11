@@ -2,46 +2,68 @@ var WTF = WTF || {};
 
 WTF.MapView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
 
   var mapOptions = {
-    center: { lat: 49.2, lng: -123.1},
-    zoom: 11,
+    center: { lat: 49.256, lng: -123.1},
+    zoom: 13,
     disableDefaultUI: true
   };
 
-  // display map on the div with id map-canvas
   var map;
-  var ctaLayer;
-
+  //var ctaLayer;
   var loadMarkers = function() {
-    ctaLayer = new google.maps.KmlLayer({
-      url: 'http://napontaratan.com/WheresTheFood/street_food_vendors.kml'
-    });
-      // parse food truck locations from KML file to a layer and add it to map
-    ctaLayer.setMap(map);
+    // ctaLayer = new google.maps.KmlLayer({
+    //   url: 'http://napontaratan.com/WheresTheFood/street_food_vendors.kml'
+    // });
+    //   // parse food truck locations from KML file to a layer and add it to map
+    // ctaLayer.setMap(map);
 
-    // add custom click handler for marker because we are using google api
-    // if it's our own created html element, we will just add it to backbone events
-    google.maps.event.addListener(ctaLayer, 'click',  function(kmlEvent) {
-      var data = kmlEvent.featureData;
-      var foodtruck = WTF.Utility.getFoodTruck(data.id) || new WTF.FoodTruck();
-      var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
-      data.infoWindowHtml = foodTruckPopUpView.template;
-    });
+    // // add custom click handler for marker because we are using google api
+    // // if it's our own created html element, we will just add it to backbone events
+    // google.maps.event.addListener(ctaLayer, 'click',  function(kmlEvent) {
+    //   var data = kmlEvent.featureData;
+    //   // var foodtruck = WTF.Utility.getFoodTruck(data.id) || new WTF.FoodTruck();
+    //   var foodtruck = WTF.FoodTrucks.get(data.id) || new WTF.FoodTruck();
+    //   var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
+    //   data.infoWindowHtml = foodTruckPopUpView.template;
+    // });
+    var marker;
+    for(var i = 0; i < WTF.FoodTrucks.length; i++) {
+      var current = WTF.FoodTrucks.at(i);
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(current.get('lat'), current.get('lon')),
+        title: current.get('name'),
+        id: current.get('id'),
+        index: i,
+        map: map,
+      });
+
+      // closure
+      (function(marker){
+        google.maps.event.addListener(marker, 'click',  function() {
+          var foodtruck = WTF.FoodTrucks.get(marker.id) || new WTF.FoodTruck();
+          var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
+          var infoWindow = new google.maps.InfoWindow({
+            content: foodTruckPopUpView.template
+          });
+          infoWindow.open(map,marker);
+        });
+      })(marker);
+    }
   };
-
-  // event handler for toggling side bar
-  $('#hamburger').on('click', function() {
-    $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
-    $('body').toggleClass('wtf-left');
-  });
 
   return Backbone.View.extend({
 
     initialize: function() {
       console.debug('map view init');
       this.render();
+
+      // event handler for toggling side bar
+      $('#hamburger').on('click', function() {
+        $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
+        $('body').toggleClass('wtf-left');
+      });
     },
 
     template: _.template($('#map-template').html()),
@@ -63,10 +85,15 @@ WTF.MapView = (function() {
     },
 
     clearMarkers: function() {
-      if(ctaLayer) {
-        ctaLayer.setMap(null);
-      }
-    }
+      // if(ctaLayer) {
+      //   ctaLayer.setMap(null);
+      // }
+    },
+
+    resetNavMenu: function() {
+      $('body').removeClass('wtf-left');
+      $('.wtf-side-panel-left').removeClass('wtf-side-panel-open');
+    },
 
   });
 
@@ -74,7 +101,7 @@ WTF.MapView = (function() {
 
 WTF.LoginView = (function() {
 
-  var server = WTF.Server.getInstance();
+  var server = WTF.Server;
 
   var userLoginCallback = function(userObject) {
     if(userObject) { // if login is successful (userObject is not null)
@@ -130,4 +157,3 @@ WTF.FoodTruckPopUpView = (function() {
 
   });
 })();
-

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
+
     <!-- DataTables Plugin-->
     <link rel="stylesheet" type="text/css" href="jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.js"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
@@ -17,13 +18,12 @@
   </head>
   <body>
 
-    <button id="hamburger"></button>
     <div class="app-container"></div>
 
     <!-- <script type="text/javascript" src="app.js" defer></script> -->
+    <script type="text/javascript" src="js/Models.js" defer></script>
     <script type="text/javascript" src="js/Utility.js" defer></script>
     <script type="text/javascript" src="js/Server.js" defer></script>
-    <script type="text/javascript" src="js/FoodTruck.js" defer></script>
     <script type="text/javascript" src="js/FoodTruckPageView.js" defer></script>
     <script type="text/javascript" src="js/MainPageView.js" defer></script>
     <script type="text/javascript" src="js/Router.js" defer></script>
@@ -40,8 +40,48 @@
     </script>
 
     <script type="text/template" id="map-template">
+        <button id="hamburger"><img src="images/btn-nav.png"/></button>
         <div id="side-panel" class="wtf-side-panel-left">
           <table id="data-table"></table>
+          <div id="filter-options">
+            <ul>
+            Filter by:
+              <li>
+                <input id="no-filter" type="radio" name="filters" checked/>
+                <label>None</label>
+              </li>
+              <li>
+                <input id="favourited" type="radio" name="filters"/>
+                <label>Favourited</label>
+              </li>
+              <li>
+                <input id="hasMemo" type="radio" name="filters"/>
+                <label>Has Memo</label>
+              </li>
+              <li>
+                <input id="hasRating" type="radio" name="filters"/>
+                <label>Has Rating</label>
+              </li>
+            <ul>
+          </div>
+
+          <div id="order-options">
+            <ul>
+            Order by:
+              <li>
+                <input id="alphabet" type="radio" name="ordering" checked/>
+                <label>A - Z</label>
+              </li>
+              <li>
+                <input id="rating" type="radio" name="ordering"/>
+                <label>Rating</label>
+              </li>
+              <li>
+                <input id="hasMemo" type="radio" name="ordering"/>
+                <label>Distance</label>
+              </li>
+            <ul>
+          </div>
         </div>
         <div id="map-canvas"></div>
         <div id="user-label"></div>
