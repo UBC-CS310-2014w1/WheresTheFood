@@ -1,5 +1,4 @@
 var WTF = WTF || {};
-
 WTF.FoodTruck = (function() {
 
   return Backbone.Model.extend({
@@ -25,15 +24,35 @@ WTF.FoodTruck = (function() {
 
 (function() {
 
-  var FoodTruck = Backbone.Collection.extend( {
+  var populateFoodTrucks = function() {
+    console.debug('populating foodtruck');
+    var foodtruckModels = WTF.Server.getFoodTrucks();
+    for(var index = 0, len = foodtruckModels.length; index < len; index++) {
+      this.add(new WTF.FoodTruck(foodtruckModels[index]));
+    }
+  };
+
+  var FoodTrucks = Backbone.Collection.extend({
 
     // Reference to this collection's model.
-    model: WTF.FoodTruck
+    model: WTF.FoodTruck,
+
+    initialize: function() {
+      console.debug('setup foodtruck collection');
+      this.listenTo(WTF.Server, 'change:parsed', populateFoodTrucks.bind(this));
+    },
+
+    getHasMemo: function() {
+      return _.filter(this.models, function(model) {
+        var memo = model.get('memo');
+        return memo !== '';
+      });
+    }
 
   });
 
-  // single FoodTruckCollection instance
-  WTF.FoodTrucks = new FoodTruck();
+  WTF.FoodTrucks = new FoodTrucks();
+
 
 })();
 

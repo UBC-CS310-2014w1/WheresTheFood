@@ -23,6 +23,11 @@ html, body, .app-container{
   	left: 0;
 }
 
+body[data-name='map'] > .app-container > div {
+	height: 100%;
+	width: 100%;
+}
+
 button {
 	outline: none;
 }
@@ -344,4 +349,3 @@ ul > span {
 	position: absolute;
 	right: 5px;
 }
-

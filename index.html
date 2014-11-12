@@ -20,10 +20,8 @@
 
     <div class="app-container"></div>
 
-    <!-- <script type="text/javascript" src="app.js" defer></script> -->
-    <script type="text/javascript" src="js/Models.js" defer></script>
-    <script type="text/javascript" src="js/Utility.js" defer></script>
     <script type="text/javascript" src="js/Server.js" defer></script>
+    <script type="text/javascript" src="js/Models.js" defer></script>
     <script type="text/javascript" src="js/FoodTruckPageView.js" defer></script>
     <script type="text/javascript" src="js/MainPageView.js" defer></script>
     <script type="text/javascript" src="js/Router.js" defer></script>
@@ -42,7 +40,15 @@
     <script type="text/template" id="map-template">
         <button id="hamburger"><img src="images/btn-nav.png"/></button>
         <div id="side-panel" class="wtf-side-panel-left">
-          <table id="data-table"></table>
+          <table id="data-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+          </table>
           <div id="filter-options">
             <ul>
             Filter by:
