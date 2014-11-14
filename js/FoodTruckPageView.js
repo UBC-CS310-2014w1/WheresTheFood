@@ -101,11 +101,13 @@ WTF.MemoView = (function() {
     },
 
     resetMemo: function(){
-		  var confirmDelete = window.confirm("are you sure about this?");
-    	if (confirmDelete) {
+
+		var confirmDelete = window.confirm("are you sure about this?");
+    if (confirmDelete) {
         $textBox.val('');
         server.pushUserMemo(foodtruck.get('id'), $textBox.val());
-    	}
+    }
+
     }
 
   });
@@ -190,6 +192,7 @@ return Backbone.View.extend({
       $("#favourited-icon").css('opacity', 1);
     }
     server.pushUserFavourite(foodtruck.get('id'), foodtruck.fav);
+
    },
 
   });
