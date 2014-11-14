@@ -108,12 +108,9 @@ WTF.AppRouter = (function() {
         populateListView();
       });
 
-      var loggedIn = (server.getUser())? true: false;
-      if(!loggedIn)
-        this.navigate("login", true);
-      else {
-        var self = this;
-        $('#user-label').text(server.getUser().facebook.displayName)
+      var self = this;
+
+      $('#user-label').text(server.getUser().facebook.displayName)
         .css("cursor","pointer")
         .hover(function() {
           $('#user-label').text('Logout');
@@ -121,12 +118,16 @@ WTF.AppRouter = (function() {
           $('#user-label').text(server.getUser().facebook.displayName);
         })
         .click(function () {
-          console.log('logout');
+          // console.log('logout');
           server.logout();
           mapView.resetNavMenu();
+          $('#user-label').text('Hello!');
           self.navigate("login", true);
         });
-      }
+        
+      var loggedIn = (server.getUser())? true: false;
+      if(!loggedIn)
+        this.navigate("login", true);
     },
 
     foodtruckDetails: function(id) {
