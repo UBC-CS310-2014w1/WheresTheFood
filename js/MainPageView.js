@@ -31,6 +31,9 @@ WTF.MapView = (function() {
     var marker;
     for(var i = 0; i < WTF.FoodTrucks.length; i++) {
       var current = WTF.FoodTrucks.at(i);
+
+      checkMarkerOnGG(current);
+
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(current.get('lat'), current.get('lon')),
         title: current.get('name'),
@@ -52,6 +55,17 @@ WTF.MapView = (function() {
       })(marker);
     }
   };
+
+  var checkMarkerOnGG = function(foodtruck_i) {
+
+    // Using nearby search to search for specific foodtruck
+    var request = {
+    location: mapOptions.center,
+    radius: 500,
+    query: foodtruck_i.get('name')
+  };
+
+};
 
   return Backbone.View.extend({
 
