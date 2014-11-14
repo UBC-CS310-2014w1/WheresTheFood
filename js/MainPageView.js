@@ -57,6 +57,12 @@ WTF.MapView = (function() {
   };
 
   var checkMarkerOnGG = function(foodtruck_i) {
+    var vancouver = new google.maps.LatLng(49.261226, -123.113927);
+
+    var Map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: vancouver,
+    zoom: 15
+  });
 
     // Using nearby search to search for specific foodtruck
     var request = {
@@ -64,6 +70,18 @@ WTF.MapView = (function() {
     radius: 500,
     query: foodtruck_i.get('name')
   };
+
+    var service = new google.maps.places.PlacesService(Map);
+    service.textSearch(request, callback);
+}
+
+    function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+
+    }
+
+    }
 
 };
 
