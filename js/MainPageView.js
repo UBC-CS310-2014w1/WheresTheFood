@@ -31,9 +31,6 @@ WTF.MapView = (function() {
     var marker;
     for(var i = 0; i < WTF.FoodTrucks.length; i++) {
       var current = WTF.FoodTrucks.at(i);
-
-      checkMarkerOnGG(current);
-
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(current.get('lat'), current.get('lon')),
         title: current.get('name'),
@@ -45,6 +42,8 @@ WTF.MapView = (function() {
       // closure
       (function(marker){
         google.maps.event.addListener(marker, 'click',  function() {
+          console.debug('looping');
+          checkMarkerOnGG(current);
           var foodtruck = WTF.FoodTrucks.get(marker.id) || new WTF.FoodTruck();
           var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
           var infoWindow = new google.maps.InfoWindow({
@@ -59,31 +58,61 @@ WTF.MapView = (function() {
   var checkMarkerOnGG = function(foodtruck_i) {
     var vancouver = new google.maps.LatLng(49.261226, -123.113927);
 
-    var Map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: vancouver,
-    zoom: 15
-  });
-
     // Using nearby search to search for specific foodtruck
     var request = {
-    location: mapOptions.center,
+    location: vancouver,
     radius: 500,
     query: foodtruck_i.get('name')
   };
 
-    var service = new google.maps.places.PlacesService(Map);
-    service.textSearch(request, callback);
-}
+    var service = new google.maps.places.PlacesService(map);
+    // service.textSearch(request,callback(foodtruck_i));
 
-    function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    // method 1
+    service.textSearch(request, function(results, status) {
+      callback(results, status, foodtruck_i);
+    });
+
+    // method 2
 
 
-    }
-
-    }
 
 };
+
+    /*
+    * check the status of each foodtruck's response if it's valid
+    */
+    function callback(results, status, foodtruck_i) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    // don't loop over every result
+    // pick the best (just one) result
+    // and get opening hour for this best result
+    for (var i = 0; i < results.length; i++) {
+      if (results[i].name == foodtruck_i.get('name')) {
+        getOpenHour(result[i]);
+        return;
+      }
+    }
+  }
+}
+
+  function getOpenHour(ft){
+    // set the request to ft's id
+    var request = {
+      placeId: ft.place_id
+    };
+
+    var service = new google.maps.places.PlacesService(map);
+    service.getDetails(request, function(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        // We now have the operation hours in one week of the foodtruck
+        var OpenHourEachDay = place.opening_hours.weekday_text;
+        // debugger;
+        console.debug(OpenHourEachDay);
+      }
+    });
+
+  }
 
   return Backbone.View.extend({
 
