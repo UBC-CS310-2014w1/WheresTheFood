@@ -19,6 +19,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" defer></script>
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
+
+        <!-- For facebook sharing-->
+    <meta property="og:url"         content="https://vivid-torch-5902.firebaseapp.com/"/> 
+    <meta property="og:title"       content="Where's the Food?" />
+    <meta property="og:description" content="Find local food vendors in your local area."/> 
+    <!-- <meta property="og:image"       content="bg-overlay.jpg"/>  -->
   </head>
   <body>
 
@@ -147,6 +153,13 @@
           </div>
           <textarea rows="4" cols="50" id="commentsBox"></textarea>
           <button id="postComments" class="button">Post a comment</button>
+        </div>
+
+          <!-- Facebook share-->
+        <div id="fb-root">
+          <p class="shareHeading"> Share this FoodTruck with your friends on Facebook <p>
+          <div class="fb-share-button" data-href="https://vivid-torch-5902.firebaseapp.com/" data-layout="button">
+          </div>
         </div>
 
       </div>

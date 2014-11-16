@@ -13,6 +13,7 @@ WTF.FoodTruckPageView = (function() {
       new WTF.FavouriteView({model: this.model});
       new WTF.CommentsView({ model: this.model });
       new WTF.backButtonView({model: this.model});
+      new WTF.shareButtonView({model: this.model});
     },
 
     template: _.template($('#foodtruck-page-template').html()),
@@ -195,6 +196,39 @@ return Backbone.View.extend({
 
    },
 
+  });
+})();
+
+WTF.shareButtonView = (function(){
+  var id;
+  var server = WTF.Server;
+
+  return Backbone.View.extend({
+
+  initialize: function(){
+  id = server.getUser();
+  // fbAsyncInit();
+  console.debug(" initialize shareButtonView");
+  },
+
+  el:'#fb-root',
+
+  // fbAsyncInit: function() {
+  //   FB.init({
+  //     appId      : '785247768179914',
+  //     xfbml      : true,
+  //     version    : 'v2.1'
+  //   });
+  // },
+
+  callNext: function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  (document, 'script', 'facebook-jssdk')
   });
 })();
 
