@@ -17,7 +17,7 @@ WTF.MapView = (function() {
       server.logout();
       WTF.AppRouter.navigate("login", true);
     }, this));
-   };
+  };
 
   var mapOptions = {
     center: { lat: 49.256, lng: -123.1},
@@ -29,16 +29,20 @@ WTF.MapView = (function() {
 
   // sideBar
   var populateListView = function() {
+    $('#data-table').empty();
     for(var i = 0; i < WTF.FoodTrucks.length ; i++) {
       appendFoodTruck(i);
     }
-    initDataTable();
+    //if(!$.fn.DataTable.isDataTable('#data-table')) {
+      initDataTable();
+    //}
   };
 
   var appendFoodTruck = function(i) {
     $('#data-table').append(function() {
       var foodtruck = WTF.FoodTrucks.at(i);
-      if(foodtruck.get('name') != 'N/A')
+      // if(foodtruck.get('name') != 'N/A')
+      // TODO need to deal with N/A names
         return '<tr><td><a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +
                         foodtruck.get('name') + '</a></td>'+
@@ -59,6 +63,7 @@ WTF.MapView = (function() {
         "scrollY"   : 500,
         "scrollCollapse": true,
         "info"      : false,
+        "destroy": true // Destroy an exisiting table and create a new one
     });
   };
 
@@ -97,18 +102,19 @@ WTF.MapView = (function() {
   };
 
 
-    return Backbone.View.extend({
+  return Backbone.View.extend({
 
     initialize: function() {
       console.debug('map view init');
       this.render();
+      this.listenTo(WTF.FoodTrucks, 'all', drawMarkers);
     },
 
     template: _.template($('#map-template').html()),
 
     events: {
       'click #hamburger': 'toggleSideBar',
-      'click #hasMemo': 'filterHasMemo'
+      'click input[name="filters"]': 'filterMarkers',
     },
 
     render:function() {
@@ -117,8 +123,8 @@ WTF.MapView = (function() {
       setupUserLabel.bind(this)();
       map = new google.maps.Map($('#map-canvas').get(0),mapOptions);
       console.debug('foodtruck length', WTF.FoodTrucks.length);
-      drawMarkers();
       populateListView();
+      drawMarkers();
       return this;
     },
 
@@ -131,8 +137,11 @@ WTF.MapView = (function() {
       $('body').toggleClass('wtf-left');
     },
 
-    filterHasMemo: function() {
-      WTF.FoodTrucks.getHasMemo();
+    filterMarkers: function(e) {
+      var filterType = $(e.target).attr('id');
+      map = new google.maps.Map($('#map-canvas').get(0),mapOptions); // to clear the map
+      WTF.FoodTrucks.filterFoodTrucks(filterType);
+      populateListView();
     }
 
   });

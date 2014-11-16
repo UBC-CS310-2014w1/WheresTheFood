@@ -15,49 +15,40 @@ var WTF = WTF || {};
     currentUserRef = databaseRef.child('users').child(currentUser.uid);
   }
 
-  /*
-    FoodTruck data initialization
-  */
-  // temp array to hold parse foodtruck models to be made in foodtruck collection
-  var foodTrucks = [];
+  //FoodTruck data initialization
   var FoodTruckKey = 'FoodTrucks';
 
   // Use this function to fetch data from the dataset in Firebase.
   // (0) Do we have data persisited in sessionStorage?
   // (1) If we have, use that
   // (2) Otherwise use fetch from server, and persist in sessionStorage for use next time
-  var fetchDataset = function(callback) {
+  var fetchDataset = function() {
     if(sessionStorage.getItem(FoodTruckKey)) {
-      fetchDatasetFromStorage();
-      if(typeof callback === 'function') {
-        callback();
-      }
+      fetchDatasetFromStorage.call(this);
       console.debug('restore from sessionStorage');
     } else {
-      fetchDatasetFromServer(callback);
+      fetchDatasetFromServer.call(this);
       console.debug('get from server');
     }
 
   };
 
   var fetchDatasetFromStorage = function() {
-    var foodtruckArray = JSON.parse(sessionStorage.getItem(FoodTruckKey));
-     _.each(foodtruckArray, function(modelObject){
-       foodTrucks.push(modelObject);
-     });
+    var foodtrucks = JSON.parse(sessionStorage.getItem(FoodTruckKey));
+    this.set('parsedDataset', foodtrucks);
   };
 
-  var fetchDatasetFromServer = function(callback) {
+  var fetchDatasetFromServer = function() {
     // Attach an asynchronous callback to read the data at our dataset reference
     databaseRef.child('dataset').on('value', function(snapShot){
-        parseData(snapShot.val(), callback);
-      },function(errorObject){
+        parseData.call(this,snapShot.val());
+      }.bind(this),function(errorObject){
         console.log('The read failed: ' + errorObject.code);
         callback(null);
       });
   };
 
-  var parseData = function(items, callback){
+  var parseData = function(items) {
     var trucks = [];
     $.map(items, function(item){
       var modelObject = {};
@@ -73,24 +64,39 @@ var WTF = WTF || {};
        }
       });
       modelObject.invalid = false;
-      foodTrucks.push(modelObject);
+      trucks.push(modelObject);
      });
      // persist in sessionStorage
-     sessionStorage.setItem(FoodTruckKey, JSON.stringify(foodTrucks));
-     if(typeof callback === 'function') {
-       callback();
-     }
+     sessionStorage.setItem(FoodTruckKey, JSON.stringify(trucks));
+     this.set('parsedDataset', trucks);
    };
+
+  var fetchUser = function() {
+    var propArr = ['favourites', 'memos', 'name', 'ratings'];
+    for(var i = 0; i < propArr.length; i++) {
+      attachValueHandler.call(this, propArr[i]);
+    }
+  };
+
+  var attachValueHandler = function(property) {
+    // currentUserRef is null if we haven't logged in
+    if(currentUserRef) {
+      currentUserRef.child(property).on('value', function(snapshot){
+        this.set('parsedUser', property,snapshot.val());
+      }.bind(this), function(errorObject) {
+         console.log('The read failed: '+ errorObject.code);
+      });
+    }
+  };
 
   // JS-like singleton
   function init() {
 
      var self_model =  Backbone.Model.extend({
 
-      initialize: function() {
-        // things to do at the start of our controller
-        // load foodtruck and persist in sessionStorage
-        // load user data and persist in sessionStorage
+      defaults: {
+        parsedDataset: '',
+        parsedUser: ''
       },
 
       login: function(callback) {
@@ -117,9 +123,11 @@ var WTF = WTF || {};
       },
 
       fetchDataset: function() {
-        fetchDataset(function() {
-          this.set('parsed', true);
-        }.bind(this));
+        fetchDataset.call(this);
+      },
+
+      fetchUser: function() {
+        fetchUser.call(this);
       },
 
       getFoodTrucks: function() { return foodTrucks; },
@@ -223,7 +231,7 @@ var WTF = WTF || {};
       }
 
         return instance;
-      }
+    }
 
   };
 
