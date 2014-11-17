@@ -1,6 +1,8 @@
 var WTF = WTF || {};
 
 (function() {
+  var instance = null;
+
   // Server: the data for our app will be stored at this firebase reference
   var databaseRef = new Firebase("https://vivid-torch-5902.firebaseio.com/");
   // current firebase user object
@@ -13,11 +15,88 @@ var WTF = WTF || {};
     currentUserRef = databaseRef.child('users').child(currentUser.uid);
   }
 
-  var instance = null;
+  //FoodTruck data initialization
+  var FoodTruckKey = 'FoodTrucks';
 
+  // Use this function to fetch data from the dataset in Firebase.
+  // (0) Do we have data persisited in sessionStorage?
+  // (1) If we have, use that
+  // (2) Otherwise use fetch from server, and persist in sessionStorage for use next time
+  var fetchDataset = function() {
+    if(sessionStorage.getItem(FoodTruckKey)) {
+      fetchDatasetFromStorage.call(this);
+      console.debug('restore from sessionStorage');
+    } else {
+      fetchDatasetFromServer.call(this);
+      console.debug('get from server');
+    }
+
+  };
+
+  var fetchDatasetFromStorage = function() {
+    var foodtrucks = JSON.parse(sessionStorage.getItem(FoodTruckKey));
+    this.set('parsedDataset', foodtrucks);
+  };
+
+  var fetchDatasetFromServer = function() {
+    // Attach an asynchronous callback to read the data at our dataset reference
+    databaseRef.child('dataset').on('value', function(snapShot){
+        parseData.call(this,snapShot.val());
+      }.bind(this),function(errorObject){
+        console.log('The read failed: ' + errorObject.code);
+        callback(null);
+      });
+  };
+
+  var parseData = function(items) {
+    var trucks = [];
+    $.map(items, function(item){
+      var modelObject = {};
+      $.map(item, function(val, key){
+       if(!val)
+         return;
+       if(key == 'description' || key == 'lat' || key == 'lon' || key == 'location')
+         modelObject[key] = val;
+       if(key == 'key')
+         modelObject.id = val;
+       if(key == 'business_name') {
+         modelObject.name = val;
+       }
+      });
+      modelObject.invalid = false;
+      trucks.push(modelObject);
+     });
+     this.set('parsedDataset', trucks);
+   };
+
+  var fetchUser = function() {
+    var propArr = ['favourites', 'memos', 'name', 'ratings'];
+    for(var i = 0; i < propArr.length; i++) {
+      attachValueHandler.call(this, propArr[i]);
+    }
+  };
+
+  var attachValueHandler = function(property) {
+    // currentUserRef is null if we haven't logged in
+    if(currentUserRef) {
+      currentUserRef.child(property).on('value', function(snapshot){
+        this.set('parsedUser', {silent: true}); // force update
+        this.set('parsedUser', property,snapshot.val());
+      }.bind(this), function(errorObject) {
+         console.log('The read failed: '+ errorObject.code);
+      });
+    }
+  };
+
+  // JS-like singleton
   function init() {
 
      var self_model =  Backbone.Model.extend({
+
+      defaults: {
+        parsedDataset: '',
+        parsedUser: ''
+      },
 
       login: function(callback) {
         databaseRef.authWithOAuthPopup("facebook", function(error, authData) {
@@ -41,6 +120,16 @@ var WTF = WTF || {};
         currentUser = null;
         currentUserRef = null;
       },
+
+      fetchDataset: function() {
+        fetchDataset.call(this);
+      },
+
+      fetchUser: function() {
+        fetchUser.call(this);
+      },
+
+      getFoodTrucks: function() { return foodTrucks; },
 
       // ===== GETTERS =====
       getUser: function() { return currentUser; },
@@ -124,18 +213,6 @@ var WTF = WTF || {};
 
       removeUserComments: function(foodtruckID, commentId) {
         commentsRef.child(foodtruckID).child(commentId).remove();
-      },
-
-      // Use this function to fetch data from the dataset in Firebase.
-      // It is called in UIController.js with parseData
-      fetchDataset: function(callback) {
-        // Attach an asynchronous callback to read the data at our dataset reference
-        databaseRef.child('dataset').on('value', function(snapShot){
-            if(callback) callback(snapShot.val());
-          },function(errorObject){
-            console.log('The read failed: ' + errorObject.code);
-            callback(null);
-          });
       }
 
     });
@@ -143,8 +220,7 @@ var WTF = WTF || {};
     return new self_model();
   }
 
-
-   var Server =  {
+  var Server =  {
     // Get the Singleton instance if one exists
     // or create one if it doesn't
     getInstance: function () {
@@ -153,7 +229,7 @@ var WTF = WTF || {};
         instance = init();
       }
 
-      return instance;
+        return instance;
     }
 
   };

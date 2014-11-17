@@ -27,13 +27,10 @@
     <!-- <meta property="og:image"       content="bg-overlay.jpg"/>  -->
   </head>
   <body>
-
     <div class="app-container"></div>
-    <div id="user-label"></div>
-    <!-- <script type="text/javascript" src="app.js" defer></script> -->
-    <script type="text/javascript" src="js/Models.js" defer></script>
-    <script type="text/javascript" src="js/Utility.js" defer></script>
+
     <script type="text/javascript" src="js/Server.js" defer></script>
+    <script type="text/javascript" src="js/Models.js" defer></script>
     <script type="text/javascript" src="js/FoodTruckPageView.js" defer></script>
     <script type="text/javascript" src="js/MainPageView.js" defer></script>
     <script type="text/javascript" src="js/Router.js" defer></script>
@@ -52,7 +49,17 @@
     <script type="text/template" id="map-template">
         <button id="hamburger"><img src="images/btn-nav.png"/></button>
         <div id="side-panel" class="wtf-side-panel-left">
-          <table id="data-table"></table>
+          <table id="data-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
           <div id="filter-options">
             <ul>
             Filter by:
@@ -61,15 +68,15 @@
                 <label>None</label>
               </li>
               <li>
-                <input id="favourited" type="radio" name="filters"/>
+                <input id="favourited" data-filter="isFavourited" type="radio" name="filters"/>
                 <label>Favourited</label>
               </li>
               <li>
-                <input id="hasMemo" type="radio" name="filters"/>
+                <input id="hasMemo" data-filter="memo" type="radio" name="filters"/>
                 <label>Has Memo</label>
               </li>
               <li>
-                <input id="hasRating" type="radio" name="filters"/>
+                <input id="hasRating" data-filter="rating" type="radio" name="filters"/>
                 <label>Has Rating</label>
               </li>
             <ul>
@@ -79,15 +86,15 @@
             <ul>
             Order by:
               <li>
-                <input id="alphabet" type="radio" name="ordering" checked/>
+                <input id="orderAlphabet" type="radio" name="ordering" checked/>
                 <label>A - Z</label>
               </li>
               <li>
-                <input id="rating" type="radio" name="ordering"/>
+                <input id="orderRating" type="radio" name="ordering"/>
                 <label>Rating</label>
               </li>
               <li>
-                <input id="hasMemo" type="radio" name="ordering"/>
+                <input id="orderDistance" type="radio" name="ordering"/>
                 <label>Distance</label>
               </li>
             <ul>
