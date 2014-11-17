@@ -57,7 +57,7 @@ WTF.MapView = (function() {
     var dataTable = $('#data-table').DataTable({
         "paging"    : false,
         "columnDefs": [{ "orderable": false, "targets": 0 }],
-        "columns"   : [null,
+        "columns"   : [{'visible' : true},
                        {'visible' : false},
                        {'visible' : false}],
         "order"     : [[0, "asc"]],
