@@ -1,7 +1,7 @@
 WTF.AppRouter = (function() {
 
   var server = WTF.Server;
-  // fetch datasets and users for our SPA instance
+  // // fetch datasets and users for our SPA instance
   server.fetchDataset();
   server.fetchUser();
 
@@ -21,7 +21,7 @@ WTF.AppRouter = (function() {
     },
 
     login: function() {
-      $('body').attr('data-name','login');
+      $('body').attr('data-name','login').removeClass();
       console.debug('router login');
       if(server.getUser()) {
         this.navigate("map", true);

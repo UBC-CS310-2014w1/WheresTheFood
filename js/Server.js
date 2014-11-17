@@ -66,8 +66,6 @@ var WTF = WTF || {};
       modelObject.invalid = false;
       trucks.push(modelObject);
      });
-     // persist in sessionStorage
-     sessionStorage.setItem(FoodTruckKey, JSON.stringify(trucks));
      this.set('parsedDataset', trucks);
    };
 
@@ -82,6 +80,7 @@ var WTF = WTF || {};
     // currentUserRef is null if we haven't logged in
     if(currentUserRef) {
       currentUserRef.child(property).on('value', function(snapshot){
+        this.set('parsedUser', {silent: true}); // force update
         this.set('parsedUser', property,snapshot.val());
       }.bind(this), function(errorObject) {
          console.log('The read failed: '+ errorObject.code);

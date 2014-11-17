@@ -30,12 +30,10 @@ WTF.MapView = (function() {
   // sideBar
   var populateListView = function() {
     $('#data-table').empty();
-    for(var i = 0; i < WTF.FoodTrucks.length ; i++) {
+    for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       appendFoodTruck(i);
     }
-    //if(!$.fn.DataTable.isDataTable('#data-table')) {
       initDataTable();
-    //}
   };
 
   var appendFoodTruck = function(i) {
@@ -69,7 +67,7 @@ WTF.MapView = (function() {
 
   var drawMarkers = function() {
     var marker;
-    for(var i = 0; i < WTF.FoodTrucks.length; i++) {
+    for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       var current = WTF.FoodTrucks.at(i);
       // moved previous marker construction code in here
       // https://jslinterrors.com/dont-make-functions-within-a-loop
@@ -120,7 +118,7 @@ WTF.MapView = (function() {
     render:function() {
       this.$el.html(this.template());
       $('.app-container').html(this.$el);
-      setupUserLabel.bind(this)();
+      setupUserLabel.call(this);
       map = new google.maps.Map($('#map-canvas').get(0),mapOptions);
       console.debug('foodtruck length', WTF.FoodTrucks.length);
       populateListView();
@@ -138,7 +136,7 @@ WTF.MapView = (function() {
     },
 
     filterMarkers: function(e) {
-      var filterType = $(e.target).attr('id');
+      var filterType = $(e.target).data('filter');
       map = new google.maps.Map($('#map-canvas').get(0),mapOptions); // to clear the map
       WTF.FoodTrucks.filterFoodTrucks(filterType);
       populateListView();
@@ -154,6 +152,7 @@ WTF.LoginView = (function() {
 
   var userLoginCallback = function(userObject) {
     if(userObject) { // if login is successful (userObject is not null)
+      server.fetchUser();
       WTF.AppRouter.navigate("map", true);
       // push user info to server
       server.pushUsername(userObject.facebook.displayName);
