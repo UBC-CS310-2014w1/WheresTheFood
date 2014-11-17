@@ -7,13 +7,22 @@ WTF.FoodTruckPageView = (function() {
     initialize: function() {
       this.render();
 
+      callNext = function(d, s, id) {
+      console.log("THIS IS NUTS");
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk');
+    
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
       new WTF.FavouriteView({model: this.model});
       new WTF.CommentsView({ model: this.model });
       new WTF.backButtonView({model: this.model});
-      new WTF.shareButtonView({model: this.model});
+      // new WTF.shareButtonView({model: this.model});
     },
 
     template: _.template($('#foodtruck-page-template').html()),
@@ -221,14 +230,14 @@ WTF.shareButtonView = (function(){
   //   });
   // },
 
-  callNext: function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }
-  (document, 'script', 'facebook-jssdk')
+  // callNext: function(d, s, id) {
+  //   var js, fjs = d.getElementsByTagName(s)[0];
+  //   if (d.getElementById(id)) return;
+  //     js = d.createElement(s); js.id = id;
+  //     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.1";
+  //     fjs.parentNode.insertBefore(js, fjs);
+  //   }
+  // (document, 'script', 'facebook-jssdk')
   });
 })();
 
