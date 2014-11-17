@@ -39,21 +39,24 @@ WTF.MapView = (function() {
   var appendFoodTruck = function(i) {
     $('#data-table').append(function() {
       var foodtruck = WTF.FoodTrucks.at(i);
-      // if(foodtruck.get('name') != 'N/A')
-      // TODO need to deal with N/A names
+      var name = foodtruck.get('name');
+
+      if(foodtruck.get('name') == 'N/A')
+        name = foodtruck.get('description') + ' ' + foodtruck.get('id'); 
+  
         return '<tr><td><a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +
-                        foodtruck.get('name') + '</a></td>'+
-               '<td>' + foodtruck.get('description') + '</td>' +
-               '<td>' + foodtruck.get('location') + '</td>' + '</tr>';
+                        name + '</a></td>'+
+               '<td>' + foodtruck.get('rating') + '</td>' +
+               '<td>' + foodtruck.get('description') + '</td>' + 
+               '</tr>';
     });
   };
 
   var initDataTable = function() {
-    $('#data-table').DataTable({
+    var dataTable = $('#data-table').DataTable({
         "paging"    : false,
         "columnDefs": [{ "orderable": false, "targets": 0 }],
-
         "columns"   : [null,
                        {'visible' : false},
                        {'visible' : false}],
@@ -61,7 +64,19 @@ WTF.MapView = (function() {
         "scrollY"   : 500,
         "scrollCollapse": true,
         "info"      : false,
-        "destroy": true // Destroy an exisiting table and create a new one
+        "destroy"   : true 
+    });
+
+    $('#orderRating').click(function() {
+      dataTable.order([1,'desc']);
+      dataTable.column(1).visible(true);
+      dataTable.draw();
+    });
+
+    $('#orderAlphabet').click(function() {
+      dataTable.order([0,'asc']);
+      dataTable.column(1).visible(false);
+      dataTable.draw();
     });
   };
 
