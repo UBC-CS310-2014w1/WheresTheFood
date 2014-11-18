@@ -12,7 +12,8 @@ WTF.MapView = (function() {
     .hover(function() {
       $('#user-label').text('Logout');
     }, function() {
-      $('#user-label').text(server.getUser().facebook.displayName);
+      if(server.getUser())
+        $('#user-label').text(server.getUser().facebook.displayName);
     })
     .click($.proxy(function () { // proxy allows 'this' context change
       console.log('logout');
