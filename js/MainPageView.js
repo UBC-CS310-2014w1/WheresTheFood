@@ -100,17 +100,29 @@ WTF.MapView = (function() {
       placeId: ft.place_id
     };
 
+
+
     var service = new google.maps.places.PlacesService(map);
     service.getDetails(request, function(place, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         // We now have the operation hours in one week of the foodtruck
-        var OpenHourEachDay = place.opening_hours.weekday_text;
+
+      var OpenHourEachDay = "Not Available";
+      if (place.hasOwnProperty("opening_hours")) {
+       OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+     }
+
         foodtruck_i.set('openHours', OpenHourEachDay);
         // debugger;
         console.debug(OpenHourEachDay);
       }
     });
+  }
 
+  // Get The current weekday
+  function checkDay() {
+    var day = new Date();
+    return day.getDay();
   }
 
   return Backbone.View.extend({
