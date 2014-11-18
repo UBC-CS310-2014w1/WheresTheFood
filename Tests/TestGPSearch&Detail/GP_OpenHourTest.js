@@ -13,7 +13,9 @@ function initialize() {
   var request = {
     location: vancouver,
     radius: 500,
-    query: 'Guanaco Truck'
+    //name: 'Taser Sandwiches',
+    query: 'Mogu'
+    //type: ['store']
   };
 
 
@@ -34,6 +36,10 @@ function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
+      // if (results[i].name = 'Mogu') {
+      // createMarker(results[i]);
+      // break;
+      //  }
     }
   }
 }
@@ -69,12 +75,14 @@ function callback(results, status) {
         position: place2.geometry.location
       });
 
-      var OpenDays = place2.opening_hours.weekday_text;
 
-
+     var OpenDays = "";
+     if (place2.hasOwnProperty("opening_hours")) {
+       OpenDays = place2.opening_hours.weekday_text[checkDay()];
+     } else { OpenDays = place2.name;}
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
+        infowindow.setContent(OpenDays);
         infowindow.open(map, this);
 
       });
@@ -82,6 +90,11 @@ function callback(results, status) {
     }
   });
 
+}
+
+function checkDay(){
+  var day = new Data();
+  return day.getDay();
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

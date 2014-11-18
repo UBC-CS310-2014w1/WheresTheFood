@@ -8,12 +8,11 @@ function initialize() {
     center: vancouver,
     zoom: 15
   });
-  //
 
   var request = {
     location: vancouver,
-    radius: 500,
-    query: 'Guanaco Truck'
+    radius: 1000,
+    query: 'Taser Sandwiches'
   };
 
   infowindow = new google.maps.InfoWindow();
@@ -42,5 +41,6 @@ function createMarker(place) {
     infowindow.open(map, this);
   });
 }
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
