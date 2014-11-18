@@ -45,13 +45,13 @@ WTF.MapView = (function() {
       var name = foodtruck.get('name');
 
       if(foodtruck.get('name') == 'N/A')
-        name = foodtruck.get('description') + ' ' + foodtruck.get('id'); 
-  
+        name = foodtruck.get('description') + ' ' + foodtruck.get('id');
+
         return '<tr><td>'+ generateIcon() +'<a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +
                         name + '</a></td>'+
                '<td>' + foodtruck.get('rating') + '</td>' +
-               '<td>' + foodtruck.get('description') + '</td>' + 
+               '<td>' + foodtruck.get('description') + '</td>' +
                '</tr>';
     });
   };
@@ -74,7 +74,7 @@ WTF.MapView = (function() {
         "scrollY"   : 500,
         "scrollCollapse": true,
         "info"      : false,
-        "destroy"   : true 
+        "destroy"   : true
     });
 
     // reset radio button to be A - Z ordering
@@ -89,13 +89,13 @@ WTF.MapView = (function() {
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
         dataTable.order([1,'desc']);
         dataTable.column(1).visible(true);
-        dataTable.draw();   
+        dataTable.draw();
       });
 
       $('#orderAlphabet').click(function() {
         if(option_selected == 'A - Z') return;
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
-        dataTable.order([0,'asc']);  
+        dataTable.order([0,'asc']);
         dataTable.column(1).visible(false);
         dataTable.draw();
       });
@@ -129,7 +129,7 @@ WTF.MapView = (function() {
       index: i,
       map: map,
     });
-    
+
     // closure
     (function(marker){
       google.maps.event.addListener(marker, 'click',  function() {
@@ -148,7 +148,7 @@ WTF.MapView = (function() {
   var usersearchLocation = function(){
     //********* Making link b/t search box ul element and code
     var userInput = $('#user-input').get(0);
- 
+
     var options = {
      //types: ['establishment']
     };
@@ -163,12 +163,12 @@ WTF.MapView = (function() {
 
   var delay = 0;
   var fetchHours = function(foodtruck_i) {
-    
+    // console.log('hello there');
     if(foodtruck_i.get('name')=='N/A') {
-      foodtruck_i.set('openHours', "Not Available"); 
+      foodtruck_i.set('openHours', "Not Available");
       return;
     }
-    
+
     var vancouver = new google.maps.LatLng(49.261226, -123.113927);
 
     var request = {
@@ -178,15 +178,15 @@ WTF.MapView = (function() {
     };
 
     var service = new google.maps.places.PlacesService(map);
-    
+
     service.textSearch(request, function(results, status) {
-      
+
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
 
           if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
           (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
-              
+
               console.log('getting openhour for foodtruck which is ' + JSON.stringify(foodtruck_i));
               var ft = results[i];
 
@@ -195,16 +195,16 @@ WTF.MapView = (function() {
               };
 
               var service = new google.maps.places.PlacesService(map);
-              
+
               service.getDetails(request, function(place, status) {
 
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    
+
                     var OpenHourEachDay = "Not Available";
-                    
-                    if (place.hasOwnProperty("opening_hours")) 
+
+                    if (place.hasOwnProperty("opening_hours"))
                       OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
-                    
+
                     console.debug('SUCCESS ' + OpenHourEachDay + JSON.stringify(foodtruck_i));
                     foodtruck_i.set('openHours', OpenHourEachDay);
                 } else { // try again after a set delay
@@ -215,7 +215,7 @@ WTF.MapView = (function() {
                       fetchHours(foodtruck_i);
                     }, delay);
                 }
-              
+
               }, foodtruck_i);
           break;
           }
