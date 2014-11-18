@@ -83,14 +83,23 @@ WTF.MapView = (function() {
     // pick the best (just one) result
     // and get opening hour for this best result
     for (var i = 0; i < results.length; i++) {
-      if ((results[i].geometry.location.lat() == foodtruck_i.get('lat'))
-        && (results[i].geometry.location.lng() == foodtruck_i.get('lon'))) {
-        getOpenHour(result[i], foodtruck_i);
-        return;
-      }
+      // if ((results[i].geometry.location.lat() == foodtruck_i.get('lat'))
+      //   && (results[i].geometry.location.lng() == foodtruck_i.get('lon'))) {
+      //   getOpenHour(result[i], foodtruck_i);
+      //   return;
+      // }
+      if (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase())) {
+       createMarker(results[i]);
+       break;
+        }
     }
     foodtruck_i.set('openHours', "Not Available");
   }
+}
+
+  // check substring now
+  function checkSubString(mainOne, needCheck) {
+  return mainOne.indexOf(needCheck) >= 0;
 }
 
   function getOpenHour(ft, foodtruck_i){
@@ -99,13 +108,12 @@ WTF.MapView = (function() {
       placeId: ft.place_id
     };
 
-
-
     var service = new google.maps.places.PlacesService(map);
     service.getDetails(request, function(place, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         // We now have the operation hours in one week of the foodtruck
 
+      // in case, the placeresult doesn't have opening_hour attribute.
       var OpenHourEachDay = "Not Available";
       if (place.hasOwnProperty("opening_hours")) {
        OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];

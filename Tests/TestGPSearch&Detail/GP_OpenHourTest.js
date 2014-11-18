@@ -14,7 +14,7 @@ function initialize() {
     location: vancouver,
     radius: 500,
     //name: 'Taser Sandwiches',
-    query: 'Mogu'
+    query: 'Falafel Plus'
     //type: ['store']
   };
 
@@ -35,13 +35,18 @@ function initialize() {
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-      // if (results[i].name = 'Mogu') {
-      // createMarker(results[i]);
-      // break;
-      //  }
+      //createMarker(results[i]);
+       if (checkSubString(results[i].name.toLowerCase(), 'Falafel Plus'.toLowerCase())) {
+       createMarker(results[i]);
+       break;
+        }
     }
   }
+}
+
+// check substring now
+function checkSubString(mainOne, needCheck) {
+  return mainOne.indexOf(needCheck) >= 0;
 }
 
 // function createMarker(place) {
@@ -76,13 +81,13 @@ function callback(results, status) {
       });
 
 
-     var OpenDays = "";
+     var OpenDays = "Not Available";
      if (place2.hasOwnProperty("opening_hours")) {
        OpenDays = place2.opening_hours.weekday_text[checkDay()];
-     } else { OpenDays = place2.name;}
+     }
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(OpenDays);
+        infowindow.setContent("This place is: " + place2.name + "Today we open: " +OpenDays);
         infowindow.open(map, this);
 
       });
@@ -93,7 +98,7 @@ function callback(results, status) {
 }
 
 function checkDay(){
-  var day = new Data();
+  var day = new Date();
   return day.getDay();
 }
 
