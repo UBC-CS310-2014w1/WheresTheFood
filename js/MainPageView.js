@@ -47,13 +47,18 @@ WTF.MapView = (function() {
       if(foodtruck.get('name') == 'N/A')
         name = foodtruck.get('description') + ' ' + foodtruck.get('id'); 
   
-        return '<tr><td><a href="#foodtruck/' +
+        return '<tr><td>'+ generateIcon() +'<a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +
                         name + '</a></td>'+
                '<td>' + foodtruck.get('rating') + '</td>' +
                '<td>' + foodtruck.get('description') + '</td>' + 
                '</tr>';
     });
+  };
+
+  var generateIcon = function() {
+    var random = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
+    return '<img src="images/foodtruck_icon'+random+'.png" style="margin-right:15px;"/>';
   };
 
   var initDataTable = function() {
