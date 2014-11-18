@@ -31,6 +31,7 @@ WTF.MapView = (function() {
     var marker;
     for(var i = 0; i < WTF.FoodTrucks.length; i++) {
       var current = WTF.FoodTrucks.at(i);
+      checkMarkerOnGG(current);
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(current.get('lat'), current.get('lon')),
         title: current.get('name'),
@@ -43,7 +44,6 @@ WTF.MapView = (function() {
       (function(marker){
         google.maps.event.addListener(marker, 'click',  function() {
           console.debug('looping');
-          checkMarkerOnGG(current);
           var foodtruck = WTF.FoodTrucks.get(marker.id) || new WTF.FoodTruck();
           var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
           var infoWindow = new google.maps.InfoWindow({
@@ -88,12 +88,13 @@ WTF.MapView = (function() {
       //   getOpenHour(result[i], foodtruck_i);
       //   return;
       // }
-      if (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase())) {
-       createMarker(results[i]);
+      if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
+        (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
+       getOpenHour(results[i]);
        break;
         }
     }
-    foodtruck_i.set('openHours', "Not Available");
+    //foodtruck_i.set('openHours', "Not Available");
   }
 }
 
@@ -102,6 +103,7 @@ WTF.MapView = (function() {
   return mainOne.indexOf(needCheck) >= 0;
 }
 
+  // Retrieve operation hour of that foodtruck
   function getOpenHour(ft, foodtruck_i){
     // set the request to ft's id
     var request = {
@@ -109,8 +111,12 @@ WTF.MapView = (function() {
     };
 
     var service = new google.maps.places.PlacesService(map);
-    service.getDetails(request, function(place, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
+    service.getDetails(request, callback2, foodtruck_i);
+  }
+
+    // last callback
+    function callback2(place, status, foodtruck_i) {
+     if (status == google.maps.places.PlacesServiceStatus.OK) {
         // We now have the operation hours in one week of the foodtruck
 
       // in case, the placeresult doesn't have opening_hour attribute.
@@ -123,8 +129,10 @@ WTF.MapView = (function() {
         // debugger;
         console.debug(OpenHourEachDay);
       }
-    });
-  }
+    }
+
+
+
 
   // Get The current weekday
   function checkDay() {
