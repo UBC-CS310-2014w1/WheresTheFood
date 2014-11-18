@@ -101,7 +101,7 @@ WTF.MapView = (function() {
     var marker;
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       var current = WTF.FoodTrucks.at(i);
-
+   // check open hours here
     if (current.get('name') != 'N/A') {
       checkMarkerOnGG(current);
     } else {current.set('openHours', "Not Available");}
@@ -109,6 +109,7 @@ WTF.MapView = (function() {
       // moved previous marker construction code in here
       // https://jslinterrors.com/dont-make-functions-within-a-loop
       makeMarker(current, i);
+
     }
   };
 
@@ -158,70 +159,63 @@ WTF.MapView = (function() {
 
 var delay = 0;
   var checkMarkerOnGG = function(foodtruck_i) {
-
-    var vancouver = new google.maps.LatLng(49.261226, -123.113927);
+  var vancouver = new google.maps.LatLng(49.261226, -123.113927);
 
     var request = {
       location: vancouver,
       radius: 500,
       query: foodtruck_i.get('name')
     };
-
     var service = new google.maps.places.PlacesService(map);
 
     service.textSearch(request, function(results, status) {
+       callback(results, status, foodtruck_i); });
 
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
+  };
 
-          if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
-          (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
-
-              console.log('getting openhour for foodtruck which is ' + JSON.stringify(foodtruck_i));
-              var ft = results[i];
-
-              var request = {
-                placeId: ft.place_id
-              };
-
-              var service = new google.maps.places.PlacesService(map);
-
-              service.getDetails(request, function(place, status) {
-
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-                    var OpenHourEachDay = "Not Available";
-
-                    if (place.hasOwnProperty("opening_hours"))
-                      OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
-
-                    console.debug('SUCCESS ' + OpenHourEachDay + JSON.stringify(foodtruck_i));
-                    foodtruck_i.set('openHours', OpenHourEachDay);
-
-                } else { // try again after a set delay
-                    delay += 1000;
-                    console.debug('status ' + status + ' trying truck ' + foodtruck_i.get('name') + ' again in ' + delay + ' ms');
-                    setTimeout(function() {
-                      console.log(foodtruck_i.get('name'));
-                      checkMarkerOnGG(foodtruck_i);
-                    }, delay);
-                }
-
-              }, foodtruck_i);
-          }
-          break;
+    /*
+    * check the status of each foodtruck's response if it's valid
+    */
+  function callback(results, status, foodtruck_i) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      if (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase())) {
+       getOpenHour(results[i], foodtruck_i);
+       break;
         }
-      } else foodtruck_i.set('openHours', "Not Available");
-  });
-};
+    }
+  } else {foodtruck_i.set('openHours', "Not Available");}
+}
 
   // check substring now
   function checkSubString(mainOne, needCheck) {
   return mainOne.indexOf(needCheck) >= 0;
 }
 
+  // last call to get openHours
+  function getOpenHour(ft, foodtruck_i){
+    // set the request to ft's id
+    var request = {
+      placeId: ft.place_id
+    };
 
+    var service = new google.maps.places.PlacesService(map);
+    service.getDetails(request, function(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        // We now have the operation hours in one week of the foodtruck
 
+      // in case, the placeresult doesn't have opening_hour attribute.
+      var OpenHourEachDay = "Not Available";
+      if (place.hasOwnProperty("opening_hours")) {
+       OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+     }
+
+        foodtruck_i.set('openHours', OpenHourEachDay);
+        // debugger;
+        console.debug(OpenHourEachDay);
+      } else {foodtruck_i.set('openHours', "Not Available");}
+    });
+  }
 
 
   // Get The current weekday
