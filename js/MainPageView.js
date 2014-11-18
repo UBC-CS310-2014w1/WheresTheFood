@@ -72,11 +72,6 @@ WTF.MapView = (function() {
     service.textSearch(request, function(results, status) {
       callback(results, status, foodtruck_i);
     });
-
-    // method 2
-
-
-
 };
 
     /*
@@ -89,14 +84,17 @@ WTF.MapView = (function() {
     // and get opening hour for this best result
     for (var i = 0; i < results.length; i++) {
       if (results[i].name == foodtruck_i.get('name')) {
-        getOpenHour(result[i]);
+        //console.log("Lat is: " + foodtruck_i.get('lat') + "Long is:  " + foodtruck_i.get(''))
+        getOpenHour(result[i], foodtruck_i);
         return;
+
       }
     }
+    foodtruck_i.set('openHours', na);
   }
 }
 
-  function getOpenHour(ft){
+  function getOpenHour(ft, foodtruck_i){
     // set the request to ft's id
     var request = {
       placeId: ft.place_id
@@ -107,6 +105,7 @@ WTF.MapView = (function() {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         // We now have the operation hours in one week of the foodtruck
         var OpenHourEachDay = place.opening_hours.weekday_text;
+        foodtruck_i.set('openHours', OpenHourEachDay);
         // debugger;
         console.debug(OpenHourEachDay);
       }
