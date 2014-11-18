@@ -132,6 +132,23 @@ WTF.MapView = (function() {
     })(marker);
   };
 
+  //usersearch Location
+  var usersearchLocation = function(){
+    //********* Making link b/t search box ul element and code
+    var userInput = $('#user-input').get(0);
+ 
+    var options = {
+     types: ['establishment']
+    };
+
+    var searchBox = new google.maps.places.Autocomplete(userInput, options);
+
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+      var places = searchBox.getPlaces();
+
+    });
+  };
+
 
   return Backbone.View.extend({
 
@@ -140,6 +157,8 @@ WTF.MapView = (function() {
       this.render();
       this.listenTo(WTF.FoodTrucks, 'all', drawMarkers);
       initRadioButtonEvents();
+
+      usersearchLocation();
     },
 
     template: _.template($('#map-template').html()),

@@ -362,3 +362,21 @@ ul > span {
 .shareHeading{
 	font-weight: bold;
 }
+
+#user-location{
+	font-family: 'Open Sans', sans-serif;
+	display: inline;
+	background-color: #fff;
+	opacity: 0.7;
+	border-radius: 5px;
+	color: black;
+	height: 20px;
+	margin-left: 100px;
+	margin-top: 30px;
+	padding: 10px;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	width: 200px;
+	z-index: 3;
+}
