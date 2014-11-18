@@ -23,12 +23,10 @@ WTF.MapView = (function() {
   };
 
   var mapOptions = {
-    center: { lat: 49.256, lng: -123.1},
+    center: { lat: 49.265, lng: -123.105},
     zoom: 13,
     disableDefaultUI: true
   };
-
-  
 
   // sideBar
   var option_selected;
@@ -138,7 +136,7 @@ WTF.MapView = (function() {
     var userInput = $('#user-input').get(0);
  
     var options = {
-     types: ['establishment']
+     //types: ['establishment']
     };
 
     var searchBox = new google.maps.places.Autocomplete(userInput, options);
@@ -186,6 +184,7 @@ WTF.MapView = (function() {
     toggleSideBar: function() {
       $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
       $('body').toggleClass('wtf-left');
+      // $('')
     },
 
     filterMarkers: function(e) {

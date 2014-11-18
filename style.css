@@ -395,5 +395,10 @@ ul > span {
 
 .pac-container, .pac-item{
 	border: none;
+	position: relative;
 	width: auto !important; 
+}
+
+body.wtf-left .pac-container{
+	left: 110px !important;
 }
