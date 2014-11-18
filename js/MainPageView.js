@@ -42,7 +42,10 @@ WTF.MapView = (function() {
   var delay = 0;
   var checkMarkerOnGG = function(foodtruck_i) {
     
-    if(foodtruck_i.get('name')=='N/A') return;
+    if(foodtruck_i.get('name')=='N/A') {
+      foodtruck_i.set('openHours', "Not Available"); 
+      return;
+    }
     
     var vancouver = new google.maps.LatLng(49.261226, -123.113927);
 
@@ -82,7 +85,6 @@ WTF.MapView = (function() {
                     
                     console.debug('SUCCESS ' + OpenHourEachDay + JSON.stringify(foodtruck_i));
                     foodtruck_i.set('openHours', OpenHourEachDay);
-                  
                 } else { // try again after a set delay
                     delay += 1000;
                     console.debug('status ' + status + ' trying truck ' + foodtruck_i.get('name') + ' again in ' + delay + ' ms');
@@ -93,8 +95,8 @@ WTF.MapView = (function() {
                 }
               
               }, foodtruck_i);
-          }
           break;
+          }
         }
       } else foodtruck_i.set('openHours', "Not Available");
   });
