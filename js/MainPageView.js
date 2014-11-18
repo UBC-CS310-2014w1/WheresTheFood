@@ -46,14 +46,19 @@ WTF.MapView = (function() {
 
       if(foodtruck.get('name') == 'N/A')
         name = foodtruck.get('description') + ' ' + foodtruck.get('id');
+        return '<tr><td>'+ generateIcon() +'<a href="#foodtruck/' +
 
-        return '<tr><td><a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +
                         name + '</a></td>'+
                '<td>' + foodtruck.get('rating') + '</td>' +
                '<td>' + foodtruck.get('description') + '</td>' +
                '</tr>';
     });
+  };
+
+  var generateIcon = function() {
+    var random = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
+    return '<img src="images/foodtruck_icon'+random+'.png" style="margin-right:15px;"/>';
   };
 
   var initDataTable = function() {
@@ -97,7 +102,6 @@ WTF.MapView = (function() {
   };
 
   var drawMarkers = function() {
-
     var marker;
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       var current = WTF.FoodTrucks.at(i);
@@ -106,6 +110,13 @@ WTF.MapView = (function() {
       // https://jslinterrors.com/dont-make-functions-within-a-loop
       makeMarker(current, i);
 
+    }
+  };
+
+  var addOperationHours = function() {
+    for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
+      var current = WTF.FoodTrucks.at(i);
+      fetchHours(current);
     }
   };
 
@@ -129,7 +140,6 @@ WTF.MapView = (function() {
         var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
         infoWindow = new google.maps.InfoWindow({
           content: foodTruckPopUpView.template
-
         });
         infoWindow.open(map,marker);
       });
@@ -153,9 +163,17 @@ WTF.MapView = (function() {
     });
   };
 
-var delay = 0;
-  var checkMarkerOnGG = function(foodtruck_i) {
-  var vancouver = new google.maps.LatLng(49.261226, -123.113927);
+
+  var delay = 0;
+  var fetchHours = function(foodtruck_i) {
+    // console.log('hello there');
+    if(foodtruck_i.get('name')=='N/A') {
+      foodtruck_i.set('openHours', "Not Available");
+      return;
+    }
+
+    var vancouver = new google.maps.LatLng(49.261226, -123.113927);
+
 
     var request = {
       location: vancouver,
@@ -165,61 +183,60 @@ var delay = 0;
     var service = new google.maps.places.PlacesService(map);
 
     service.textSearch(request, function(results, status) {
-       callback(results, status, foodtruck_i); });
 
-  };
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
 
-    /*
-    * check the status of each foodtruck's response if it's valid
-    */
-  function callback(results, status, foodtruck_i) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      if (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase())) {
-       getOpenHour(results[i], foodtruck_i);
-       break;
+          if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
+          (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
+
+              console.log('getting openhour for foodtruck which is ' + JSON.stringify(foodtruck_i));
+              var ft = results[i];
+
+              var request = {
+                placeId: ft.place_id
+              };
+
+              var service = new google.maps.places.PlacesService(map);
+
+              service.getDetails(request, function(place, status) {
+
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                    var OpenHourEachDay = "Not Available";
+
+                    if (place.hasOwnProperty("opening_hours"))
+                      OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+
+                    console.debug('SUCCESS ' + OpenHourEachDay + JSON.stringify(foodtruck_i));
+                    foodtruck_i.set('openHours', OpenHourEachDay);
+                } else { // try again after a set delay
+                    delay += 1000;
+                    console.debug('status ' + status + ' trying truck ' + foodtruck_i.get('name') + ' again in ' + delay + ' ms');
+                    setTimeout(function() {
+                      console.log(foodtruck_i.get('name'));
+                      fetchHours(foodtruck_i);
+                    }, delay);
+                }
+
+              }, foodtruck_i);
+          break;
+          }
         }
-    }
-  } else {foodtruck_i.set('openHours', "Not Available");}
-}
+      } else foodtruck_i.set('openHours', "Not Available");
+  });
+};
 
   // check substring now
   function checkSubString(mainOne, needCheck) {
   return mainOne.indexOf(needCheck) >= 0;
 }
 
-  // last call to get openHours
-  function getOpenHour(ft, foodtruck_i){
-    // set the request to ft's id
-    var request = {
-      placeId: ft.place_id
-    };
-
-    var service = new google.maps.places.PlacesService(map);
-    service.getDetails(request, function(place, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        // We now have the operation hours in one week of the foodtruck
-
-      // in case, the placeresult doesn't have opening_hour attribute.
-      var OpenHourEachDay = "Not Available";
-      if (place.hasOwnProperty("opening_hours")) {
-       OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
-     }
-
-        foodtruck_i.set('openHours', OpenHourEachDay);
-        // debugger;
-        console.debug(OpenHourEachDay);
-      } else {foodtruck_i.set('openHours', "Not Available");}
-    });
-  }
-
-
   // Get The current weekday
   function checkDay() {
     var day = new Date();
     return day.getDay();
   }
-
 
   return Backbone.View.extend({
 
@@ -228,7 +245,7 @@ var delay = 0;
       this.render();
       this.listenTo(WTF.FoodTrucks, 'all', drawMarkers);
       initRadioButtonEvents();
-
+      addOperationHours();
       usersearchLocation();
     },
 
