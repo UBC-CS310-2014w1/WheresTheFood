@@ -83,11 +83,10 @@ WTF.MapView = (function() {
     // pick the best (just one) result
     // and get opening hour for this best result
     for (var i = 0; i < results.length; i++) {
-      if (results[i].name == foodtruck_i.get('name')) {
-        //console.log("Lat is: " + foodtruck_i.get('lat') + "Long is:  " + foodtruck_i.get(''))
+      if ((results[i].geometry.location.lat() == foodtruck_i.get('lat'))
+        && (results[i].geometry.location.lng() == foodtruck_i.get('lon'))) {
         getOpenHour(result[i], foodtruck_i);
         return;
-
       }
     }
     foodtruck_i.set('openHours', "Not Available");
