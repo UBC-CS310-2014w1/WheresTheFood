@@ -3,6 +3,8 @@ var WTF = WTF || {};
 WTF.MapView = (function() {
 
   var server = WTF.Server;
+  var dataTable;
+  var map;
 
   var setupUserLabel = function() {
     $('#user-label').text(server.getUser().facebook.displayName)
@@ -25,9 +27,11 @@ WTF.MapView = (function() {
     disableDefaultUI: true
   };
 
-  var map;
+  
 
   // sideBar
+  var option_selected;
+
   var populateListView = function() {
     $('#data-table').empty();
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
@@ -54,30 +58,43 @@ WTF.MapView = (function() {
   };
 
   var initDataTable = function() {
-    var dataTable = $('#data-table').DataTable({
+
+    dataTable = $('#data-table').DataTable({
         "paging"    : false,
-        "columnDefs": [{ "orderable": false, "targets": 0 }],
+        "columnDefs": [{ "orderable": false, "targets": 0 },
+                       { "width": "90%", "targets": 0}],
         "columns"   : [{'visible' : true},
                        {'visible' : false},
                        {'visible' : false}],
-        "order"     : [[0, "asc"]],
+        //"order"     : [[0, "asc"]],
         "scrollY"   : 500,
         "scrollCollapse": true,
         "info"      : false,
         "destroy"   : true 
     });
 
-    $('#orderRating').click(function() {
-      dataTable.order([1,'desc']);
-      dataTable.column(1).visible(true);
-      dataTable.draw();
-    });
+    // reset radio button to be A - Z ordering
+    $('#orderAlphabet').prop('checked',true);
+    option_selected = $('input[name=ordering]:checked', '#order-options').val();
 
-    $('#orderAlphabet').click(function() {
-      dataTable.order([0,'asc']);
-      dataTable.column(1).visible(false);
-      dataTable.draw();
-    });
+  };
+
+  var initRadioButtonEvents = function() {
+      $('#orderRating').click(function() {
+        if(option_selected == 'Rating') return;
+        option_selected = $('input[name=ordering]:checked', '#order-options').val();
+        dataTable.order([1,'desc']);
+        dataTable.column(1).visible(true);
+        dataTable.draw();   
+      });
+
+      $('#orderAlphabet').click(function() {
+        if(option_selected == 'A - Z') return;
+        option_selected = $('input[name=ordering]:checked', '#order-options').val();
+        dataTable.order([0,'asc']);  
+        dataTable.column(1).visible(false);
+        dataTable.draw();
+      });
   };
 
   var drawMarkers = function() {
@@ -121,6 +138,7 @@ WTF.MapView = (function() {
       console.debug('map view init');
       this.render();
       this.listenTo(WTF.FoodTrucks, 'all', drawMarkers);
+      initRadioButtonEvents();
     },
 
     template: _.template($('#map-template').html()),
@@ -155,6 +173,7 @@ WTF.MapView = (function() {
       map = new google.maps.Map($('#map-canvas').get(0),mapOptions); // to clear the map
       WTF.FoodTrucks.filterFoodTrucks(filterType);
       populateListView();
+
     }
 
   });
