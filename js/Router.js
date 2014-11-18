@@ -70,6 +70,7 @@ WTF.AppRouter = (function() {
     },
 
     foodtruckDetails: function(id) {
+      $('#user-label').hide();
       $('body').attr('data-name','foodtruck').removeClass();
       console.debug('router foodtruckDetails');
       var foodtruck = WTF.FoodTrucks.get(id) || new WTF.FoodTruck();

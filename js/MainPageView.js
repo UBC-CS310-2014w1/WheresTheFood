@@ -106,6 +106,7 @@ WTF.MapView = (function() {
     }
   };
 
+  var infoWindow;
   var makeMarker = function(current, i) {
     // current - current foodtruck object
     // i - index of item in WTF.FoodTrucks
@@ -116,13 +117,14 @@ WTF.MapView = (function() {
       index: i,
       map: map,
     });
-
+    
     // closure
     (function(marker){
       google.maps.event.addListener(marker, 'click',  function() {
+        if(infoWindow) infoWindow.close();
         var foodtruck = WTF.FoodTrucks.get(marker.id) || new WTF.FoodTruck();
         var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
-        var infoWindow = new google.maps.InfoWindow({
+        infoWindow = new google.maps.InfoWindow({
           content: foodTruckPopUpView.template
         });
         infoWindow.open(map,marker);
@@ -184,7 +186,6 @@ WTF.MapView = (function() {
     toggleSideBar: function() {
       $('.wtf-side-panel-left').toggleClass('wtf-side-panel-open');
       $('body').toggleClass('wtf-left');
-      // $('')
     },
 
     filterMarkers: function(e) {

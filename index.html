@@ -132,11 +132,12 @@
         <div id="favourites">
           <div id="favourited-icon">&hearts;</div>
         </div>
-        <div id="backButton-div">
-          <button id="backButton" type="button"> <a href="#map">Back to Map </a></button>
-        </div>
        
-        <h1> FoodTruck Info </h1>
+        <h1> 
+          <a href="#map"><div id="btn_nav_back"></div></a>
+          FoodTruck Info 
+        </h1>
+
         <div id="foodtruckdetails-div"></div>
 
         <!--ratings area -->
@@ -167,14 +168,11 @@
           </div>
           <textarea rows="4" cols="50" id="commentsBox"></textarea>
           <button id="postComments" class="button">Post a comment</button>
+          <!-- Facebook share-->
+          <div class="fb-share-button">
+          <iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fvivid-torch-5902.firebaseapp.com%2F&amp;layout=button_count&amp;appId=785247768179914" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe></div>
         </div>
-
-       <!-- Facebook share-->
-        <div id="fb-root">
-          <p class="shareHeading"> Share this FoodTruck with your friends on Facebook 
-
-      <iframe src="//www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fvivid-torch-5902.firebaseapp.com&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
-          <p>
+          
       </div>
     </script>
 
