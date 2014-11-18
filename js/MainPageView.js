@@ -101,10 +101,6 @@ WTF.MapView = (function() {
     var marker;
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       var current = WTF.FoodTrucks.at(i);
-   // check open hours here
-    if (current.get('name') != 'N/A') {
-      checkMarkerOnGG(current);
-    } else {current.set('openHours', "Not Available");}
 
       // moved previous marker construction code in here
       // https://jslinterrors.com/dont-make-functions-within-a-loop
