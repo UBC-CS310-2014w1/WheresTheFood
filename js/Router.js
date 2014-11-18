@@ -23,6 +23,7 @@ WTF.AppRouter = (function() {
     login: function() {
       $('body').attr('data-name','login').removeClass();
       console.debug('router login');
+      $('#user-label').hide();
       if(server.getUser()) {
         this.navigate("map", true);
         loggedIn = true;
@@ -32,6 +33,7 @@ WTF.AppRouter = (function() {
     },
 
     map: function() {
+      $('#user-label').show();
       console.debug('router map');
       // set style for wrapper div so that map would show
       $('body').attr('data-name','map');
