@@ -23,25 +23,36 @@ html, body, .app-container{
   	left: 0;
 }
 
+body[data-name='map'] > .app-container > div {
+	height: 100%;
+	width: 100%;
+}
+
 button {
 	outline: none;
 }
 
+input {
+	outline: none;
+	border: none;
+}
+
 #user-label {
 	background-color: #fff;
-	opacity: 0.7;
-	border-radius: 5px;
+	/*opacity: 0.7;*/
+	/*border-radius: 5px;*/
 	color: black;
 	height: 20px;
 	margin-right: 50px;
-	margin-top: 30px;
+	margin-bottom: 30px;
 	padding: 10px;
 	position: fixed;
 	right: 0;
 	text-align: center;
-	top: 0;
+	bottom: 0;
 	width: 200px;
 	z-index: 3;
+	box-shadow: 1px 1px 2px #888888;
 }
 
 #side-panel {
@@ -60,14 +71,15 @@ button {
 	background: white;
 	cursor: pointer;
 	margin: 30px;
-	opacity: 0.7;
+	/*opacity: 0.7;*/
 	padding: 12px;
-  	border-radius: 5px;
+  	/*border-radius: 5px;*/
   	border: none;
   	left: 0;
   	position: absolute;
   	top: 0;
   	z-index: 4;
+  	box-shadow: 1px 1px 2px #888888;
 }
 
 #filter-options{
@@ -229,11 +241,6 @@ body.wtf-left {
   position: relative;
   width: 1.1em;
 }
-/*.pop-up-rating > span:hover:before,
-.pop-up-rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-}*/
 
 /* Food Truck page */
 #foodtruckpage-main {
@@ -249,10 +256,28 @@ body.wtf-left {
   transform: translate(-50%, -120px);
 
   margin-bottom: 100px;
+  max-width: 800px;
+  min-width: 600px;
+  width: 70%;
+}
+
+#btn_nav_back {
+	background: url('images/nav_back.png');
+	width: 15px;
+	height: 22px;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+#btn_nav_back:hover {
+	background: url('images/nav_back_hover.png');
 }
 
 #foodtruckdetails-div {
   font-weight: bold;
+  margin-left: 30px;
+  text-align: left;
+  width: 55%;
 }
 
 #favourited-icon {
@@ -345,11 +370,42 @@ ul > span {
 	right: 5px;
 }
 
-/* back Button */
-#backButton{
-  	font-size: 10pt;
-  	height: 30px;
-  	margin-top: 5px;
-  	max-width: 21%;
-  	width: 100%;
+.fb-share-button{
+	display: inline-block;
+	float: right;
+	margin: 10px;
+	position: absolute;
+}
+
+#user-location{
+	background-color: #fff;
+	box-shadow: 1px 1px 2px #888888;
+	color: black;
+	display: inline;
+	font-family: 'Open Sans', sans-serif;
+	height: 20px;
+	margin-left: 100px;
+	margin-top: 30px;
+	padding-left: 15px;
+	padding: 10px;
+	position: fixed;
+	top: 0;
+	width: 40%;
+	z-index: 3;
+}
+
+#user-input {
+	border: none;
+	font-size: 14px;
+	width: 100%;
+}
+
+.pac-container, .pac-item{
+	border: none;
+	position: relative;
+	width: auto !important; 
+}
+
+body.wtf-left .pac-container{
+	left: 110px !important;
 }

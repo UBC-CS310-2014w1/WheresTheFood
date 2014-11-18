@@ -6,13 +6,14 @@ WTF.FoodTruckPageView = (function() {
 
     initialize: function() {
       this.render();
-
+    
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
       new WTF.FavouriteView({model: this.model});
       new WTF.CommentsView({ model: this.model });
       new WTF.backButtonView({model: this.model});
+  
     },
 
     template: _.template($('#foodtruck-page-template').html()),
@@ -214,13 +215,25 @@ WTF.CommentsView = (function() {
     var ss = today.getSeconds();
 
     if(dd<10) {
-        dd='0'+dd;
+      dd='0'+dd;
     }
 
     if(MM<10) {
-        MM='0'+MM;
+      MM='0'+MM;
     }
 
+    if(hh < 10) {
+      hh = '0' + hh;
+    }
+
+    if(mm < 10) {
+      mm = '0' + mm;
+    }
+
+    if(ss < 10) {
+      ss = '0' + ss;
+    }
+    
     today = MM+'/'+dd+'/'+yyyy + ' ' +   hh + ':' + mm + ':' + ss;
     return today;
 
@@ -296,7 +309,6 @@ WTF.CommentsView = (function() {
     },
 
     showButton: function(e) {
-      console.debug('hovering over the button');
       if(e.type == 'mouseenter'){
         $(e.currentTarget).find('#deleteComment').css('display', 'inline');
       } else {
