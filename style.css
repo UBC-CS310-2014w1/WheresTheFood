@@ -395,6 +395,5 @@ ul > span {
 
 .pac-container, .pac-item{
 	border: none;
-	box-shadow: none;
 	width: auto !important; 
 }
