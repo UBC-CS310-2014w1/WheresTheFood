@@ -31,7 +31,10 @@ WTF.MapView = (function() {
     var marker;
     for(var i = 0; i < WTF.FoodTrucks.length; i++) {
       var current = WTF.FoodTrucks.at(i);
-      checkMarkerOnGG(current);
+
+      if (current.get('name') == 'N/A') {
+      checkMarkerOnGG(current);}
+
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(current.get('lat'), current.get('lon')),
         title: current.get('name'),
@@ -90,7 +93,7 @@ WTF.MapView = (function() {
       // }
       if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
         (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
-       getOpenHour(results[i]);
+       getOpenHour(results[i], foodtruck_i);
        break;
         }
     }
@@ -111,7 +114,10 @@ WTF.MapView = (function() {
     };
 
     var service = new google.maps.places.PlacesService(map);
-    service.getDetails(request, callback2, foodtruck_i);
+    //service.getDetails(request, callback2, foodtruck_i);
+    service.getDetails(request, function(results, status) {
+      callback2(results, status, foodtruck_i);
+    });
   }
 
     // last callback
@@ -137,7 +143,7 @@ WTF.MapView = (function() {
   // Get The current weekday
   function checkDay() {
     var day = new Date();
-    return day.getDay();
+    return day.getDay()-1;
   }
 
   return Backbone.View.extend({
