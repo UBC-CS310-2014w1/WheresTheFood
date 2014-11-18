@@ -11,23 +11,7 @@ WTF.MapView = (function() {
   };
 
   var map;
-  //var ctaLayer;
   var loadMarkers = function() {
-    // ctaLayer = new google.maps.KmlLayer({
-    //   url: 'http://napontaratan.com/WheresTheFood/street_food_vendors.kml'
-    // });
-    //   // parse food truck locations from KML file to a layer and add it to map
-    // ctaLayer.setMap(map);
-
-    // // add custom click handler for marker because we are using google api
-    // // if it's our own created html element, we will just add it to backbone events
-    // google.maps.event.addListener(ctaLayer, 'click',  function(kmlEvent) {
-    //   var data = kmlEvent.featureData;
-    //   // var foodtruck = WTF.Utility.getFoodTruck(data.id) || new WTF.FoodTruck();
-    //   var foodtruck = WTF.FoodTrucks.get(data.id) || new WTF.FoodTruck();
-    //   var foodTruckPopUpView = new WTF.FoodTruckPopUpView({ model: foodtruck });
-    //   data.infoWindowHtml = foodTruckPopUpView.template;
-    // });
     var marker;
     for(var i = 0; i < WTF.FoodTrucks.length; i++) {
       var current = WTF.FoodTrucks.at(i);
@@ -83,54 +67,47 @@ WTF.MapView = (function() {
     // pick the best (just one) result
     // and get opening hour for this best result
     for (var i = 0; i < results.length; i++) {
-      // if ((results[i].geometry.location.lat() == foodtruck_i.get('lat'))
-      //   && (results[i].geometry.location.lng() == foodtruck_i.get('lon'))) {
-      //   getOpenHour(result[i], foodtruck_i);
-      //   return;
-      // }
+
       if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
         (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
-       getOpenHour(results[i]);
-       break;
-        }
+        console.log('getting openhour for foodtruck which is ' + JSON.stringify(foodtruck_i));
+        var ft = results[i];
+
+        // set the request to ft's id
+        var request = {
+          placeId: ft.place_id
+        };
+
+        var service = new google.maps.places.PlacesService(map);
+        service.getDetails(request, function(place, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+          // We now have the operation hours in one week of the foodtruck
+
+              // in case, the placeresult doesn't have opening_hour attribute.
+              var OpenHourEachDay = "Not Available";
+              if (place.hasOwnProperty("opening_hours")) {
+               OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+              }
+                console.log(OpenHourEachDay);
+                foodtruck_i.set('openHours', OpenHourEachDay);
+                // debugger;
+                console.debug('SUCCESS ' + OpenHourEachDay + JSON.stringify(foodtruck_i));
+              } else {
+                console.debug('status ', status);
+              }
+        }, foodtruck_i);
+      }
+
+      break;
     }
-    //foodtruck_i.set('openHours', "Not Available");
-  }
+
+  } else {foodtruck_i.set('openHours', "Not Available");}
 }
 
   // check substring now
   function checkSubString(mainOne, needCheck) {
   return mainOne.indexOf(needCheck) >= 0;
 }
-
-  // Retrieve operation hour of that foodtruck
-  function getOpenHour(ft, foodtruck_i){
-    // set the request to ft's id
-    var request = {
-      placeId: ft.place_id
-    };
-
-    var service = new google.maps.places.PlacesService(map);
-    service.getDetails(request, callback2, foodtruck_i);
-  }
-
-    // last callback
-    function callback2(place, status, foodtruck_i) {
-     if (status == google.maps.places.PlacesServiceStatus.OK) {
-        // We now have the operation hours in one week of the foodtruck
-
-      // in case, the placeresult doesn't have opening_hour attribute.
-      var OpenHourEachDay = "Not Available";
-      if (place.hasOwnProperty("opening_hours")) {
-       OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
-     }
-
-        foodtruck_i.set('openHours', OpenHourEachDay);
-        // debugger;
-        console.debug(OpenHourEachDay);
-      }
-    }
-
 
 
 
