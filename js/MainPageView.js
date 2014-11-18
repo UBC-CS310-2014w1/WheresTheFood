@@ -90,7 +90,7 @@ WTF.MapView = (function() {
 
       }
     }
-    foodtruck_i.set('openHours', na);
+    foodtruck_i.set('openHours', "Not Available");
   }
 }
 
