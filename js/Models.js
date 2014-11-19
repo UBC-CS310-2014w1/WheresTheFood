@@ -41,7 +41,7 @@ WTF.FoodTruck = (function() {
       rating: 0,
       isFavourited: false,
       memo: "",
-      openHours: "",
+      openHours: 'Not Available',
       invalid: true // keep track of invalid foodtrucks and state this on pop up view
     }
 
