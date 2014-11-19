@@ -174,7 +174,6 @@ WTF.MapView = (function() {
 
     var vancouver = new google.maps.LatLng(49.261226, -123.113927);
 
-
     var request = {
       location: vancouver,
       radius: 500,
