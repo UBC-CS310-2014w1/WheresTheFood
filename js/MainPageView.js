@@ -1,7 +1,7 @@
 var WTF = WTF || {};
 
 WTF.MapView = (function() {
-  
+
   var server = WTF.Server;
   var dataTable;
   var map;
@@ -101,7 +101,7 @@ WTF.MapView = (function() {
   };
 
   var drawMarkers = function() {
-    var marker;
+  var marker;
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       var current = WTF.FoodTrucks.at(i);
       new WTF.FoodTruckPopUpView({model: current, indexx: i, map: map});
@@ -109,7 +109,7 @@ WTF.MapView = (function() {
   };
 
   var usersearchLocation = function(){
-  
+
     var userInput = $('#user-input').get(0);
     var markers = [];
     var bounds = map.getBounds() || new google.maps.LatLngBounds();
@@ -121,7 +121,7 @@ WTF.MapView = (function() {
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
-  
+
       if(places.length === 0)return;
       for(var t = 0, place; t < places.length; t++){
         place = places[t];
@@ -143,7 +143,7 @@ WTF.MapView = (function() {
           title: place.name,
           position: place.geometry.location
         });
-        
+
         clearMarkers();
         markers.push(marker);
         bounds.extend(place.geometry.location);
@@ -244,7 +244,7 @@ WTF.MapView = (function() {
     initialize: function() {
       console.debug('map view init');
       this.render();
-      this.listenTo(WTF.FoodTrucks, 'all', drawMarkers);
+      this.listenTo(WTF.FoodTrucks, 'reset', drawMarkers);
       initRadioButtonEvents();
       usersearchLocation();
     },
@@ -292,7 +292,7 @@ WTF.LoginView = (function() {
   var server = WTF.Server;
 
   var userLoginCallback = function(userObject) {
-    if(userObject) { 
+    if(userObject) {
       server.fetchUser();
       WTF.AppRouter.navigate("map", true);
       server.pushUsername(userObject.facebook.displayName);
@@ -333,7 +333,7 @@ WTF.FoodTruckPopUpView = (function() {
   var VANCOUVER = new google.maps.LatLng(49.261226, -123.113927);
 
   var fetchHours = function(foodtruck_i, map) {
-    
+
     if(foodtruck_i.get('name')=='N/A') return;
 
     var request = {
@@ -343,32 +343,32 @@ WTF.FoodTruckPopUpView = (function() {
     };
 
     var service = new google.maps.places.PlacesService(map);
-    
+
     service.textSearch(request, function(results, status) {
-      
+
       if (status == google.maps.places.PlacesServiceStatus.OK) {
 
         for (var i = 0; i < results.length; i++) {
 
           if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
           (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
-              
+
               var ft = results[i];
 
               var request = { placeId: ft.place_id };
 
               var service = new google.maps.places.PlacesService(map);
-              
+
               service.getDetails(request, function(place, status) {
 
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    
+
                     if (place.hasOwnProperty("opening_hours")) {
                       var OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
                       console.debug('SUCCESS ' + OpenHourEachDay);
                       foodtruck_i.set('openHours', OpenHourEachDay);
                     }
-                    
+
                 } else { // try again after a set delay
                     delay += 1000;
                     console.debug('status ' + status + ' trying truck ' + foodtruck_i.get('name') + ' again in ' + delay + ' ms');
@@ -381,14 +381,14 @@ WTF.FoodTruckPopUpView = (function() {
           break;
           }
         }
-      } 
+      }
   });
 };
-  
+
   // check substring now
   function checkSubString(mainOne, needCheck) {
     return mainOne.indexOf(needCheck) >= 0;
-  } 
+  }
 
   // Get The current weekday
   function checkDay() {
@@ -401,6 +401,7 @@ WTF.FoodTruckPopUpView = (function() {
     // options has three fields
     // options = {model: a foodtruck item in the collection, indexx: markerIndex, map: map}
     initialize: function(options) {
+      console.count('init popup');
       this.render(options);
       this.firstLoadCheck = false;
     },
@@ -411,10 +412,10 @@ WTF.FoodTruckPopUpView = (function() {
 
     render: function(options) {
 
-      if(!this.firstLoadCheck) return; 
+      if(!this.firstLoadCheck) return;
 
       var foodtruck       = options.model;
-      var foodtruck_map   = options.map; 
+      var foodtruck_map   = options.map;
       var ft_marker_index = options.indexx;
 
       var marker = new google.maps.Marker({
@@ -446,7 +447,7 @@ WTF.FoodTruckPopUpView = (function() {
           POPUP.open(marker.map, marker);
         });
 
-      })(marker, this); 
+      })(marker, this);
     }
   });
 })();
