@@ -16,7 +16,6 @@ WTF.MapView = (function() {
         $('#user-label').text(server.getUser().facebook.displayName);
     })
     .click($.proxy(function () { // proxy allows 'this' context change
-      console.log('logout');
       server.logout();
       WTF.AppRouter.navigate("login", true);
     }, this));
@@ -45,13 +44,13 @@ WTF.MapView = (function() {
       var name = foodtruck.get('name');
 
       if(foodtruck.get('name') == 'N/A')
-        name = foodtruck.get('description') + ' ' + foodtruck.get('id'); 
-  
+        name = foodtruck.get('description') + ' ' + foodtruck.get('id');
+
         return '<tr><td>'+ generateIcon() +'<a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +
                         name + '</a></td>'+
                '<td>' + foodtruck.get('rating') + '</td>' +
-               '<td>' + foodtruck.get('description') + '</td>' + 
+               '<td>' + foodtruck.get('description') + '</td>' +
                '</tr>';
     });
   };
@@ -74,7 +73,7 @@ WTF.MapView = (function() {
         "scrollY"   : 500,
         "scrollCollapse": true,
         "info"      : false,
-        "destroy"   : true 
+        "destroy"   : true
     });
 
     // reset radio button to be A - Z ordering
@@ -89,13 +88,13 @@ WTF.MapView = (function() {
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
         dataTable.order([1,'desc']);
         dataTable.column(1).visible(true);
-        dataTable.draw();   
+        dataTable.draw();
       });
 
       $('#orderAlphabet').click(function() {
         if(option_selected == 'A - Z') return;
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
-        dataTable.order([0,'asc']);  
+        dataTable.order([0,'asc']);
         dataTable.column(1).visible(false);
         dataTable.draw();
       });
@@ -112,17 +111,133 @@ WTF.MapView = (function() {
   var usersearchLocation = function(){
   
     var userInput = $('#user-input').get(0);
+    var markers = [];
+    var bounds = map.getBounds() || new google.maps.LatLngBounds();
     var options = {
-     //types: ['establishment']
+     bounds: bounds
     };
 
-    var searchBox = new google.maps.places.Autocomplete(userInput, options);
+    var searchBox = new google.maps.places.SearchBox(userInput, options);
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
+  
+      if(places.length === 0)return;
+      for(var t = 0, place; t < places.length; t++){
+        place = places[t];
+
+        var image = {
+          url: place.icon,
+            scaledSize: new google.maps.Size(24,24)
+        };
+
+        var lat = place.geometry.location.lat();
+        var lon = place.geometry.location.lng();
+
+        console.debug("user: LAT", lat, "LON", lon);
+
+         // Create a marker for each place.
+        var marker = new google.maps.Marker({
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          title: place.name,
+          position: place.geometry.location
+        });
+        
+        clearMarkers();
+        markers.push(marker);
+        bounds.extend(place.geometry.location);
+      }
+
+      map.fitBounds(bounds);
+      map.setZoom(13);
 
     });
+
+    google.maps.event.addListener(map, 'bounds_changed', function() {});
+
+    // clear markers from the map
+    function clearMarkers(){
+      for (var s = 0; s < markers.length; s++){
+        markers[s].setMap(null);
+      }
+      markers = [];
+    }
   };
+
+  var delay = 0;
+  var fetchHours = function(foodtruck_i) {
+    // console.log('hello there');
+    if(foodtruck_i.get('name')=='N/A') {
+      foodtruck_i.set('openHours', "Not Available");
+      return;
+    }
+
+    var vancouver = new google.maps.LatLng(49.261226, -123.113927);
+
+    var request = {
+      location: vancouver,
+      radius: 500,
+      query: foodtruck_i.get('name')
+    };
+
+    var service = new google.maps.places.PlacesService(map);
+
+    service.textSearch(request, function(results, status) {
+
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+
+          if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
+          (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
+
+              console.log('getting openhour for foodtruck which is ' + JSON.stringify(foodtruck_i));
+              var ft = results[i];
+
+              var request = {
+                placeId: ft.place_id
+              };
+
+              var service = new google.maps.places.PlacesService(map);
+
+              service.getDetails(request, function(place, status) {
+
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                    var OpenHourEachDay = "Not Available";
+
+                    if (place.hasOwnProperty("opening_hours"))
+                      OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+
+                    console.debug('SUCCESS ' + OpenHourEachDay + JSON.stringify(foodtruck_i));
+                    foodtruck_i.set('openHours', OpenHourEachDay);
+                } else { // try again after a set delay
+                    delay += 1000;
+                    console.debug('status ' + status + ' trying truck ' + foodtruck_i.get('name') + ' again in ' + delay + ' ms');
+                    setTimeout(function() {
+                      console.log(foodtruck_i.get('name'));
+                      fetchHours(foodtruck_i);
+                    }, delay);
+                }
+
+              }, foodtruck_i);
+          break;
+          }
+        }
+      } else foodtruck_i.set('openHours', "Not Available");
+  });
+};
+
+  // check substring now
+  function checkSubString(mainOne, needCheck) {
+  return mainOne.indexOf(needCheck) >= 0;
+}
+
+  // Get The current weekday
+  function checkDay() {
+    var day = new Date();
+    return day.getDay();
+  }
 
   return Backbone.View.extend({
 
