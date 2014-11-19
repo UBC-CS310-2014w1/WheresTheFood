@@ -146,19 +146,71 @@ WTF.MapView = (function() {
 
   //usersearch Location
   var usersearchLocation = function(){
-    //********* Making link b/t search box ul element and code
+  
     var userInput = $('#user-input').get(0);
-
+    var markers = [];
+    var bounds = map.getBounds() || new google.maps.LatLngBounds();
     var options = {
-     //types: ['establishment']
+     bounds: bounds
     };
 
-    var searchBox = new google.maps.places.Autocomplete(userInput, options);
+    var searchBox = new google.maps.places.SearchBox(userInput, options);
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
+  
+      if(places.length === 0)return;
+      for(var t = 0, place; t < places.length; t++){
+        place = places[t];
+
+        var image = {
+          url: place.icon,
+            scaledSize: new google.maps.Size(24,24)
+        };
+
+        var lat = place.geometry.location.lat();
+        var lon = place.geometry.location.lng();
+
+        console.log("LAT", lat, "LON", lon);
+
+         // Create a marker for each place.
+        var marker = new google.maps.Marker({
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          title: place.name,
+          position: place.geometry.location
+        });
+        
+        clearMarkers();
+        markers.push(marker);
+        for(var r in markers){
+          console.log("Markers",markers);
+         }
+        bounds.extend(place.geometry.location);
+      }
+
+      // user.set('userLocation');
+      // var userPosition = user._previousAttributes.userLocaiton;
+      // console.log(userPosition);
+      map.fitBounds(bounds);
+      map.setZoom(13);
+      // console.log("HI HI HI HI", user);
+      // console.log(userPosition);
 
     });
+
+    // Bias the SearchBox results towards places that are within the bounds of the
+    //current map's viewport.
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+    });
+
+    // clear markers from the map
+    function clearMarkers(){
+      for (var s = 0; s < markers.length; s++){
+        markers[s].setMap(null);
+      }
+      markers = [];
+    }
   };
 
   var delay = 0;
@@ -243,6 +295,7 @@ WTF.MapView = (function() {
       this.listenTo(WTF.FoodTrucks, 'all', drawMarkers);
       initRadioButtonEvents();
       addOperationHours();
+
       usersearchLocation();
     },
 
