@@ -16,6 +16,14 @@ WTF.FoodTruckPageView = (function() {
   
     },
 
+    events: {
+      'click:#backButton': 'backToMap'
+    },
+
+    backToMap: function(){
+      WTF.AppRouter.navigate("map", true);
+    },
+
     template: _.template($('#foodtruck-page-template').html()),
 
     render: function() {
@@ -49,26 +57,26 @@ WTF.FoodTruckDetailsView = (function() {
   });
 })();
 
-WTF.backButtonView = (function() {
+// WTF.backButtonView = (function() {
 
-  return Backbone.View.extend({
+//   return Backbone.View.extend({
 
-    initialize: function() {
-      this.render();
-    },
+//     initialize: function() {
+//       this.render();
+//     },
 
-    el: '#backButton-div',
+//     el: '#backButton-div',
 
-    events: {
-      'click:#backButton': 'backToMap'
-    },
+//     events: {
+//       'click:#backButton': 'backToMap'
+//     },
 
-    backToMap: function(){
-      WTF.AppRouter.navigate("map", true);
-    },
+//     backToMap: function(){
+//       WTF.AppRouter.navigate("map", true);
+//     },
 
-  });
-})();
+//   });
+// })();
 
 WTF.MemoView = (function() {
 
