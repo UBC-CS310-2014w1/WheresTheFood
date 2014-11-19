@@ -401,18 +401,12 @@ WTF.FoodTruckPopUpView = (function() {
     // options has three fields
     // options = {model: a foodtruck item in the collection, indexx: markerIndex, map: map}
     initialize: function(options) {
-      console.count('init popup');
       this.render(options);
-      this.firstLoadCheck = false;
     },
-
-    firstLoadCheck: true,
 
     baseTemplate: _.template($('#foodtruck-popup-template').html()),
 
     render: function(options) {
-
-      if(!this.firstLoadCheck) return;
 
       var foodtruck       = options.model;
       var foodtruck_map   = options.map;
