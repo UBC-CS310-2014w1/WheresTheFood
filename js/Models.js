@@ -39,6 +39,7 @@ WTF.FoodTruck = (function() {
       lon: 'N/A',
       marker: 'N/A',
       rating: 0,
+      distance: 0,
       isFavourited: false,
       memo: "",
       openHours: 'Not Available',
@@ -82,6 +83,7 @@ WTF.FoodTruck = (function() {
     var FoodTruckKey = 'FoodTrucks';
     var updatedFoodTrucks = this.toJSON();
     sessionStorage.setItem(FoodTruckKey, JSON.stringify(updatedFoodTrucks));
+    this.trigger("reDrawListView");
   };
 
 
