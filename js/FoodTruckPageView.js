@@ -328,8 +328,8 @@ WTF.InstaView = (function() {
   return Backbone.View.extend({
 
     initialize: function() {
-      var foodtruckName = this.model.get('name').replace(/\s+/g, '');
-      var foodtruckDescription = this.model.get('description').replace(/\s+/g, '');
+      var foodtruckName = this.model.get('name').replace(/[^a-zA-Z0-9]/g, '');
+      var foodtruckDescription = this.model.get('description').replace(/[^a-zA-Z0-9]/g, '');
       var tagName= (foodtruckName === 'N/A')? foodtruckDescription: foodtruckName;
       var alternateTagname = foodtruckDescription;
 
