@@ -319,6 +319,7 @@ WTF.InstaView = (function() {
         new Instafeed({
           get: getType,
           tagName: alternateTagname,
+          template: '<a href="{{link}}"><img src="{{image}}" /></a>',
           clientId: clientId,
         }).run();
       }
