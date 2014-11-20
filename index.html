@@ -11,20 +11,15 @@
  rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
-
     </script>
-
-<!-- Attemp to add Operation hour (will delete this comment later no worry) -->
-
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" defer></script>
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
 
         <!-- For facebook sharing-->
-    <meta property="og:url"         content="https://vivid-torch-5902.firebaseapp.com/"/> 
+    <meta property="og:url"         content="https://vivid-torch-5902.firebaseapp.com/"/>
     <meta property="og:title"       content="Where's the Food?" />
-    <meta property="og:description" content="Find local food vendors in your local area."/> 
+    <meta property="og:description" content="Find local food vendors in your local area."/>
     <!-- <meta property="og:image"       content="bg-overlay.jpg"/>  -->
   </head>
   <body>
@@ -45,7 +40,7 @@
           <div id="login-button">Login with Facebook</div>
         </div>
           <div class="overlay"></div>
-          
+
     </script>
 
     <script type="text/template" id="map-template">
@@ -53,8 +48,8 @@
 
         <div id="user-location">
           <input id="user-input" type="text" name="userLoc"/>
-         </div> 
-        
+         </div>
+
         <div id="side-panel" class="wtf-side-panel-left">
           <table id="data-table">
             <thead>
@@ -108,7 +103,7 @@
           </div>
         </div>
         <div id="map-canvas"></div>
-        
+
     </script>
 
     <script type="text/template" id="foodtruck-popup-template">
@@ -133,10 +128,10 @@
         <div id="favourites">
           <div id="favourited-icon">&hearts;</div>
         </div>
-       
-        <h1> 
+
+        <h1>
           <a href="#map"><div id="btn_nav_back"></div></a>
-          FoodTruck Info 
+          FoodTruck Info
         </h1>
 
         <div id="foodtruckdetails-div"></div>
@@ -173,7 +168,7 @@
           <div class="fb-share-button">
           <iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fvivid-torch-5902.firebaseapp.com%2F&amp;layout=button_count&amp;appId=785247768179914" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe></div>
         </div>
-          
+
       </div>
     </script>
 
