@@ -6,14 +6,13 @@ WTF.FoodTruckPageView = (function() {
 
     initialize: function() {
       this.render();
-    
+
       new WTF.FoodTruckDetailsView({ model : this.model});
       new WTF.MemoView({ model: this.model});
       new WTF.RatingsView({ model: this.model});
       new WTF.FavouriteView({model: this.model});
       new WTF.CommentsView({ model: this.model });
-      new WTF.backButtonView({model: this.model});
-  
+      new WTF.InstaView({model: this.model});
     },
 
     events: {
@@ -56,27 +55,6 @@ WTF.FoodTruckDetailsView = (function() {
 
   });
 })();
-
-// WTF.backButtonView = (function() {
-
-//   return Backbone.View.extend({
-
-//     initialize: function() {
-//       this.render();
-//     },
-
-//     el: '#backButton-div',
-
-//     events: {
-//       'click:#backButton': 'backToMap'
-//     },
-
-//     backToMap: function(){
-//       WTF.AppRouter.navigate("map", true);
-//     },
-
-//   });
-// })();
 
 WTF.MemoView = (function() {
 
@@ -241,7 +219,7 @@ WTF.CommentsView = (function() {
     if(ss < 10) {
       ss = '0' + ss;
     }
-    
+
     today = MM+'/'+dd+'/'+yyyy + ' ' +   hh + ':' + mm + ':' + ss;
     return today;
 
@@ -322,7 +300,29 @@ WTF.CommentsView = (function() {
       } else {
         $(e.currentTarget).find('#deleteComment').css('display', 'none');
       }
-    },
+    }
 
   });
+})();
+
+WTF.InstaView = (function() {
+
+
+  return Backbone.View.extend({
+
+    initialize: function() {
+      var foodtruckName = this.model.get('name').replace(/\s+/g, '');
+      var foodtruckDescription = this.model.get('description').replace(/\s+/g, '');
+      var tagName= (foodtruckName === 'N/A')? foodtruckDescription: foodtruckName;
+
+       var feed = new Instafeed({
+          get: 'tagged',
+          tagName: tagName,
+          clientId: '90f31b767931424191d85114732163f6'
+      });
+      feed.run();
+    }
+
+  });
+
 })();
