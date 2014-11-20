@@ -149,6 +149,10 @@ WTF.MapView = (function() {
         console.debug("user: LAT", lat, "LON", lon);
         updateListwithDistances(lat,lon);
 
+        WTF.User.set('lat', lat);
+        WTF.User.set('lon', lon);
+        console.log(WTF.User.get('lon'), WTF.User.get('lat'));
+
          // Create a marker for each place.
         var marker = new google.maps.Marker({
           map: map,
