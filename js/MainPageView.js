@@ -30,6 +30,7 @@ WTF.MapView = (function() {
   var option_selected;
 
   var populateListView = function() {
+    console.debug('populateListView');
     $('#data-table').empty();
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       appendFoodTruck(i);
@@ -62,7 +63,7 @@ WTF.MapView = (function() {
 
   var initDataTable = function() {
 
-    dataTable = $('#data-table').DataTable({
+    var settings = {
         "paging"    : false,
         "columnDefs": [{ "orderable": false, "targets": 0 },
                        { "width": "90%", "targets": 0}],
@@ -75,7 +76,10 @@ WTF.MapView = (function() {
         "scrollCollapse": true,
         "info"      : false,
         "destroy"   : true
-    });
+    };
+
+
+    dataTable = $('#data-table').DataTable(settings);
 
     // reset radio button to be A - Z ordering
     $('#orderAlphabet').prop('checked',true);
@@ -174,7 +178,7 @@ WTF.MapView = (function() {
         var distanceToUser = getDistanceFromLatLonInKm(currentFT.get('lat'), currentFT.get('lon'), user_lat, user_lon);
         currentFT.set('distance', distanceToUser);
       }
-      // TODO: redraw table
+      populateListView();
     }
 
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -196,7 +200,7 @@ WTF.MapView = (function() {
     }
   };
 
-  return Backbone.View.extend({
+  var mapView =  Backbone.View.extend({
 
     initialize: function() {
       console.debug('map view init');
@@ -204,6 +208,7 @@ WTF.MapView = (function() {
       this.listenTo(WTF.FoodTrucks, 'reset', drawMarkers);
       initRadioButtonEvents();
       usersearchLocation();
+      this.listenTo(WTF.FoodTrucks, "reDrawListView", populateListView);
     },
 
     template: _.template($('#map-template').html()),
@@ -245,6 +250,10 @@ WTF.MapView = (function() {
     }
 
   });
+  
+  _.extend(mapView, Backbone.event);
+
+  return mapView;
 
 })();
 

@@ -83,6 +83,7 @@ WTF.FoodTruck = (function() {
     var FoodTruckKey = 'FoodTrucks';
     var updatedFoodTrucks = this.toJSON();
     sessionStorage.setItem(FoodTruckKey, JSON.stringify(updatedFoodTrucks));
+    this.trigger("reDrawListView");
   };
 
 
