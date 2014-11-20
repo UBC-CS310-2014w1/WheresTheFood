@@ -318,7 +318,10 @@ WTF.InstaView = (function() {
        var feed = new Instafeed({
           get: 'tagged',
           tagName: tagName,
+          resolution: low_resolution,
+          //sortBy: most-liked,
           clientId: '90f31b767931424191d85114732163f6'
+
       });
       feed.run();
     }
