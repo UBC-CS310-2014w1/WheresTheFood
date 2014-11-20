@@ -320,7 +320,7 @@ WTF.InstaView = (function() {
         new Instafeed({
           get: getType,
           tagName: alternateTagname,
-          template: '<a href="{{link}}"><img src="{{image}}" /></a>',
+          // template: '<a href="{{link}}"><div> INSTA </div><img src="{{image}}" /></a>',
           clientId: clientId,
         }).run();
       }
@@ -332,7 +332,10 @@ WTF.InstaView = (function() {
     initialize: function() {
       var foodtruckName = this.model.get('name').replace(/[^a-zA-Z0-9]/g, '');
       var foodtruckDescription = this.model.get('description').replace(/[^a-zA-Z0-9]/g, '');
-      var tagName= (foodtruckName === 'N/A')? foodtruckDescription: foodtruckName;
+      foodtruckDescription = (foodtruckDescription === 'NA')? 'foodtruck' :foodtruckDescription;
+      foodtruckName = (foodtruckName === 'NA')? foodtruckDescription: foodtruckName;
+
+      var tagName= foodtruckName;
       var alternateTagname = foodtruckDescription;
 
       showInstaPhotos(tagName, alternateTagname);
