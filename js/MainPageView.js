@@ -35,7 +35,24 @@ WTF.MapView = (function() {
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       appendFoodTruck(i);
     }
-      initDataTable();
+
+    initDataTable();
+    drawUserMarker();
+  };
+
+  var drawUserMarker = function() {
+    var lat = WTF.User.get('lat');
+    var lon = WTF.User.get('lon');
+
+    if(lat == 'N/A' || lon == 'N/A') return;
+
+    var latlng = new google.maps.LatLng(lat, lon);
+    var marker = new google.maps.Marker({
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          title: 'You are here',
+          position: latlng
+    });
   };
 
   var appendFoodTruck = function(i) {
@@ -105,6 +122,7 @@ WTF.MapView = (function() {
       });
 
       $('#orderDistance').click(function() {
+        if(WTF.User.get('lat')=='N/A' || WTF.User.get('lon')=='N/A') alert('User Location is not specified'); 
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
         dataTable.order([2,'asc']);
         dataTable.column(1).visible(false);
@@ -132,11 +150,12 @@ WTF.MapView = (function() {
     var searchBox = new google.maps.places.SearchBox(userInput, options);
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
-      var places = searchBox.getPlaces();
 
+      var places = searchBox.getPlaces();
+      console.log(JSON.stringify(places));
       if(places.length === 0)return;
-      for(var t = 0, place; t < places.length; t++){
-        place = places[t];
+      
+        var place = places[0];
 
         var image = {
           url: place.icon,
@@ -146,7 +165,7 @@ WTF.MapView = (function() {
         var lat = place.geometry.location.lat();
         var lon = place.geometry.location.lng();
 
-        console.debug("user: LAT", lat, "LON", lon);
+        console.debug("user: LAT", lat, "LON", lon, place.name);
         updateListwithDistances(lat,lon);
 
         WTF.User.set('lat', lat);
@@ -163,7 +182,6 @@ WTF.MapView = (function() {
 
         clearMarkers();
         markers.push(marker);
-      }
     });
 
     google.maps.event.addListener(map, 'bounds_changed', function() {});

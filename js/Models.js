@@ -15,7 +15,7 @@ var WTF = WTF || {};
         name: '',
         ratings: 0,
         lat: 'N/A',
-        lon: 'N/A'
+        lon: 'N/A',
       },
 
       initialize: function() {
