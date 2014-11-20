@@ -307,6 +307,23 @@ WTF.CommentsView = (function() {
 
 WTF.InstaView = (function() {
 
+  var getType = 'tagged';
+  var clientId = '90f31b767931424191d85114732163f6';
+  var showInstaPhotos = function(tagName, alternateTagname) {
+    new Instafeed({
+      get: getType,
+      tagName: tagName,
+      clientId: clientId,
+      error: function(errMsg) {
+        console.debug('getting alternate tag because ', errMsg);
+        new Instafeed({
+          get: getType,
+          tagName: alternateTagname,
+          clientId: clientId,
+        }).run();
+      }
+    }).run();
+  };
 
   return Backbone.View.extend({
 
@@ -314,13 +331,9 @@ WTF.InstaView = (function() {
       var foodtruckName = this.model.get('name').replace(/\s+/g, '');
       var foodtruckDescription = this.model.get('description').replace(/\s+/g, '');
       var tagName= (foodtruckName === 'N/A')? foodtruckDescription: foodtruckName;
+      var alternateTagname = foodtruckDescription;
 
-       var feed = new Instafeed({
-          get: 'tagged',
-          tagName: tagName,
-          clientId: '90f31b767931424191d85114732163f6'
-      });
-      feed.run();
+      showInstaPhotos(tagName, alternateTagname);
     }
 
   });
