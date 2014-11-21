@@ -2,34 +2,24 @@
 <html>
   <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
-
     <!-- DataTables Plugin-->
     <link rel="stylesheet" type="text/css" href="jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.js"></script>
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
- rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM">
-
-    </script>
-
-<!-- Attemp to add Operation hour (will delete this comment later no worry) -->
-
-
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDr2ET0hcoBHi5FfpVQ18r88B234Ue7HaM"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js" defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" defer></script>
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js" defer></script>
     <script type="text/javascript" src="instafeed.min.js" defer></script>
-
-        <!-- For facebook sharing-->
+    <!-- For facebook sharing-->
     <meta property="og:url"         content="https://vivid-torch-5902.firebaseapp.com/"/>
     <meta property="og:title"       content="Where's the Food?" />
     <meta property="og:description" content="Find local food vendors in your local area."/>
     <!-- <meta property="og:image"       content="bg-overlay.jpg"/>  -->
   </head>
   <body>
-  <div id="user-label"></div>
+    <div id="user-label"></div>
     <div class="app-container"></div>
 
     <script type="text/javascript" src="js/Server.js" defer></script>
@@ -178,7 +168,7 @@
 
         <!-- insta feed -->
         <div id="photosArea">
-          <h2>Instagram feed</h2>
+          <h2>Instagram feed </h2>
           <div id="instafeed"></div>
         </div>
 
@@ -192,11 +182,12 @@
     </script>
 
     <script type="text/template" id="foodtruck-comments-template">
-      <div id="a-comment" data-commentid="<%-key%>">
+      <div id="a-comment" data-commentid="<%-id%>">
         <div id="comments-date"><%-date%></div>
         <div id="comments-name"><%-name%></div>
         <div id="comments-comment"><%-comment%></div>
-        <button id="deleteComment" data-name="<%-name%>" data-commentid="<%-key%>">Delete</button>
+        <button id="like-comment" data-commentid="<%-id%>"></button><span>  <%-likes%></span>
+        <button id="delete-comment" data-name="<%-name%>" data-commentid="<%-id%>"></button>
       </div>
     </script>
 

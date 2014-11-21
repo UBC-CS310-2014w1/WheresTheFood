@@ -204,6 +204,10 @@ var WTF = WTF || {};
         commentsRef.child(foodtruckID).push(comment);
       },
 
+      pushCommentLikes: function(foodtruckID, comment) {
+        commentsRef.child(foodtruckID).child(comment.id).update(comment);
+      },
+
       // pushes favourites to restaurant of user's account
       // restaurantID: string - unique to restaurant from dataset
       // like: boolean - true/false indictating restairant is favourited by user.

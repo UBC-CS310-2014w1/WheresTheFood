@@ -190,6 +190,7 @@ WTF.CommentsView = (function() {
 
   var server = WTF.Server;
   var foodtruck;
+  var commentCollection = WTF.Comments;
 
   var getDate = function() {
     //http://stackoverflow.com/questions/1531093/how-to-get-current-date-in-javascript
@@ -226,25 +227,30 @@ WTF.CommentsView = (function() {
 
   };
 
+  var retrieveComments = function() {
+
+      server.getUserComments(foodtruck.get('id'), function(foodtruckComments){
+        if(!foodtruckComments) return;
+        this.$el.find('#commentsList').empty();
+        commentCollection.reset();
+
+        _.each(foodtruckComments, function(foodtruckComment, key) {
+          foodtruckComment.id = key;
+          var comment = new WTF.Comment(foodtruckComment);
+          commentCollection.add(comment);
+          console.debug('rendering');
+        }, this);
+
+      }.bind(this));
+
+  };
 
   return Backbone.View.extend({
 
     initialize: function() {
       foodtruck = this.model;
-      var commentCollection = WTF.Comments;
-      commentCollection.on('add', this.render, this);
-
-      server.getUserComments(foodtruck.get('id'), function(foodtruckComments){
-        this.$el.find('#commentsList').empty();
-        commentCollection.reset();
-        if(!foodtruckComments) return;
-        _.each(foodtruckComments, function(foodtruckComment, key) {
-          foodtruckComment.key = key;
-          var comment = new WTF.Comment(foodtruckComment);
-          commentCollection.add(comment);
-          console.debug('rendering');
-        }, this);
-      }.bind(this));
+      this.listenTo(commentCollection, 'add', this.render);
+      retrieveComments.call(this);
     },
 
     el: '#commentsArea',
@@ -253,8 +259,9 @@ WTF.CommentsView = (function() {
 
     events: {
       'hover #a-comment': 'showButton',
-      'click #postComments': 'postComments',
-      'click #deleteComment': 'deleteComment'
+      'click #post-comments': 'postComments',
+      'click #delete-comment': 'deleteComment',
+      'click #like-comment': 'likeComment'
     },
 
     render: function(comment) {
@@ -295,11 +302,23 @@ WTF.CommentsView = (function() {
       }
     },
 
+    likeComment: function(e) {
+        var commentId = $(e.currentTarget).data('commentid');
+        var commentObject = commentCollection.get(commentId);
+        var currentLikes = commentObject.get('likes');
+        console.log('currLikes', currentLikes);
+        commentObject.set('likes', ++currentLikes);
+        // convert to regular JSON object for storing in firebase
+        server.pushCommentLikes(foodtruck.get('id'), commentObject.toJSON());
+        var likes = commentObject.get('likes');
+        console.log('newLikes', likes);
+    },
+
     showButton: function(e) {
       if(e.type == 'mouseenter'){
-        $(e.currentTarget).find('#deleteComment').css('display', 'inline');
+        $(e.currentTarget).find('#delete-comment').css('display', 'inline');
       } else {
-        $(e.currentTarget).find('#deleteComment').css('display', 'none');
+        $(e.currentTarget).find('#delete-comment').css('display', 'none');
       }
     }
 
@@ -308,9 +327,18 @@ WTF.CommentsView = (function() {
 
 WTF.InstaView = (function() {
 
-  var getType = 'tagged';
-  var clientId = '90f31b767931424191d85114732163f6';
-  var showInstaPhotos = function(tagName, alternateTagname) {
+  var showInstaPhotos = function() {
+    var getType = 'tagged';
+    var clientId = '90f31b767931424191d85114732163f6';
+
+    var foodtruckName = this.model.get('name').replace(/[^a-zA-Z0-9]/g, '');
+    var foodtruckDescription = this.model.get('description').replace(/[^a-zA-Z0-9]/g, '');
+    foodtruckDescription = (foodtruckDescription === 'NA')? 'foodtruck' :foodtruckDescription;
+    foodtruckName = (foodtruckName === 'NA')? foodtruckDescription: foodtruckName;
+
+    var tagName= foodtruckName;
+    var alternateTagname = foodtruckDescription;
+
     new Instafeed({
       get: getType,
       tagName: tagName,
@@ -325,22 +353,14 @@ WTF.InstaView = (function() {
         }).run();
       }
     }).run();
+
   };
 
   return Backbone.View.extend({
 
     initialize: function() {
-      var foodtruckName = this.model.get('name').replace(/[^a-zA-Z0-9]/g, '');
-      var foodtruckDescription = this.model.get('description').replace(/[^a-zA-Z0-9]/g, '');
-      foodtruckDescription = (foodtruckDescription === 'NA')? 'foodtruck' :foodtruckDescription;
-      foodtruckName = (foodtruckName === 'NA')? foodtruckDescription: foodtruckName;
-
-      var tagName= foodtruckName;
-      var alternateTagname = foodtruckDescription;
-
-      showInstaPhotos(tagName, alternateTagname);
-
-    }
+      showInstaPhotos.call(this);
+    },
 
   });
 

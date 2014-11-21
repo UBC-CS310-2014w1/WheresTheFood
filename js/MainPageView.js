@@ -184,8 +184,6 @@ WTF.MapView = (function() {
         markers.push(marker);
     });
 
-    google.maps.event.addListener(map, 'bounds_changed', function() {});
-
     // clear markers from the map
     function clearMarkers(){
       for (var s = 0; s < markers.length; s++){
@@ -224,9 +222,11 @@ WTF.MapView = (function() {
 
   google.maps.event.addDomListener(window, "resize", function() {
     // http://stackoverflow.com/questions/15421369/responsive-google-map
-    var center = mapOptions.center;
-    google.maps.event.trigger(map, "resize");
-    map.setCenter(center);
+    if(map) {
+      var center = mapOptions.center;
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(center);
+    }
   });
 
   var mapView =  Backbone.View.extend({
