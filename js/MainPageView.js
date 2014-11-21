@@ -53,6 +53,7 @@ WTF.MapView = (function() {
           title: 'You are here',
           position: latlng
     });
+    markers.push(marker);
   };
 
   var appendFoodTruck = function(i) {
@@ -138,13 +139,14 @@ WTF.MapView = (function() {
     }
   };
 
+  var markers = [];
   var usersearchLocation = function(){
 
     var userInput = $('#user-input').get(0);
-    var markers = [];
     var bounds = map.getBounds() || new google.maps.LatLngBounds();
     var options = {
-      bounds: bounds
+      bounds: bounds,
+      center: bounds
     };
 
     var searchBox = new google.maps.places.SearchBox(userInput, options);
@@ -201,6 +203,7 @@ WTF.MapView = (function() {
         currentFT.set('distance', distanceToUser);
       }
       populateListView();
+      clearMarkers();
     }
 
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
