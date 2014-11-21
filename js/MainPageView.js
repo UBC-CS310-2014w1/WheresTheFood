@@ -122,7 +122,7 @@ WTF.MapView = (function() {
       });
 
       $('#orderDistance').click(function() {
-        if(WTF.User.get('lat')=='N/A' || WTF.User.get('lon')=='N/A') alert('User Location is not specified'); 
+        if(WTF.User.get('lat')=='N/A' || WTF.User.get('lon')=='N/A') alert('User Location is not specified');
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
         dataTable.order([2,'asc']);
         dataTable.column(1).visible(false);
@@ -139,7 +139,7 @@ WTF.MapView = (function() {
   };
 
   var usersearchLocation = function(){
-    
+
     var userInput = $('#user-input').get(0);
     var markers = [];
     var bounds = map.getBounds() || new google.maps.LatLngBounds();
@@ -154,7 +154,7 @@ WTF.MapView = (function() {
       var places = searchBox.getPlaces();
       console.log(JSON.stringify(places));
       if(places.length === 0)return;
-      
+
         var place = places[0];
 
         var image = {
@@ -206,13 +206,13 @@ WTF.MapView = (function() {
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
       var R = 6371; // Radius of the earth in km
       var dLat = deg2rad(lat2-lat1);  // deg2rad below
-      var dLon = deg2rad(lon2-lon1); 
+      var dLon = deg2rad(lon2-lon1);
 
       var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
               Math.sin(dLon/2) * Math.sin(dLon/2);
 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var d = R * c; // Distance in km
       return d;
     }
@@ -272,7 +272,7 @@ WTF.MapView = (function() {
     }
 
   });
-  
+
   _.extend(mapView, Backbone.event);
 
   return mapView;
@@ -387,7 +387,7 @@ WTF.FoodTruckPopUpView = (function() {
   // Get The current weekday
   function checkDay() {
     var day = new Date();
-    return day.getDay();
+    return day.getDay()-1;
   }
 
   return Backbone.View.extend({
