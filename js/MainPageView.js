@@ -222,7 +222,7 @@ WTF.MapView = (function() {
     }
   };
 
-  var mapView =  Backbone.View.extend({
+  return Backbone.View.extend({
 
     initialize: function() {
       console.debug('map view init');
@@ -272,10 +272,6 @@ WTF.MapView = (function() {
     }
 
   });
-
-  _.extend(mapView, Backbone.event);
-
-  return mapView;
 
 })();
 
