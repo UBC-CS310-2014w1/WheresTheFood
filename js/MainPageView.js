@@ -123,7 +123,7 @@ WTF.MapView = (function() {
   };
 
   var usersearchLocation = function(){
-    
+
     var userInput = $('#user-input').get(0);
     var markers = [];
     var bounds = map.getBounds() || new google.maps.LatLngBounds();
@@ -178,46 +178,6 @@ WTF.MapView = (function() {
       markers = [];
     }
 
-<<<<<<< HEAD
-
-  var delay = 0;
-  var fetchHours = function(foodtruck_i) {
-    // console.log('hello there');
-    if(foodtruck_i.get('name')=='N/A') {
-      foodtruck_i.set('openHours', "Not Available");
-      return;
-    }
-
-    var vancouver = new google.maps.LatLng(49.261226, -123.113927);
-
-    var request = {
-      location: vancouver,
-      radius: 500,
-      query: foodtruck_i.get('name')
-    };
-    var service = new google.maps.places.PlacesService(map);
-
-    service.textSearch(request, function(results, status) {
-
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-
-          if ((results[i].name.toLowerCase() == foodtruck_i.get('name').toLowerCase()) ||
-          (checkSubString(results[i].name.toLowerCase(), foodtruck_i.get('name').toLowerCase()))) {
-
-              console.log('getting openhour for foodtruck which is ' + JSON.stringify(foodtruck_i));
-              var ft = results[i];
-
-              var request = {
-                placeId: ft.place_id
-              };
-
-              var service = new google.maps.places.PlacesService(map);
-
-              service.getDetails(request, function(place, status) {
-
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-=======
     function updateListwithDistances(user_lat, user_lon) {
       for(var i = 0; i < WTF.FoodTrucks.length; i++) {
         var currentFT = WTF.FoodTrucks.at(i);
@@ -230,14 +190,14 @@ WTF.MapView = (function() {
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
       var R = 6371; // Radius of the earth in km
       var dLat = deg2rad(lat2-lat1);  // deg2rad below
-      var dLon = deg2rad(lon2-lon1); 
->>>>>>> master
+      var dLon = deg2rad(lon2-lon1);
+
 
       var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
               Math.sin(dLon/2) * Math.sin(dLon/2);
 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var d = R * c; // Distance in km
       return d;
     }
@@ -297,7 +257,7 @@ WTF.MapView = (function() {
     }
 
   });
-  
+
   _.extend(mapView, Backbone.event);
 
   return mapView;
@@ -384,8 +344,12 @@ WTF.FoodTruckPopUpView = (function() {
 
                     if (place.hasOwnProperty("opening_hours")) {
                       var OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+
+                       var WeeklyHours = place.opening_hours.weekday_text;
+                      console.debug('Week SUCCESS' + WeeklyHours);
                       console.debug('SUCCESS ' + OpenHourEachDay);
                       foodtruck_i.set('openHours', OpenHourEachDay);
+                      foodtruck_i.set('weeklyHours', WeeklyHours);
                     }
 
                 } else { // try again after a set delay
