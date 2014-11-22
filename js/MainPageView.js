@@ -358,8 +358,11 @@ WTF.FoodTruckPopUpView = (function() {
 
                     if (place.hasOwnProperty("opening_hours")) {
                       var OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+                      var WeeklyHours = place.opening_hours.weekday_text;
+                      console.debug('Weekly SUCESS', WeeklyHours);
                       console.debug('SUCCESS ' + OpenHourEachDay);
                       foodtruck_i.set('openHours', OpenHourEachDay);
+                      foodtruck_i.set('weeklyHours', WeeklyHours);
                     }
 
                 } else { // try again after a set delay
