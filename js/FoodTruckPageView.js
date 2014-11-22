@@ -12,10 +12,9 @@ WTF.FoodTruckPageView = (function() {
       new WTF.RatingsView({ model: this.model});
       new WTF.FavouriteView({model: this.model});
       new WTF.CommentsView({ model: this.model });
-<<<<<<< HEAD
-=======
+
       new WTF.InstaView({model: this.model});
->>>>>>> 405d110c6dfd94cebf6156d81de68f1f9e3b9402
+
     },
 
     events: {
@@ -310,20 +309,38 @@ WTF.CommentsView = (function() {
 
 WTF.InstaView = (function() {
 
+  var getType = 'tagged';
+  var clientId = '90f31b767931424191d85114732163f6';
+  var showInstaPhotos = function(tagName, alternateTagname) {
+    new Instafeed({
+      get: getType,
+      tagName: tagName,
+      clientId: clientId,
+      error: function(errMsg) {
+        console.debug('getting alternate tag because ', errMsg);
+        new Instafeed({
+          get: getType,
+          tagName: alternateTagname,
+          // template: '<a href="{{link}}"><div> INSTA </div><img src="{{image}}" /></a>',
+          clientId: clientId,
+        }).run();
+      }
+    }).run();
+  };
 
   return Backbone.View.extend({
 
     initialize: function() {
-      var foodtruckName = this.model.get('name').replace(/\s+/g, '');
-      var foodtruckDescription = this.model.get('description').replace(/\s+/g, '');
-      var tagName= (foodtruckName === 'N/A')? foodtruckDescription: foodtruckName;
+      var foodtruckName = this.model.get('name').replace(/[^a-zA-Z0-9]/g, '');
+      var foodtruckDescription = this.model.get('description').replace(/[^a-zA-Z0-9]/g, '');
+      foodtruckDescription = (foodtruckDescription === 'NA')? 'foodtruck' :foodtruckDescription;
+      foodtruckName = (foodtruckName === 'NA')? foodtruckDescription: foodtruckName;
 
-       var feed = new Instafeed({
-          get: 'tagged',
-          tagName: tagName,
-          clientId: '90f31b767931424191d85114732163f6'
-      });
-      feed.run();
+      var tagName= foodtruckName;
+      var alternateTagname = foodtruckDescription;
+
+      showInstaPhotos(tagName, alternateTagname);
+
     }
 
   });
