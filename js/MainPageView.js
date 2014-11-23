@@ -35,7 +35,25 @@ WTF.MapView = (function() {
     for(var i = 0, len = WTF.FoodTrucks.length; i < len ; i++) {
       appendFoodTruck(i);
     }
-      initDataTable();
+
+    initDataTable();
+    drawUserMarker();
+  };
+
+  var drawUserMarker = function() {
+    var lat = WTF.User.get('lat');
+    var lon = WTF.User.get('lon');
+
+    if(lat == 'N/A' || lon == 'N/A') return;
+
+    var latlng = new google.maps.LatLng(lat, lon);
+    var marker = new google.maps.Marker({
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          title: 'You are here',
+          position: latlng
+    });
+    markers.push(marker);
   };
 
   var appendFoodTruck = function(i) {
@@ -105,6 +123,7 @@ WTF.MapView = (function() {
       });
 
       $('#orderDistance').click(function() {
+        if(WTF.User.get('lat')=='N/A' || WTF.User.get('lon')=='N/A') alert('User Location is not specified');
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
         dataTable.order([2,'asc']);
         dataTable.column(1).visible(false);
@@ -122,23 +141,25 @@ WTF.MapView = (function() {
     }
   };
 
+  var markers = [];
   var usersearchLocation = function(){
 
     var userInput = $('#user-input').get(0);
-    var markers = [];
     var bounds = map.getBounds() || new google.maps.LatLngBounds();
     var options = {
-      bounds: bounds
+      bounds: bounds,
+      center: bounds
     };
 
     var searchBox = new google.maps.places.SearchBox(userInput, options);
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
-      var places = searchBox.getPlaces();
 
+      var places = searchBox.getPlaces();
+      console.log(JSON.stringify(places));
       if(places.length === 0)return;
-      for(var t = 0, place; t < places.length; t++){
-        place = places[t];
+
+        var place = places[0];
 
         var image = {
           url: place.icon,
@@ -148,7 +169,7 @@ WTF.MapView = (function() {
         var lat = place.geometry.location.lat();
         var lon = place.geometry.location.lng();
 
-        console.debug("user: LAT", lat, "LON", lon);
+        console.debug("user: LAT", lat, "LON", lon, place.name);
         updateListwithDistances(lat,lon);
 
         WTF.User.set('lat', lat);
@@ -165,7 +186,6 @@ WTF.MapView = (function() {
 
         clearMarkers();
         markers.push(marker);
-      }
     });
 
     google.maps.event.addListener(map, 'bounds_changed', function() {});
@@ -185,13 +205,13 @@ WTF.MapView = (function() {
         currentFT.set('distance', distanceToUser);
       }
       populateListView();
+      clearMarkers();
     }
 
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
       var R = 6371; // Radius of the earth in km
       var dLat = deg2rad(lat2-lat1);  // deg2rad below
       var dLon = deg2rad(lon2-lon1);
-
 
       var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
               Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
@@ -207,7 +227,7 @@ WTF.MapView = (function() {
     }
   };
 
-  var mapView =  Backbone.View.extend({
+  return Backbone.View.extend({
 
     initialize: function() {
       console.debug('map view init');
@@ -258,9 +278,6 @@ WTF.MapView = (function() {
 
   });
 
-  _.extend(mapView, Backbone.event);
-
-  return mapView;
 
 })();
 
@@ -342,11 +359,24 @@ WTF.FoodTruckPopUpView = (function() {
 
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-                    if (place.hasOwnProperty("opening_hours")) {
-                      var OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
 
-                       var WeeklyHours = place.opening_hours.weekday_text;
-                      console.debug('Week SUCCESS' + WeeklyHours);
+
+                    // Get open hours
+                    if (place.hasOwnProperty("opening_hours")) {
+
+                      // check if it opens now
+                      if (place.opening_hours.hasOwnProperty("open_now")) {
+                        var isOpen = place.opening_hours.open_now;
+
+                        console.debug('Open NOW? ' + isOpen);
+                        if (isOpen) {
+                          foodtruck_i.set('openNow', 1);
+                        }
+                      }
+
+                      var OpenHourEachDay = place.opening_hours.weekday_text[checkDay()];
+                      var WeeklyHours = place.opening_hours.weekday_text;
+                      console.debug('Weekly SUCESS', WeeklyHours);
                       console.debug('SUCCESS ' + OpenHourEachDay);
                       foodtruck_i.set('openHours', OpenHourEachDay);
                       foodtruck_i.set('weeklyHours', WeeklyHours);
@@ -376,7 +406,7 @@ WTF.FoodTruckPopUpView = (function() {
   // Get The current weekday
   function checkDay() {
     var day = new Date();
-    return day.getDay();
+    return day.getDay()-1;
   }
 
   return Backbone.View.extend({

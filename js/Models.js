@@ -15,7 +15,7 @@ var WTF = WTF || {};
         name: '',
         ratings: 0,
         lat: 'N/A',
-        lon: 'N/A'
+        lon: 'N/A',
       },
 
       initialize: function() {
@@ -42,6 +42,7 @@ WTF.FoodTruck = (function() {
       marker: 'N/A',
       rating: 0,
       distance: 0,
+      openNow: 0,
       isFavourited: false,
       memo: "",
       openHours: 'Not Available',

@@ -374,6 +374,12 @@ ul > span {
 	position: absolute;
 }
 
+/* PHOTOS SECTION */
+#photosArea {
+	text-align: center;
+	margin-top: 50px;
+}
+
 #user-location{
 	background-color: #fff;
 	box-shadow: 1px 1px 2px #888888;
