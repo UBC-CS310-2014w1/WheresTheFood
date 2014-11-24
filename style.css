@@ -355,16 +355,17 @@ ul > span {
 	margin-top: 5px;
 }
 
-#deleteComment {
-	background: #eee;
+#delete-comment {
+	background: url('images/bin.png') no-repeat;
+	background-size: 12px;
 	border: none;
-	color: red;
 	cursor: pointer;
 	display: none;
 	font-size: 12px;
+	height: 20px;
 	margin-top: -15px;
 	position: absolute;
-	right: 5px;
+	right: 15px;
 }
 
 .fb-share-button{
@@ -406,7 +407,7 @@ ul > span {
 .pac-container, .pac-item{
 	border: none;
 	position: relative;
-	width: auto !important; 
+	width: auto !important;
 }
 
 body.wtf-left .pac-container{

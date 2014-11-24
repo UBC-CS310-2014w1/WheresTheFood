@@ -129,9 +129,9 @@ WTF.Comment = (function() {
 
     defaults: {
       name: '',
-      commnt: '',
+      comment: '',
       date: '',
-      comment_id: '' // unique id created by firebase
+      id: '' // unique id created by firebase
     }
 
   });
