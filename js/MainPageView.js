@@ -61,8 +61,8 @@ WTF.MapView = (function() {
       var foodtruck = WTF.FoodTrucks.at(i);
       var name = foodtruck.get('name');
 
-      if(foodtruck.get('name') == 'N/A')
-        name = foodtruck.get('description') + ' ' + foodtruck.get('id');
+      if(foodtruck.get('name') == 'Food Truck')
+        name = name + ' ' + foodtruck.get('id');
 
         return '<tr><td>'+ generateIcon() +'<a href="#foodtruck/' +
                         foodtruck.get('id') + '">' +

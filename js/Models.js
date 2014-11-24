@@ -32,7 +32,7 @@ WTF.FoodTruck = (function() {
   return Backbone.Model.extend({
 
     defaults: {
-      name: 'N/A',
+      name: 'Food Truck',
       id: 'N/A',
       address: 'N/A',
       description: 'N/A',
