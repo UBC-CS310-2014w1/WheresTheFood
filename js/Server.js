@@ -22,33 +22,35 @@ var WTF = WTF || {};
   // (0) Do we have data persisited in sessionStorage?
   // (1) If we have, use that
   // (2) Otherwise use fetch from server, and persist in sessionStorage for use next time
-  var fetchDataset = function() {
+  var fetchDataset = function(callback) {
     if(sessionStorage.getItem(FoodTruckKey)) {
-      fetchDatasetFromStorage.call(this);
+      fetchDatasetFromStorage.call(this, callback);
       console.debug('restore from sessionStorage');
     } else {
-      fetchDatasetFromServer.call(this);
+      fetchDatasetFromServer.call(this, callback);
       console.debug('get from server');
     }
 
   };
 
-  var fetchDatasetFromStorage = function() {
+  var fetchDatasetFromStorage = function(callback) {
     var foodtrucks = JSON.parse(sessionStorage.getItem(FoodTruckKey));
     this.set('parsedDataset', foodtrucks);
+    if(typeof callback === 'function') {
+      callback();
+    }
   };
 
-  var fetchDatasetFromServer = function() {
+  var fetchDatasetFromServer = function(callback) {
     // Attach an asynchronous callback to read the data at our dataset reference
     databaseRef.child('dataset').on('value', function(snapShot){
-        parseData.call(this,snapShot.val());
+        parseData.call(this,snapShot.val(), callback);
       }.bind(this),function(errorObject){
         console.log('The read failed: ' + errorObject.code);
-        callback(null);
       });
   };
 
-  var parseData = function(items) {
+  var parseData = function(items, callback) {
     var trucks = [];
     $.map(items, function(item){
       var modelObject = {};
@@ -67,6 +69,9 @@ var WTF = WTF || {};
       trucks.push(modelObject);
      });
      this.set('parsedDataset', trucks);
+     if(typeof callback === 'function') {
+       callback();
+     }
    };
 
   var fetchUser = function() {
@@ -121,8 +126,8 @@ var WTF = WTF || {};
         currentUserRef = null;
       },
 
-      fetchDataset: function() {
-        fetchDataset.call(this);
+      fetchDataset: function(callback) {
+        fetchDataset.call(this,callback);
       },
 
       fetchUser: function() {

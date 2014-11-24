@@ -4,12 +4,12 @@ describe("Parser", function() {
 
   describe('Dataset', function() {
 
-    beforeEach(function() {
-      // setTimeout(function(done) {
-      //   server.fetchDataset();
-      //   done();
-      // }, 10000);
-      server.fetchDataset();
+    it("should fetch dataset from Firebase server", function(done) {
+      server.fetchDataset(function() {
+        console.debug('finsih fetching');
+        expect(WTF.FoodTrucks.length).toBeGreaterThan(0);
+        done();
+      });
     });
 
     it('should parsed the correct amount of foodtrucks', function() {
@@ -17,13 +17,13 @@ describe("Parser", function() {
     });
 
     it('should parse the first food truck with the correct info', function() {
-	  expect(WTF.FoodTrucks.at(0).get('id')).toBe("C1");
-      expect(WTF.FoodTrucks.at(0).get('name')).toBe("Via Tevere Pizzeria");
-      expect(WTF.FoodTrucks.at(0).get('description')).toBe("Pizza");
-      expect(WTF.FoodTrucks.at(0).get('lat')).toBe(49.28690264);
-      expect(WTF.FoodTrucks.at(0).get('lon')).toBe(-123.1175335);
-    });
+  	  expect(WTF.FoodTrucks.at(0).get('id')).toBe("C1");
+        expect(WTF.FoodTrucks.at(0).get('name')).toBe("Via Tevere Pizzeria");
+        expect(WTF.FoodTrucks.at(0).get('description')).toBe("Pizza");
+        expect(WTF.FoodTrucks.at(0).get('lat')).toBe(49.28690264);
+        expect(WTF.FoodTrucks.at(0).get('lon')).toBe(-123.1175335);
+      });
 
-  });
+    });
 
 });
