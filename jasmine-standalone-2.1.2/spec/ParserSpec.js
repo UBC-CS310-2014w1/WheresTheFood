@@ -12,6 +12,7 @@ describe("Parser", function() {
       expect(WTF.FoodTrucks.length).toBe(111);
     });
 
+
   });
 
 });

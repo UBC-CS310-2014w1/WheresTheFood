@@ -67,6 +67,7 @@ var WTF = WTF || {};
       trucks.push(modelObject);
      });
      this.set('parsedDataset', trucks);
+
    };
 
   var fetchUser = function() {
