@@ -67,6 +67,7 @@ var WTF = WTF || {};
       trucks.push(modelObject);
      });
      this.set('parsedDataset', trucks);
+     console.debug('check last foodtruck');
    };
 
   var fetchUser = function() {
