@@ -30,6 +30,9 @@ body[data-name='map'] > .app-container > div {
 
 button {
 	outline: none;
+	border:none;
+	background: #ddd;
+	cursor: pointer;
 }
 
 input {
