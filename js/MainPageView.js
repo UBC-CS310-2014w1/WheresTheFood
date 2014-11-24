@@ -167,6 +167,10 @@ WTF.MapView = (function() {
         var lat = place.geometry.location.lat();
         var lon = place.geometry.location.lng();
 
+        var defaultBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(lat, lon),
+          new google.maps.LatLng(lat, lon));
+
         console.debug("user: LAT", lat, "LON", lon, place.name);
         updateListwithDistances(lat,lon);
 
@@ -184,6 +188,9 @@ WTF.MapView = (function() {
 
         clearMarkers();
         markers.push(marker);
+        // To pan the map when user does a search
+        map.fitBounds(defaultBounds);
+        map.setZoom(13);
     });
 
     // clear markers from the map
