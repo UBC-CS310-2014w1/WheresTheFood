@@ -120,6 +120,8 @@ var WTF = WTF || {};
         databaseRef.unauth();
         currentUser = null;
         currentUserRef = null;
+        WTF.User.set('lat', 'N/A');
+        WTF.User.set('lon', 'N/A');
       },
 
       fetchDataset: function() {
