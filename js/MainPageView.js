@@ -256,6 +256,8 @@ WTF.MapView = (function() {
       setupUserLabel.call(this);
       map = new google.maps.Map($('#map-canvas').get(0),mapOptions);
       console.debug('foodtruck length', WTF.FoodTrucks.length);
+      // reset all filters when we first land on this page
+      WTF.FoodTrucks.filterFoodTrucks();
       populateListView();
       drawMarkers();
       return this;
