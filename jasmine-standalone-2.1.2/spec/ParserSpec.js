@@ -5,10 +5,11 @@ describe("Parser", function() {
   describe('Dataset', function() {
 
     beforeEach(function() {
-      setTimeout(function(done) {
-        server.fetchDataset();
-        done();
-      }, 10000);
+      // setTimeout(function(done) {
+      //   server.fetchDataset();
+      //   done();
+      // }, 10000);
+      server.fetchDataset();
     });
 
     it('should parsed the correct amount of foodtrucks', function() {
