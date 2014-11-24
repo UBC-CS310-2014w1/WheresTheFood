@@ -30,6 +30,14 @@ describe("Parser", function() {
       expect(WTF.FoodTrucks.at(110).get('description')).toBe("French Crepes");
       expect(WTF.FoodTrucks.at(110).get('lat')).toBe(49.28006682);
       expect(WTF.FoodTrucks.at(110).get('lon')).toBe(-123.1139136);
+
+    it('should parse the 60th food truck with the correct info', function(){
+      expect(WTF.FoodTrucks.at(60).get('id')).toBe("DT59");
+      expect(WTF.FoodTrucks.at(60).get('name')).toBe("Re-Up BBQ");
+      expect(WTF.FoodTrucks.at(60).get('description')).toBe("Pulled Pork");
+      expect(WTF.FoodTrucks.at(60).get('lat')).toBe(49.28350877);
+      expect(WTF.FoodTrucks.at(60).get('lon')).toBe(-123.1203097);
+
     });
 
   });
