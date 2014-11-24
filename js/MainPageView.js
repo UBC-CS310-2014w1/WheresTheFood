@@ -396,7 +396,8 @@ WTF.FoodTruckPopUpView = (function() {
   // Get The current weekday
   function checkDay() {
     var day = new Date();
-    return day.getDay()-1;
+    // return day.getDay()-1;
+    return (day.getDay() + 6) % 7;
   }
 
   return Backbone.View.extend({
