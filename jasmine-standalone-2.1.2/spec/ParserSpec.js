@@ -20,7 +20,13 @@ describe("Parser", function() {
       expect(WTF.FoodTrucks.at(0).get('lon')).toBe(-123.1175335);
     });
 
-
+	it('should parse the last food truck with the correct info', function() {
+	  expect(WTF.FoodTrucks.at(110).get('id')).toBe("DT78");
+      expect(WTF.FoodTrucks.at(110).get('name')).toBe("Chou Chou Crepes");
+      expect(WTF.FoodTrucks.at(110).get('description')).toBe("French Crepes");
+      expect(WTF.FoodTrucks.at(110).get('lat')).toBe(49.28006682);
+      expect(WTF.FoodTrucks.at(110).get('lon')).toBe(-123.1139136);
+    });
 
   });
 
