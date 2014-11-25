@@ -122,8 +122,12 @@ WTF.MapView = (function() {
         dataTable.draw();
       });
 
-      $('#orderDistance').click(function() {
-        if(WTF.User.get('lat')=='N/A' || WTF.User.get('lon')=='N/A') alert('User Location is not specified');
+      $('#orderDistance').click(function(e) {
+        if(WTF.User.get('lat')=='N/A' || WTF.User.get('lon')=='N/A') {
+          alert('User Location is not specified');
+          e.preventDefault();
+          return;
+        }
         option_selected = $('input[name=ordering]:checked', '#order-options').val();
         dataTable.order([2,'asc']);
         dataTable.column(1).visible(false);
