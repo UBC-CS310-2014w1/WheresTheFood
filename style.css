@@ -91,16 +91,16 @@ input {
 
 /* FILTERING AREA */
 /* CREDITS: http://code.stephenmorley.org/html-and-css/styling-checkboxes-and-radio-buttons */
-input[type=checkbox]:not(old),
-input[type=radio   ]:not(old){
+input[type=checkbox],
+input[type=radio   ]{
   width   : 28px;
   margin  : 0;
   padding : 0;
   opacity : 0;
 }
 
-input[type=checkbox]:not(old) + label,
-input[type=radio   ]:not(old) + label{
+input[type=checkbox] + label,
+input[type=radio   ] + label{
   display      : inline-block;
   margin-left  : -28px;
   padding-left : 28px;
@@ -108,11 +108,11 @@ input[type=radio   ]:not(old) + label{
   line-height  : 24px;
 }
 
-input[type=checkbox]:not(old):checked + label{
+input[type=checkbox]:checked + label{
   background-position : 0 -24px;
 }
 
-input[type=radio]:not(old):checked + label{
+input[type=radio]:checked + label{
   background-position : 0 -48px;
 }
 
